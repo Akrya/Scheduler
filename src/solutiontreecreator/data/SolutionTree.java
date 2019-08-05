@@ -21,25 +21,5 @@ public class SolutionTree extends SingleGraph {
 		super(id);
 		
 		this.numProcessors = numProcessors;
-		this.setNodeFactory(new SolutionFactory(numProcessors));
-	}
-	
-	/**
-	 * Generating a new instance of a Node will produce a Solution class instead, through this factory.
-	 * @author Terence
-	 *
-	 */
-	private class SolutionFactory implements NodeFactory<Solution>{
-		public final int numProcessors;
-		
-		public SolutionFactory(int numProcessors) {
-			this.numProcessors = numProcessors;
-		}
-		
-		@Override
-		public Solution newInstance(String id, Graph graph) {
-			return new Solution((SolutionTree) graph, id, numProcessors);
-		}
-		
 	}
 }
