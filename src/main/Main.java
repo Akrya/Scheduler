@@ -50,6 +50,7 @@ public class Main {
                             System.out.println(numOfCores);
                             controller.setNumOfCores(numOfCores);
                             valuesSet[0] = true;
+                            i++;
                         } catch (NumberFormatException e) {
                             printInputArgumentsError();
                         } catch (ArrayIndexOutOfBoundsException e) {
@@ -65,6 +66,7 @@ public class Main {
                             String outputFileName = remainingArgs[i+1];
                             System.out.println(outputFileName);
                             valuesSet[2] = true;
+                            i++;
                         } catch (ArrayIndexOutOfBoundsException e) {
                             printInputArgumentsError();
                         }
