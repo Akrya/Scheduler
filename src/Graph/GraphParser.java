@@ -16,6 +16,9 @@ public class GraphParser {
     private Graph g;
 
 
+    public static void main(String args[]){
+        GraphParser graph = new GraphParser("Nodes_7_OutTree.dot");
+    }
     public GraphParser(String filePath){
         FilePath = filePath;
         g = new DefaultGraph("g");
@@ -48,6 +51,11 @@ public class GraphParser {
             e.printStackTrace();
         }
         return edgeWeight;
+    }
+
+    public void changeAttribute(String nodeID, String attributeName, int attributeValue){
+        Node n = g.getNode(nodeID);
+        n.addAttribute(attributeName,attributeValue);
     }
 
     public void viewGraph(){
