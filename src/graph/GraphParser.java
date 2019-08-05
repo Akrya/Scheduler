@@ -12,14 +12,18 @@ import java.io.IOException;
  * 
  * Class that parses a graph file and provides methods for displaying graph information.
  * 
- * @author Shunji Takano
- *
+ * @author Shunji Takano, documentation by Terence Qu
+ * 
  */
 public class GraphParser {
 
     private String FilePath;
     public TaskGraph g;
 
+    /**
+     * Constructs object from file path.
+     * @param filePath the path of the dot file to parse
+     */
     public GraphParser(String filePath){
         FilePath = filePath;
         g = new TaskGraph("g");

@@ -1,10 +1,11 @@
-package data.solutiontree;
+package solutiontreecreator.data;
 
 import org.graphstream.graph.implementations.AdjacencyListNode;
 
 public class Solution extends AdjacencyListNode{
 	
-	private int numProcessors;
+	public final int numProcessors;
+	public final Timeline[] processors;
 	
 	/**
 	 * Represents a solution, a series of tasks scheduled amongst processors
@@ -13,14 +14,8 @@ public class Solution extends AdjacencyListNode{
 	public Solution(SolutionTree tree, String id, int numProcessors) {
 		super(tree, id);
 		this.numProcessors = numProcessors;
+		processors = new Timeline[numProcessors];
 	}
 	
-	/**
-	 * Method which enables the contents of a solution to be copied to another.
-	 * @param inSolution
-	 * @return
-	 */
-	public Solution copySolution(Solution inSolution) {
-		return null;
-	}
+	
 }
