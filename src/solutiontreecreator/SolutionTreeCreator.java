@@ -1,17 +1,26 @@
 package solutiontreecreator;
 
+import org.graphstream.graph.implementations.DefaultGraph;
+
 import data.solutiontree.SolutionTree;
-import data.taskgraph.TaskGraph;
 
 public class SolutionTreeCreator {
 	
 	/**
-	 * Method to generate a task graph from a solution tree
+	 * Method to generate a solution tree from a task graph.
 	 * 
 	 * UNFINISHED
 	 * @return solution tree generated from input task graph
 	 */
-	public static SolutionTree convertTaskGraphToSolutionTree(TaskGraph inputGraph) {
-		return new SolutionTree(null);
+	public static DefaultGraph convertTaskGraphToSolutionTree(DefaultGraph taskGraph) {
+		
+		// Initialization
+		DefaultGraph solutionTree = new DefaultGraph("Solution Tree");
+		
+		// Find the first node in the 
+		taskGraph.getNode(0);
+		
+		return solutionTree;
+		
 	}
 }

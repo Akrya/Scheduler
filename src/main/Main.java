@@ -1,13 +1,13 @@
+package main;
+
 public class Main {
 
     public static void main(String args[]) {
-
         System.out.println(args.length);
 
         if (args.length < 2) {
             printInputArgumentsError();
         }
-
     }
 
     private static void printInputArgumentsError() {

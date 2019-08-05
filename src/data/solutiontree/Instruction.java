@@ -1,5 +1,5 @@
 package data.solutiontree;
 
-public class Solution {
+public class Instruction {
 	
 }
