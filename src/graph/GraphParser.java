@@ -1,9 +1,7 @@
 package graph;
 
 import org.graphstream.graph.Edge;
-import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
-import org.graphstream.graph.implementations.DefaultGraph;
 import org.graphstream.stream.file.FileSource;
 import org.graphstream.stream.file.FileSourceDOT;
 import org.graphstream.ui.view.Viewer;
@@ -20,11 +18,11 @@ import java.io.IOException;
 public class GraphParser {
 
     private String FilePath;
-    public DefaultGraph g;
+    public TaskGraph g;
 
     public GraphParser(String filePath){
         FilePath = filePath;
-        g = new DefaultGraph("g");
+        g = new TaskGraph("g");
         FileSource fs = new FileSourceDOT();
         fs.addSink(g);
         try {
@@ -67,7 +65,7 @@ public class GraphParser {
         return edgeWeight;
     }
 
-    public Graph getGraph() {
+    public TaskGraph getGraph() {
     	return g;
     }
     

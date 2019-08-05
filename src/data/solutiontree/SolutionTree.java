@@ -1,6 +1,6 @@
 package data.solutiontree;
 
-import org.graphstream.graph.implementations.DefaultGraph;
+import org.graphstream.graph.implementations.SingleGraph;
 
 /**
  * 
@@ -9,10 +9,11 @@ import org.graphstream.graph.implementations.DefaultGraph;
  * @author Teren
  *
  */
-public class SolutionTree extends DefaultGraph{
+public class SolutionTree extends SingleGraph{
 
 	public SolutionTree(String id) {
 		super(id);
 	}
+	
 	
 }
