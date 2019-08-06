@@ -1,4 +1,4 @@
-package Graph;
+package main.graph;
 
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Graph;
@@ -15,26 +15,24 @@ public class GraphParser {
     private String FilePath;
     private Graph g;
 
+    public static Graph parseInputFile(Graph inputGraph, String dotFileName) {
 
-    public static void main(String args[]){
-        GraphParser graph = new GraphParser("Nodes_7_OutTree.dot");
-    }
-    public GraphParser(String filePath){
-        FilePath = filePath;
-        g = new DefaultGraph("g");
-        FileSource fs = new FileSourceDOT();
-        fs.addSink(g);
+        FileSource fileSource = new FileSourceDOT();
+        fileSource.addSink(inputGraph);
         try {
-            fs.readAll(FilePath);
-        } catch(IOException e){
+            fileSource.readAll(dotFileName);
+        } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return inputGraph;
+
     }
 
-    public double getNodeWeight(String nodeID){
+    public static double getNodeWeight(Graph inputGraph, String nodeID){
         double value = 0;
         try {
-            Node n = g.getNode(nodeID);
+            Node n = inputGraph.getNode(nodeID);
             value = n.getAttribute("Weight");
         } catch (NullPointerException e){
             e.printStackTrace();
@@ -42,10 +40,10 @@ public class GraphParser {
         return value;
     }
 
-    public double getEdgeWeight(String firstNode, String secondNode){
+    public static double getEdgeWeight(Graph inputGraph, String firstNode, String secondNode){
         double edgeWeight = 0;
         try {
-            Edge e = g.getEdge("(" + firstNode + ";" + secondNode + ")");
+            Edge e = inputGraph.getEdge("(" + firstNode + ";" + secondNode + ")");
             edgeWeight = e.getNumber("Weight");
         } catch (NullPointerException e){
             e.printStackTrace();

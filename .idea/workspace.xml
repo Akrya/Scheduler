@@ -7,9 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f316569b-5fd1-4aa8-a246-737288b15ade" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Graph/GraphParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/graph/GraphParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/Controller.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,6 +51,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="main.graph" />
       <recent name="main" />
     </key>
   </component>
@@ -92,7 +94,8 @@
       <workItem from="1564704479016" duration="5294000" />
       <workItem from="1564879986507" duration="147000" />
       <workItem from="1564962008330" duration="1180000" />
-      <workItem from="1564972449411" duration="3801000" />
+      <workItem from="1564972449411" duration="3924000" />
+      <workItem from="1565046079675" duration="2165000" />
     </task>
     <servers />
   </component>
