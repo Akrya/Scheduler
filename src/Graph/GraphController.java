@@ -11,7 +11,7 @@ import org.graphstream.ui.view.Viewer;
 
 import java.io.IOException;
 
-public class GraphParser {
+public class GraphController {
 
     private String FilePath;
     private Graph g;
@@ -23,7 +23,7 @@ public class GraphParser {
      * It creates a graph object which reflects the dot file. We can read and edit this graph.
      * @param filePath
      */
-    public GraphParser(String filePath){
+    public GraphController(String filePath){
         FilePath = filePath;
         g = new DefaultGraph("g");
         FileSource fs = new FileSourceDOT();
@@ -40,7 +40,7 @@ public class GraphParser {
      * @param graph
      * @param fileName
      */
-    public static void outputGraphDotFile(GraphParser graph, String fileName){
+    public static void outputGraphDotFile(GraphController graph, String fileName){
         FileSinkDOT dotSink = new FileSinkDOT();
         try{
             dotSink.writeAll(graph.g,fileName);
