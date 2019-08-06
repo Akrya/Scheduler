@@ -3,17 +3,13 @@ package main.graph;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
-import org.graphstream.graph.implementations.DefaultGraph;
 import org.graphstream.stream.file.FileSource;
 import org.graphstream.stream.file.FileSourceDOT;
 import org.graphstream.ui.view.Viewer;
 
 import java.io.IOException;
 
-public class GraphParser {
-
-    private String FilePath;
-    private Graph g;
+public class GraphController {
 
     public static Graph parseInputFile(Graph inputGraph, String dotFileName) {
 
@@ -24,6 +20,8 @@ public class GraphParser {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        inputGraph.getNodeSet();
 
         return inputGraph;
 
@@ -51,15 +49,16 @@ public class GraphParser {
         return edgeWeight;
     }
 
-    public void changeAttribute(String nodeID, String attributeName, int attributeValue){
-        Node n = g.getNode(nodeID);
+    public static void changeAttribute(Graph inputGraph, String nodeID, String attributeName, int attributeValue){
+        Node n = inputGraph.getNode(nodeID);
         n.addAttribute(attributeName,attributeValue);
     }
 
-    public void viewGraph(){
-        for (Node node : g) {
+    public static void viewGraph(Graph inputGraph){
+        for (Node node : inputGraph) {
             node.addAttribute("ui.label", node.getId());
         }
-        Viewer viewer = g.display();
+        Viewer viewer = inputGraph.display();
+        viewer.enableAutoLayout();
     }
 }

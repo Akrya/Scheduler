@@ -1,15 +1,9 @@
 package main.controller;
 
-import main.graph.GraphParser;
+import main.graph.GraphController;
 
-import org.graphstream.graph.Edge;
 import org.graphstream.graph.Graph;
-import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.DefaultGraph;
-import org.graphstream.stream.file.FileSource;
-import org.graphstream.stream.file.FileSourceDOT;
-
-import java.io.IOException;
 
 public class Controller {
 
@@ -25,13 +19,18 @@ public class Controller {
 
         inputGraph = new DefaultGraph("inputGraph");
 
-        inputGraph = GraphParser.parseInputFile(inputGraph, dotFileName);
+        inputGraph = GraphController.parseInputFile(inputGraph, dotFileName);
+
+        if (visualizeSearch) {
+            GraphController.viewGraph(inputGraph);
+        }
 
     }
 
-    public void parseInputFile() {
+    private void writeOutputFile() {
 
     }
+
 
     public String getGraphFilename() {
         return dotFileName;
