@@ -4,7 +4,7 @@ package solutiontreecreator.data;
  * 
  * Represents a solution tree.
  * 
- * @author Teren
+ * @author Terence
  *
  */
 public class SolutionTree {

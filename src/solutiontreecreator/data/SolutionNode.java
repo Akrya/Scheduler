@@ -35,7 +35,18 @@ public class SolutionNode {
 		} catch (NullPointerException e) {
 			return "root";
 		}
-
+	}
+	
+	/**
+	 * Check if a task is already in the solution
+	 */
+	public boolean isTaskInSolution(Node node) {
+		for(Timeline timeline: solution.processors) {
+			if(timeline.mapOfTasksAndStartTimes.containsKey(timeline)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**

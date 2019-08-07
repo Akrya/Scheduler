@@ -19,6 +19,8 @@ public class SolutionTreeCreator {
 	private TaskGraph taskGraph;
 	private SolutionTree solutionTree;
 	
+	public List<Node> tasks;
+	
 	public List<SolutionNode> leaves;
 	
 	public SolutionTreeCreator(int numProcessors, TaskGraph taskGraph) {
@@ -26,6 +28,8 @@ public class SolutionTreeCreator {
 
 		this.numProcessors = numProcessors;
 		this.taskGraph = taskGraph;
+		
+		tasks = new ArrayList<Node>(taskGraph.getNodeSet());
 		
 		this.leaves = new ArrayList<SolutionNode>();
 	}
@@ -37,7 +41,6 @@ public class SolutionTreeCreator {
 	 * @return solution tree generated from input task graph
 	 */
 	public void convertTaskGraphToSolutionTree() {
-
 		// Initialization
 		solutionTree = new SolutionTree(numProcessors);
 		Node rootTask = taskGraph.getRootNodes().get(0);
@@ -57,18 +60,20 @@ public class SolutionTreeCreator {
 		}
 		
 		for(SolutionNode s: rootNode.children) {
-			branchOut(s);
+			branchOut(s, null);
 		}
 	}
 	
 	/**
 	 * Helper recursive function for solution tree generation.
+	 * 
+	 * INCORRECT, THIS NEEDS TO BE ALTERED
 	 * @param node
 	 */
-	public void branchOut(SolutionNode node) {
+	public void branchOut(SolutionNode node, List<Node> availableTasks) {
 		System.out.println("Branching out from "+node.latestTask.getId());
 		
-		// Branch out from node
+		// Branch out from node - FOR LOOP NEEDS TO LOOP THROUGH ALL AVAILABLE TASKS
 		for(Edge e: node.latestTask.getEachLeavingEdge()) {
 			for(int i = 0; i < numProcessors; i++) {
 				SolutionNode childSolution = new SolutionNode();
@@ -80,7 +85,7 @@ public class SolutionTreeCreator {
 		}
 		
 		for(SolutionNode s: node.children) {
-			branchOut(s);
+			branchOut(s, null);
 		}
 		
 		if(node.children.isEmpty()) {
