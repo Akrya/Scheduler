@@ -12,11 +12,11 @@ import org.graphstream.graph.Node;
  */
 public class Timeline {
 	
-	public final HashMap<Node, Integer> mapOfTasksAndStartTimes;
-	private int endTime;
+	public final HashMap<Node, Double> mapOfTasksAndStartTimes;
+	private double endTime;
 	
 	public Timeline() {
-		mapOfTasksAndStartTimes = new HashMap<Node, Integer>();
+		mapOfTasksAndStartTimes = new HashMap<Node, Double>();
 	}
 	
 	/**
@@ -26,7 +26,7 @@ public class Timeline {
 	 */
 	public void addTask(Node task) {
 		mapOfTasksAndStartTimes.put(task, endTime);
-		endTime += (int)task.getAttribute("Weight");
+		endTime += (double)task.getAttribute("Weight");
 	}
 	
 	/**
@@ -34,8 +34,8 @@ public class Timeline {
 	 * @param task
 	 * @param offset
 	 */
-	public void addTaskWithDelay(Node task, int delay) {
+	public void addTaskWithDelay(Node task, double delay) {
 		mapOfTasksAndStartTimes.put(task, endTime+delay);
-		endTime += (int)task.getAttribute("Weight")+delay;
+		endTime += (double)task.getAttribute("Weight")+delay;
 	}
 }

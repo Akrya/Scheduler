@@ -6,6 +6,7 @@ import org.graphstream.graph.Node;
 import org.junit.Test;
 
 import graph.GraphParser;
+import solutiontreecreator.SolutionTreeCreator;
 
 public class TestRandomStuff {
 	
@@ -18,18 +19,13 @@ public class TestRandomStuff {
 		
 		// Dump info of graph in the console
 		graphParser.printGraphInConsole();
+		
 		System.out.println("---------------------------------");
-		
-		
-		
-		// Get the root nodes of the graph
-		List<Node> rootNodes = graphParser.g.getRootNodes();
-		
-		// Dump info of root nodes in the console
 		System.out.println("---------------------------------");
-		for(Node n: rootNodes) {
-			System.out.println(n.getId()+": "+n.getInDegree());
-		}
+		System.out.println("---------------------------------");
+		SolutionTreeCreator solutionTreeCreator = new SolutionTreeCreator(2, graphParser.g);
+		solutionTreeCreator.convertTaskGraphToSolutionTree();
 		
+		solutionTreeCreator.getTree().root.printPretty("", true);
 	}
 }

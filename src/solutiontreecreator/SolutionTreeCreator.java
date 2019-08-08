@@ -1,22 +1,22 @@
 package solutiontreecreator;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Node;
 
 import graph.TaskGraph;
 import solutiontreecreator.data.Solution;
+import solutiontreecreator.data.SolutionNode;
 import solutiontreecreator.data.SolutionTree;
 import solutiontreecreator.data.Timeline;
 
 public class SolutionTreeCreator {
 
+	public static int nodeCount = 0;
 	private int idCount; 
 	public final int numProcessors;
 	private TaskGraph taskGraph;
-
+	private SolutionTree solutionTree;
+	
 	public SolutionTreeCreator(int numProcessors, TaskGraph taskGraph) {
 		idCount = 0;
 
@@ -30,33 +30,51 @@ public class SolutionTreeCreator {
 	 * UNFINISHED
 	 * @return solution tree generated from input task graph
 	 */
-	public SolutionTree convertTaskGraphToSolutionTree() {
+	public void convertTaskGraphToSolutionTree() {
 
 		// Initialization
-		SolutionTree solutionTree = new SolutionTree("Solution Tree", numProcessors);
-		List<Node> rootNodes = taskGraph.getRootNodes();
-
-		// For the root nodes, only add them to the first node
-		for(Node rootNode: rootNodes) {
-			Solution solution = new Solution(numProcessors);
-			solution.addTaskNoDelay(rootNode, 0);
-			solutionTree.addNode(""+idCount++).addAttribute("Solution", solution);
-			
+		solutionTree = new SolutionTree(numProcessors);
+		Node rootTask = taskGraph.getRootNodes().get(0);
+		System.out.println("The root task of the tree is "+rootTask.getId());
+		
+		// Create the root node of the tree.
+		SolutionNode rootNode = new SolutionNode();
+		rootNode.solution = new Solution(numProcessors);
+		solutionTree.root = rootNode;
+		
+		// Branch out from the root node
+		for(int i = 0; i < numProcessors; i++) {
+			rootNode.addChild(new SolutionNode());
+			rootNode.getChild(i).latestTask = rootTask;
+			rootNode.getChild(i).solution = new Solution(numProcessors);
+			rootNode.getChild(i).solution.addTask(rootTask, 0, i);
+			branchOut(rootNode.getChild(i));
+			System.out.println(nodeCount);
 		}
-
-
-
-		return solutionTree;
 	}
-
-	public void branchOut(Node n) {
-		// Get a list of all child nodes
-		List<Node> childNodes = new ArrayList<Node>();
-
-		for(Edge edge: n.getLeavingEdgeSet()) {
-			childNodes.add(edge.getTargetNode());
-			
+	
+	/**
+	 * Helper recursive function for solution tree generation.
+	 * @param node
+	 */
+	public void branchOut(SolutionNode node) {
+		System.out.println("Branching out from "+node.latestTask.getId());
+		
+		// Branch out from node
+		for(Edge e: node.latestTask.getEachLeavingEdge()) {
+			for(int i = 0; i < numProcessors; i++) {
+				node.addChild(new SolutionNode());
+				node.getChild(i).latestTask = e.getTargetNode();
+				node.getChild(i).solution = copySolution(node.solution);
+				node.getChild(i).solution.addTask(e.getTargetNode(), e.getAttribute("Weight"), i);
+				
+				nodeCount++;
+				
+				branchOut(node.getChild(i));
+			}
 		}
+		
+		System.out.println("Branch end.");
 	}
 
 	/**
@@ -76,5 +94,9 @@ public class SolutionTreeCreator {
 		}
 
 		return copyOfSolution;
+	}
+	
+	public SolutionTree getTree() {
+		return this.solutionTree;
 	}
 }

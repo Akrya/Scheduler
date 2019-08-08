@@ -1,11 +1,5 @@
 package solutiontreecreator.data;
 
-import org.graphstream.graph.Graph;
-import org.graphstream.graph.NodeFactory;
-import org.graphstream.graph.implementations.AbstractGraph;
-import org.graphstream.graph.implementations.AdjacencyListNode;
-import org.graphstream.graph.implementations.SingleGraph;
-
 /**
  * 
  * Represents a solution tree.
@@ -13,13 +7,13 @@ import org.graphstream.graph.implementations.SingleGraph;
  * @author Teren
  *
  */
-public class SolutionTree extends SingleGraph {
+public class SolutionTree {
 	
 	public final int numProcessors;
+	public SolutionNode root;
 	
-	public SolutionTree(String id, int numProcessors) {
-		super(id);
-		
+	public SolutionTree(int numProcessors) {
 		this.numProcessors = numProcessors;
 	}
+	
 }
