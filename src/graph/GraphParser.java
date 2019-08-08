@@ -12,8 +12,7 @@ import java.io.IOException;
  * 
  * Class that parses a graph file and provides methods for displaying graph information.
  * 
- * @author Shunji Takano, documentation by Terence Qu
- * 
+ * @author Shunji Takano
  */
 public class GraphParser {
 

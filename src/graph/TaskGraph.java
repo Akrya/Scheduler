@@ -7,9 +7,10 @@ import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.SingleGraph;
 
 /**
+ * 
  * A simple implementation of SingleGraph, which represents a Task graph.
+ * 
  * @author Terence
- *
  */
 public class TaskGraph extends SingleGraph{
 

@@ -6,9 +6,9 @@ import org.graphstream.graph.Node;
 
 /**
  * 
- * Represents a processor task timeline
- * @author Terence
- *
+ * Class that represents a processor. This contains a set of scheduled tasks in a specific order.
+ * 
+ * @author Terence Qu
  */
 public class Processor {
 	
@@ -27,12 +27,12 @@ public class Processor {
 	 */
 	public void addTask(Node task) {
 		mapOfTasksAndStartTimes.put(task, endTime);
-		calculateEndTime();
+		endTime += (double) task.getAttribute("Weight");
 	}
 	
 	public void addTaskSpecificTime(Node task, double time) {
 		mapOfTasksAndStartTimes.put(task, time);
-		calculateEndTime();
+		endTime = time + (double)task.getAttribute("Weight");
 	}
 	
 	/**
@@ -45,22 +45,11 @@ public class Processor {
 		endTime += (double)task.getAttribute("Weight")+delay;
 	}
 	
-	/**
-	 * Helper function to update the end time.
-	 */
-	private void calculateEndTime() {
-		double maxTime = 0;
-		for(Node n: mapOfTasksAndStartTimes.keySet()) {
-			double tempTime = mapOfTasksAndStartTimes.get(n) + (double)n.getAttribute("Weight");
-			if(tempTime > maxTime) {
-				maxTime = tempTime;
-			}
-		}
-		
-		endTime = maxTime;
-	}
-	
 	public double getEndTime() {
 		return endTime;
+	}
+
+	public void setEndTime(double endTime) {
+		this.endTime = endTime;
 	}
 }

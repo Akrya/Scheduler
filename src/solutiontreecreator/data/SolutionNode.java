@@ -5,6 +5,13 @@ import java.util.List;
 
 import org.graphstream.graph.Node;
 
+/**
+ * 
+ * This class represents a node in a solution tree. It contains a solution and information on parent and children nodes. 
+ * 
+ * @author Terence Qu
+ * 
+ */
 public class SolutionNode {
 
 	public Solution solution;
@@ -86,5 +93,16 @@ public class SolutionNode {
 		}
 		
 		return longestTime;
+	}
+	
+	/**
+	 * Returns true when this solution is complete.
+	 */
+	public boolean isSolutionComplete() {
+		if(solution.getTasksLeft().isEmpty()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

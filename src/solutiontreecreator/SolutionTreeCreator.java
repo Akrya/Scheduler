@@ -9,9 +9,15 @@ import graph.TaskGraph;
 import solutiontreecreator.data.Solution;
 import solutiontreecreator.data.SolutionNode;
 
+/**
+ * 
+ * Class that is used to create a solution tree from a task graph.
+ * 
+ * @author Teren
+ *
+ */
 public class SolutionTreeCreator {
 
-	private int idCount; 
 	public final int numProcessors;
 	private TaskGraph taskGraph;
 	
@@ -19,9 +25,12 @@ public class SolutionTreeCreator {
 	
 	public List<Node> tasks;
 	
+	/**
+	 * 
+	 * @param numProcessors
+	 * @param taskGraph
+	 */
 	public SolutionTreeCreator(int numProcessors, TaskGraph taskGraph) {
-		idCount = 0;
-
 		this.numProcessors = numProcessors;
 		this.taskGraph = taskGraph;
 		
@@ -77,14 +86,14 @@ public class SolutionTreeCreator {
 		
 		solutionNode.solution.setTaskList(new ArrayList<Node>(node.solution.getTaskList()));
 		solutionNode.solution.setTasksLeft(new ArrayList<Node>(node.solution.getTasksLeft()));
+		solutionNode.solution.setCurrentProcessor(node.solution.getCurrentProcessor());
 		
 		// Copy all of solutionNode's processor data to the copy
 		for(int i = 0; i < solutionNode.solution.getNumProcessors(); i++) {
 			solutionNode.solution.getProcessor(i).mapOfTasksAndStartTimes
 				.putAll(node.solution.getProcessor(i).mapOfTasksAndStartTimes);
+			solutionNode.solution.getProcessor(i).setEndTime(node.solution.getProcessor(i).getEndTime());
 		}
-		
-		
 		
 		return solutionNode;
 	}
