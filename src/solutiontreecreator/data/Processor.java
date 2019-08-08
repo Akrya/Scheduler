@@ -10,13 +10,14 @@ import org.graphstream.graph.Node;
  * @author Terence
  *
  */
-public class Timeline {
+public class Processor {
 	
 	public final HashMap<Node, Double> mapOfTasksAndStartTimes;
 	private double endTime;
 	
-	public Timeline() {
+	public Processor() {
 		mapOfTasksAndStartTimes = new HashMap<Node, Double>();
+		endTime = 0;
 	}
 	
 	/**
@@ -26,7 +27,12 @@ public class Timeline {
 	 */
 	public void addTask(Node task) {
 		mapOfTasksAndStartTimes.put(task, endTime);
-		endTime += (double)task.getAttribute("Weight");
+		calculateEndTime();
+	}
+	
+	public void addTaskSpecificTime(Node task, double time) {
+		mapOfTasksAndStartTimes.put(task, time);
+		calculateEndTime();
 	}
 	
 	/**
@@ -37,6 +43,21 @@ public class Timeline {
 	public void addTaskWithDelay(Node task, double delay) {
 		mapOfTasksAndStartTimes.put(task, endTime+delay);
 		endTime += (double)task.getAttribute("Weight")+delay;
+	}
+	
+	/**
+	 * Helper function to update the end time.
+	 */
+	private void calculateEndTime() {
+		double maxTime = 0;
+		for(Node n: mapOfTasksAndStartTimes.keySet()) {
+			double tempTime = mapOfTasksAndStartTimes.get(n) + (double)n.getAttribute("Weight");
+			if(tempTime > maxTime) {
+				maxTime = tempTime;
+			}
+		}
+		
+		endTime = maxTime;
 	}
 	
 	public double getEndTime() {

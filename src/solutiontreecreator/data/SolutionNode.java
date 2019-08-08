@@ -10,8 +10,7 @@ public class SolutionNode {
 	public Solution solution;
 	public SolutionNode parent;
 	public List<SolutionNode> children;
-	public Node latestTask;
-
+	
 	public SolutionNode() {
 		children = new ArrayList<SolutionNode>();
 	}
@@ -31,7 +30,7 @@ public class SolutionNode {
 	 */
 	public String stringRepresentation() {
 		try {
-			return this.solution.getLastTask().getId();
+			return solution.stringData();
 		} catch (NullPointerException e) {
 			return "root";
 		}
@@ -41,7 +40,7 @@ public class SolutionNode {
 	 * Check if a task is already in the solution
 	 */
 	public boolean isTaskInSolution(Node node) {
-		for(Timeline timeline: solution.processors) {
+		for(Processor timeline: solution.getProcessors()) {
 			if(timeline.mapOfTasksAndStartTimes.containsKey(timeline)) {
 				return true;
 			}
@@ -80,7 +79,7 @@ public class SolutionNode {
 	 */
 	public double getTotalTime() {
 		double longestTime = 0;
-		for(Timeline t: this.solution.processors) {
+		for(Processor t: this.solution.getProcessors()) {
 			if(t.getEndTime() > longestTime) {
 				t.getEndTime();
 			}
