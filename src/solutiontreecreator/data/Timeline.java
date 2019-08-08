@@ -38,4 +38,8 @@ public class Timeline {
 		mapOfTasksAndStartTimes.put(task, endTime+delay);
 		endTime += (double)task.getAttribute("Weight")+delay;
 	}
+	
+	public double getEndTime() {
+		return endTime;
+	}
 }

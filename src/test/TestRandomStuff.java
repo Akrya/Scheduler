@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import graph.GraphParser;
 import solutiontreecreator.SolutionTreeCreator;
+import solutiontreecreator.data.SolutionNode;
 
 public class TestRandomStuff {
 	
@@ -26,6 +27,21 @@ public class TestRandomStuff {
 		SolutionTreeCreator solutionTreeCreator = new SolutionTreeCreator(2, graphParser.g);
 		solutionTreeCreator.convertTaskGraphToSolutionTree();
 		
+		// Print out the tree
 		solutionTreeCreator.getTree().root.printPretty("", true);
+		
+		// Print out all leaves
+		System.out.println("");
+		for(SolutionNode s: solutionTreeCreator.leaves) {
+			System.out.print(s.latestTask.getId()+", ");
+		}
+		System.out.println("");
+		
+		System.out.println("");
+		List<SolutionNode> solutions = solutionTreeCreator.optimalSolutions();
+		for(SolutionNode s: solutions) {
+			System.out.print(s.getTotalTime()+", ");
+		}
+		System.out.println("");
 	}
 }
