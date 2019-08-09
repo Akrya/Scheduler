@@ -9,7 +9,6 @@ import org.graphstream.graph.Node;
 import graph.TaskGraph;
 
 /**
- * 
  * This class represents a solution, a series of tasks scheduled amongst multiple processors.
  * 
  * @author Terence Qu
@@ -85,15 +84,14 @@ public class Solution {
 			}
 			
 			if(currentProcessor == targetProcessorIndex) {
-				System.out.println("Task successfully added at processor "+targetProcessorIndex+" : "+n.getId());
+				// System.out.println("Task successfully added at processor "+targetProcessorIndex+" : "+n.getId());
 				processors[targetProcessorIndex].addTaskSpecificTime(n, Math.max(latestTime, processors[targetProcessorIndex].getEndTime()));
 				taskList.add(n);
 				tasksLeft.remove(n);
 				currentProcessor = targetProcessorIndex;
 				return true;
 			} else {
-				// Need to work on this more
-				System.out.println("Task successfully added at another processor processor "+targetProcessorIndex+" : "+n.getId());
+				// System.out.println("Task successfully added at another processor processor "+targetProcessorIndex+" : "+n.getId());
 				processors[targetProcessorIndex].addTaskSpecificTime(n, Math.max(latestTimeWithDelay, processors[targetProcessorIndex].getEndTime()));
 				taskList.add(n);
 				tasksLeft.remove(n);
@@ -101,7 +99,7 @@ public class Solution {
 				return true;
 			}
 		} else {
-			System.out.println("Task unsuccessfully added at processor "+targetProcessorIndex+" : "+n.getId());
+			// System.out.println("Task unsuccessfully added at processor "+targetProcessorIndex+" : "+n.getId());
 			return false;
 		}
 

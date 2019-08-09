@@ -10,11 +10,10 @@ import solutiontreecreator.data.Solution;
 import solutiontreecreator.data.SolutionNode;
 
 /**
- * 
  * Class that is used to create a solution tree from a task graph.
  * 
- * @author Teren
- *
+ * @author Terence Qu
+ * 
  */
 public class SolutionTreeCreator {
 
@@ -25,11 +24,6 @@ public class SolutionTreeCreator {
 	
 	public List<Node> tasks;
 	
-	/**
-	 * 
-	 * @param numProcessors
-	 * @param taskGraph
-	 */
 	public SolutionTreeCreator(int numProcessors, TaskGraph taskGraph) {
 		this.numProcessors = numProcessors;
 		this.taskGraph = taskGraph;

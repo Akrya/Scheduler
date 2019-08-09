@@ -6,8 +6,8 @@ import java.util.List;
 import org.graphstream.graph.Node;
 
 /**
- * 
  * This class represents a node in a solution tree. It contains a solution and information on parent and children nodes. 
+ * Because of the recursive nature of trees, an instance of this class can represent an entire tree.
  * 
  * @author Terence Qu
  * 
@@ -22,18 +22,27 @@ public class SolutionNode {
 		children = new ArrayList<SolutionNode>();
 	}
 
+	/**
+	 * Adds a child node to this solution node.
+	 * @param solutionNode
+	 */
 	public void addChild(SolutionNode solutionNode) {
 		this.children.add(solutionNode);
 		solutionNode.parent = this;
 	}
 
+	/**
+	 * Returns a child at a specific index.
+	 * @param i index
+	 * @return The child at index i.
+	 */
 	public SolutionNode getChild(int i) {
 		return children.get(i);
 	}
 
 	/**
-	 * String representation of this node.
-	 * @return
+	 * The string representation of this node.
+	 * @return String representation of this node.
 	 */
 	public String stringRepresentation() {
 		try {
@@ -44,7 +53,7 @@ public class SolutionNode {
 	}
 	
 	/**
-	 * Check if a task is already in the solution
+	 * Check if a task is already in the solution.
 	 */
 	public boolean isTaskInSolution(Node node) {
 		for(Processor timeline: solution.getProcessors()) {
@@ -57,6 +66,7 @@ public class SolutionNode {
 
 	/**
 	 * Prints the tree in a console form, for debugging purposes.
+	 * A Java conversion of the first StackOverflow answer at this link: https://stackoverflow.com/questions/1649027/how-do-i-print-out-a-tree-structure
 	 * @param indent
 	 * @param last
 	 */
