@@ -43,7 +43,10 @@ public class Solution {
 	}
 
 	/**
-	 * Adds a task to a processor.
+	 * Adds a task to a processor. If two tasks are on the same processor,
+	 * one task must finish before the other starts.
+	 * If on different processors, for each dependency, 
+	 * start time >= start time of dependency + dependency's weight + edge weight 
 	 * @param n
 	 * @param predecessorLink
 	 * @param processorIndex
@@ -60,7 +63,6 @@ public class Solution {
 
 		// All dependencies must've been added already.
 		if(taskList.containsAll(dependencyTasks)) {
-			
 			// Calculate latest dependency end time
 			double latestTime = 0;
 			double latestTimeWithDelay = 0;
@@ -84,7 +86,7 @@ public class Solution {
 			
 			if(currentProcessor == targetProcessorIndex) {
 				System.out.println("Task successfully added at processor "+targetProcessorIndex+" : "+n.getId());
-				processors[targetProcessorIndex].addTaskSpecificTime(n, latestTime);
+				processors[targetProcessorIndex].addTaskSpecificTime(n, Math.max(latestTime, processors[targetProcessorIndex].getEndTime()));
 				taskList.add(n);
 				tasksLeft.remove(n);
 				currentProcessor = targetProcessorIndex;
@@ -92,7 +94,7 @@ public class Solution {
 			} else {
 				// Need to work on this more
 				System.out.println("Task successfully added at another processor processor "+targetProcessorIndex+" : "+n.getId());
-				processors[targetProcessorIndex].addTaskSpecificTime(n, latestTimeWithDelay);
+				processors[targetProcessorIndex].addTaskSpecificTime(n, Math.max(latestTimeWithDelay, processors[targetProcessorIndex].getEndTime()));
 				taskList.add(n);
 				tasksLeft.remove(n);
 				currentProcessor = targetProcessorIndex;
@@ -147,7 +149,9 @@ public class Solution {
 	 */
 	public void printData() {
 		for(int i = 0; i < numProcessors; i++) {
-			System.out.println("Processor number: "+i);
+			System.out.println("- - - - - - - - - - - -");
+			System.out.println("{Processor number: "+i+"}");
+			System.out.println("- - - - - - - - - - - -");
 			for(Node n: processors[i].mapOfTasksAndStartTimes.keySet()) {
 				System.out.println("Node "+n.getId()+"| Start time:"+processors[i].mapOfTasksAndStartTimes.get(n));
 			}
@@ -168,5 +172,21 @@ public class Solution {
 		}
 
 		return data+"";
+	}
+	
+	/**
+	 * Find the total time taken for this solution's schedules.
+	 * @return
+	 */
+	public double getTotalTime() {
+		double longestTime = 0;
+		for(Processor t: this.getProcessors()) {
+			if(t.getEndTime() > longestTime) {
+				t.getEndTime();
+				longestTime = t.getEndTime();
+			}
+		}
+		
+		return longestTime;
 	}
 }

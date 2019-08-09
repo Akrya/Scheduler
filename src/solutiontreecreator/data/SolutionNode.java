@@ -80,20 +80,6 @@ public class SolutionNode {
 		}
 	}
 
-	/**
-	 * Gets the total time spent for this solution.
-	 * @return
-	 */
-	public double getTotalTime() {
-		double longestTime = 0;
-		for(Processor t: this.solution.getProcessors()) {
-			if(t.getEndTime() > longestTime) {
-				t.getEndTime();
-			}
-		}
-		
-		return longestTime;
-	}
 	
 	/**
 	 * Returns true when this solution is complete.

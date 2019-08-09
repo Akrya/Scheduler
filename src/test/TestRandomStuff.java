@@ -24,7 +24,7 @@ public class TestRandomStuff {
 		System.out.println("---------------------------------");
 		System.out.println("---------------------------------");
 		System.out.println("---------------------------------");
-		SolutionTreeCreator solutionTreeCreator = new SolutionTreeCreator(2, graphParser.g);
+		SolutionTreeCreator solutionTreeCreator = new SolutionTreeCreator(3, graphParser.g);
 		solutionTreeCreator.buildSolutionTree();
 
 		// Print out the tree
@@ -33,9 +33,9 @@ public class TestRandomStuff {
 		// Find the solutions
 		List<Solution> solutions = BasicSolutionFinder.findOptimalSolution(solutionTreeCreator.getTreeRoot());
 		for(Solution s: solutions) {
+			System.out.println("---------------------------------");
 			s.printData();
-			System.out.println(s.getProcessors()[0].getEndTime());
-			System.out.println(s.getProcessors()[1].getEndTime());
+			System.out.println("--SOLUTION TIME: "+s.getTotalTime()+"--");
 		}
 	}
 }
