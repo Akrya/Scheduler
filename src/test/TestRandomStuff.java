@@ -27,7 +27,7 @@ public class TestRandomStuff {
 		System.out.println("---------------------------------");
 		System.out.println("---------------------------------");
 		System.out.println("---------------------------------");
-		SolutionTreeCreator solutionTreeCreator = new SolutionTreeCreator(3, graphParser.g);
+		SolutionTreeCreator solutionTreeCreator = new SolutionTreeCreator(2, graphParser.g);
 		solutionTreeCreator.buildSolutionTree();
 
 		// Print out the tree
@@ -39,7 +39,10 @@ public class TestRandomStuff {
 			System.out.println("---------------------------------");
 			s.printData();
 			System.out.println("--SOLUTION TIME: "+s.getTotalTime()+"--");
+
+			assert(s.getTotalTime() == 28);
 		}
+
 	}
 	
 	/**
@@ -70,6 +73,8 @@ public class TestRandomStuff {
 			System.out.println("---------------------------------");
 			s.printData();
 			System.out.println("--SOLUTION TIME: "+s.getTotalTime()+"--");
+
+			assert(s.getTotalTime() == 581);
 		}
 	}
 }
