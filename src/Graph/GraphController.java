@@ -4,22 +4,26 @@ import org.graphstream.graph.Edge;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.DefaultGraph;
+import org.graphstream.stream.file.FileSinkDOT;
 import org.graphstream.stream.file.FileSource;
 import org.graphstream.stream.file.FileSourceDOT;
 import org.graphstream.ui.view.Viewer;
 
 import java.io.IOException;
 
-public class GraphParser {
+public class GraphController {
 
     private String FilePath;
     private Graph g;
 
 
-    public static void main(String args[]){
-        GraphParser graph = new GraphParser("Nodes_7_OutTree.dot");
-    }
-    public GraphParser(String filePath){
+    /**
+     * Constructor for the GraphController class
+     * Takes an input of the filepath of the dot file that we want to schedule for.
+     * It creates a graph object which reflects the dot file. We can read and edit this graph.
+     * @param filePath
+     */
+    public GraphController(String filePath){
         FilePath = filePath;
         g = new DefaultGraph("g");
         FileSource fs = new FileSourceDOT();
@@ -27,6 +31,20 @@ public class GraphParser {
         try {
             fs.readAll(FilePath);
         } catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Takes the input of the current graph and the desired file name, to output a dotfile of the current graph.
+     * @param graph
+     * @param fileName
+     */
+    public static void outputGraphDotFile(GraphController graph, String fileName){
+        FileSinkDOT dotSink = new FileSinkDOT();
+        try{
+            dotSink.writeAll(graph.g,fileName);
+        } catch (IOException e){
             e.printStackTrace();
         }
     }
@@ -53,6 +71,12 @@ public class GraphParser {
         return edgeWeight;
     }
 
+    /**
+     * Can change or add an attribute to any node given its id.
+     * @param nodeID
+     * @param attributeName
+     * @param attributeValue
+     */
     public void changeAttribute(String nodeID, String attributeName, int attributeValue){
         Node n = g.getNode(nodeID);
         n.addAttribute(attributeName,attributeValue);
