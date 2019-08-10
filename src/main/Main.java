@@ -2,7 +2,6 @@ package main;
 
 import main.controller.Controller;
 
-import java.io.File;
 import java.util.Arrays;
 
 public class Main {
@@ -10,6 +9,8 @@ public class Main {
     private static Controller controller = new Controller();
 
     public static void main(String args[]) {
+
+        // Parsing the input arguments and assigning necessary fields in the controller class
 
         int totalArgs = args.length;
 
