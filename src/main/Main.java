@@ -111,4 +111,8 @@ public class Main {
         System.out.println("−o OUTPUT   output file  is named OUTPUT (default  is INPUT−output.dot)");
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master
