@@ -8,10 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3d8f6ada-435d-40b9-b38a-dd515125d7d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/GraphController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/GraphController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/solutionfinder/BasicSolutionFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/BasicSolutionFinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/solutiontreecreator/data/Processor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutiontreecreator/data/Processor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/solutiontreecreator/data/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutiontreecreator/data/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/scheduler_jar/scheduler-basic-T8.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/scheduler_jar/scheduler-basic-T8.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,6 +77,7 @@
       <option name="presentableId" value="Default" />
       <updated>1565491682221</updated>
       <workItem from="1565491686686" duration="133000" />
+      <workItem from="1565517656165" duration="88000" />
     </task>
     <servers />
   </component>
