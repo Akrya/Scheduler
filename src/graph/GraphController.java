@@ -1,5 +1,6 @@
 package graph;
 
+import javafx.concurrent.Task;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
@@ -35,7 +36,7 @@ public class GraphController {
 //        }
 //    }
 
-    public static Graph parseInputFile(Graph inputGraph, String dotFileName) {
+    public static TaskGraph parseInputFile(TaskGraph inputGraph, String dotFileName) {
 
         FileSource fileSource = new FileSourceDOT();
         fileSource.addSink(inputGraph);
@@ -54,7 +55,7 @@ public class GraphController {
      * @param graph
      * @param fileName
      */
-    public static void outputGraphDotFile(Graph inputGraph, String fileName){
+    public static void outputGraphDotFile(TaskGraph inputGraph, String fileName){
         FileSinkDOT dotSink = new FileSinkDOT();
         try{
             dotSink.writeAll(inputGraph,fileName);

@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="scheduler:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="3d8f6ada-435d-40b9-b38a-dd515125d7d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/306Project1/META-INF/MANIFEST.MF" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graph/GraphController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/GraphController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/GraphParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/GraphParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/graph/GraphController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/TestRandomStuff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestRandomStuff.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +30,8 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
