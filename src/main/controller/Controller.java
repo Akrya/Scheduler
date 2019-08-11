@@ -12,6 +12,10 @@ import solutiontreecreator.data.Processor;
 import solutiontreecreator.data.Solution;
 import sun.java2d.pipe.SolidTextRenderer;
 
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.List;
 import java.util.Random;
 
@@ -41,7 +45,7 @@ public class Controller {
 
         findSolution(solutionTreeCreator);
 
-        GraphController.outputGraphDotFile(inputGraph, outputFileName);
+//        GraphController.outputGraphDotFile(inputGraph, outputFileName);
 
 
 
@@ -54,9 +58,10 @@ public class Controller {
     /**
      * Takes the solution graph and generates the output file
      */
-    private void writeOutputFile() {
-        GraphController.outputGraphDotFile(inputGraph, outputFileName);
-    }
+//    private void writeOutputFile() {
+//        GraphController.outputGraphDotFile(inputGraph, outputFileName);
+//    }
+
 
     private void findSolution(SolutionTreeCreator solutionTreeCreator) {
         List<Solution> solutions = BasicSolutionFinder.findOptimalSolution(solutionTreeCreator.getTreeRoot());
@@ -74,7 +79,6 @@ public class Controller {
             System.out.println(s.getTaskList().toString());
             s.stringData();
         }
-
         Processor[] processors = optimalSolution.getProcessors();
         for (Node n: inputGraph.getNodeSet()) {
             System.out.println("Running through the nodes ///////////////////////////////////////");
