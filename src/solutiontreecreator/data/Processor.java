@@ -1,7 +1,6 @@
 package solutiontreecreator.data;
 
 import java.util.HashMap;
-
 import org.graphstream.graph.Node;
 
 /**
@@ -13,7 +12,11 @@ public class Processor {
 	
 	public final HashMap<Node, Double> mapOfTasksAndStartTimes;
 	private double endTime;
-	
+
+	/**
+	 * Constructor for Processor
+	 * Creates a mapping for every node on the processor to the start time
+	 */
 	public Processor() {
 		mapOfTasksAndStartTimes = new HashMap<Node, Double>();
 		endTime = 0;
@@ -41,7 +44,7 @@ public class Processor {
 	/**
 	 * Adds a task with a delay to the timeline.
 	 * @param task the task represented by a node
-	 * @param delay
+	 * @param delay delay before starting task
 	 */
 	public void addTaskWithDelay(Node task, double delay) {
 		mapOfTasksAndStartTimes.put(task, endTime+delay);

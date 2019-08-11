@@ -2,7 +2,6 @@ package solutionfinder;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import solutiontreecreator.data.Solution;
 import solutiontreecreator.data.SolutionNode;
 
@@ -19,7 +18,7 @@ public class BasicSolutionFinder {
 	/**
 	 * A brute force search through the solution tree.
 	 * @param rootOfTree Root of the solution tree to search through.
-	 * @return
+	 * @return a solution with the lowest cost
 	 */
 	public static List<Solution> findOptimalSolution(SolutionNode rootOfTree) {
 		solutions = new ArrayList<Solution>();
@@ -32,7 +31,7 @@ public class BasicSolutionFinder {
 
 	/**
 	 * Recursive brute force search algorithm.
-	 * @param rootOfTree
+	 * @param rootOfTree start nodes for the graph
 	 */
 	private static void searchTree(SolutionNode rootOfTree) {
 		for(SolutionNode node: rootOfTree.children) {
