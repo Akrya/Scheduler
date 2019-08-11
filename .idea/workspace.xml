@@ -8,7 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3d8f6ada-435d-40b9-b38a-dd515125d7d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/solutionfinder/BasicSolutionFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/BasicSolutionFinder.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +63,7 @@
       <option name="presentableId" value="Default" />
       <updated>1565491682221</updated>
       <workItem from="1565491686686" duration="133000" />
-      <workItem from="1565503887273" duration="1595000" />
+      <workItem from="1565503887273" duration="1771000" />
     </task>
     <servers />
   </component>
