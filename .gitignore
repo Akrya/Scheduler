@@ -1,5 +1,3 @@
-.DS_Store
-/bin/
-/target/
-
 .idea/
+.idea/workspace.xml
+.DS_Store
