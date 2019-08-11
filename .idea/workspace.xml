@@ -2,21 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d8f6ada-435d-40b9-b38a-dd515125d7d8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/scheduler_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/scheduler_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_graphstream_gs_core_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_graphstream_mbox2_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_graphstream_pherd_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/306Project1/META-INF/306Project1.kotlin_module" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/graphfiles/Nodes_10_Random.dot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/graphfiles/Nodes_11_OutTree.dot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/graphfiles/Nodes_7_OutTree.dot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/graphfiles/Nodes_8_Random.dot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/graphfiles/Nodes_9_SeriesParallel.dot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exceptions/SolutionsNotComparableException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/graph/GraphParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/graph/TaskGraph.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/solutionfinder/BasicSolutionFinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/solutiontreecreator/SolutionTreeCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/solutiontreecreator/data/Processor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/solutiontreecreator/data/Solution.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/solutiontreecreator/data/SolutionNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/TestRandomStuff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" afterPath="$PROJECT_DIR$/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.m2e.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.m2e.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Graph/GraphController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/GraphController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/306Project1.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF~HEAD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
