@@ -1,4 +1,4 @@
-package Graph;
+package graph;
 
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Graph;
@@ -23,16 +23,30 @@ public class GraphController {
      * It creates a graph object which reflects the dot file. We can read and edit this graph.
      * @param filePath
      */
-    public GraphController(String filePath){
-        FilePath = filePath;
-        g = new DefaultGraph("g");
-        FileSource fs = new FileSourceDOT();
-        fs.addSink(g);
+//    public GraphController(String filePath){
+//        FilePath = filePath;
+//        g = new DefaultGraph("g");
+//        FileSource fs = new FileSourceDOT();
+//        fs.addSink(g);
+//        try {
+//            fs.readAll(FilePath);
+//        } catch(IOException e){
+//            e.printStackTrace();
+//        }
+//    }
+
+    public static Graph parseInputFile(Graph inputGraph, String dotFileName) {
+
+        FileSource fileSource = new FileSourceDOT();
+        fileSource.addSink(inputGraph);
         try {
-            fs.readAll(FilePath);
-        } catch(IOException e){
+            fileSource.readAll(dotFileName);
+        } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return inputGraph;
+
     }
 
     /**
@@ -40,19 +54,19 @@ public class GraphController {
      * @param graph
      * @param fileName
      */
-    public static void outputGraphDotFile(GraphController graph, String fileName){
+    public static void outputGraphDotFile(Graph inputGraph, String fileName){
         FileSinkDOT dotSink = new FileSinkDOT();
         try{
-            dotSink.writeAll(graph.g,fileName);
+            dotSink.writeAll(inputGraph,fileName);
         } catch (IOException e){
             e.printStackTrace();
         }
     }
 
-    public double getNodeWeight(String nodeID){
+    public static double getNodeWeight(String nodeID, Graph inputGraph){
         double value = 0;
         try {
-            Node n = g.getNode(nodeID);
+            Node n = inputGraph.getNode(nodeID);
             value = n.getAttribute("Weight");
         } catch (NullPointerException e){
             e.printStackTrace();
@@ -60,10 +74,10 @@ public class GraphController {
         return value;
     }
 
-    public double getEdgeWeight(String firstNode, String secondNode){
+    public static double getEdgeWeight(String firstNode, String secondNode, Graph inputGraph){
         double edgeWeight = 0;
         try {
-            Edge e = g.getEdge("(" + firstNode + ";" + secondNode + ")");
+            Edge e = inputGraph.getEdge("(" + firstNode + ";" + secondNode + ")");
             edgeWeight = e.getNumber("Weight");
         } catch (NullPointerException e){
             e.printStackTrace();
@@ -77,15 +91,37 @@ public class GraphController {
      * @param attributeName
      * @param attributeValue
      */
-    public void changeAttribute(String nodeID, String attributeName, int attributeValue){
-        Node n = g.getNode(nodeID);
+    public static void changeAttribute(String nodeID, String attributeName, int attributeValue, Graph inputGraph){
+        Node n = inputGraph.getNode(nodeID);
         n.addAttribute(attributeName,attributeValue);
     }
 
-    public void viewGraph(){
-        for (Node node : g) {
+    public static void viewGraph(Graph inputGraph){
+        for (Node node : inputGraph) {
             node.addAttribute("ui.label", node.getId());
         }
-        Viewer viewer = g.display();
+        Viewer viewer = inputGraph.display();
     }
+
+    /**
+     * Dump information of all nodes and edges of this graph in the console.
+     */
+    public static void printGraphInConsole(Graph inputGraph) {
+        // Node info dump
+        System.out.println("-----------------------------------");
+        System.out.println("-------------NODE DUMP-------------");
+        System.out.println("-----------------------------------");
+        for(Node n : inputGraph.getEachNode()) {
+            System.out.println(n.getId()+": "+n.getNumber("Weight"));
+        }
+
+        // Edge info dump
+        System.out.println("-----------------------------------");
+        System.out.println("-------------EDGE DUMP-------------");
+        System.out.println("-----------------------------------");
+        for(Edge e : inputGraph.getEachEdge()) {
+            System.out.println(e.getId()+": "+e.getNumber("Weight"));
+        }
+    }
+
 }
