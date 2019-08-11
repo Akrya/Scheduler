@@ -1,19 +1,43 @@
 package main.controller;
 
+import Graph.GraphController;
+
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.implementations.DefaultGraph;
+
 public class Controller {
 
-    private String graphFilename;
+    private String dotFileName;
     private int numOfProcessors;
     private int numOfCores;
     private boolean visualizeSearch;
     private String outputFileName;
 
+    private Graph inputGraph;
+
+    public void initialise() {
+
+        inputGraph = new DefaultGraph("inputGraph");
+
+        inputGraph = GraphController.parseInputFile(inputGraph, dotFileName);
+
+        if (visualizeSearch) {
+            GraphController.viewGraph(inputGraph);
+        }
+
+    }
+
+    private void writeOutputFile() {
+
+    }
+
+
     public String getGraphFilename() {
-        return graphFilename;
+        return dotFileName;
     }
 
     public void setGraphFilename(String graphFilename) {
-        this.graphFilename = graphFilename;
+        this.dotFileName = graphFilename;
     }
 
     public int getNumOfProcessors() {
