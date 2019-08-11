@@ -38,7 +38,7 @@ public class Main {
 
             if (totalArgs > 2) {
                 System.out.println("This is executed");
-                String[] remainingArgs = Arrays.copyOfRange(args, 2,totalArgs);
+                String[] remainingArgs = Arrays.copyOfRange(args, 2, totalArgs);
                 int remainingArgsLength = remainingArgs.length;
                 boolean[] valuesSet = new boolean[3];
 
@@ -46,7 +46,7 @@ public class Main {
                     if (remainingArgs[i].contains("-p")) {
                         System.out.println(remainingArgs[i]);
                         try {
-                            int numOfCores = Integer.parseInt(remainingArgs[i+1]);
+                            int numOfCores = Integer.parseInt(remainingArgs[i + 1]);
                             System.out.println(numOfCores);
                             controller.setNumOfCores(numOfCores);
                             valuesSet[0] = true;
@@ -63,7 +63,7 @@ public class Main {
                     } else if (remainingArgs[i].contains("-o")) {
                         System.out.println(remainingArgs[i]);
                         try {
-                            String outputFileName = remainingArgs[i+1];
+                            String outputFileName = remainingArgs[i + 1];
                             System.out.println(outputFileName);
                             valuesSet[2] = true;
                             i++;
@@ -83,14 +83,14 @@ public class Main {
                 }
                 if (valuesSet[2] != true) {
                     String inputFileName = controller.getGraphFilename();
-                    controller.setOutputFileName(inputFileName.replace(".dot","") + "-output.dot");
+                    controller.setOutputFileName(inputFileName.replace(".dot", "") + "-output.dot");
                 }
 
             } else {
                 controller.setNumOfCores(1);
                 controller.setVisualizeSearch(false);
                 String inputFileName = controller.getGraphFilename();
-                controller.setOutputFileName(inputFileName.replace(".dot","") + "-output.dot");
+                controller.setOutputFileName(inputFileName.replace(".dot", "") + "-output.dot");
                 System.out.println(controller.getOutputFileName());
             }
 
@@ -111,8 +111,4 @@ public class Main {
         System.out.println("−o OUTPUT   output file  is named OUTPUT (default  is INPUT−output.dot)");
     }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> master
