@@ -70,14 +70,14 @@ public class TestRandomStuff {
 //		//Finding the time it takes to find the solution from the tree
 //		long startimeSolution = new Date().getTime();
 //		// Find the solutions
-//		List<Solution> solutions = BasicSolutionFinder.findOptimalSolution(solutionTreeCreator.getTreeRoot());
-//		for(Solution s: solutions) {
-//			System.out.println("---------------------------------");
-//			s.printData();
-//			System.out.println("--SOLUTION TIME: "+s.getTotalTime()+"--");
+//		List<Solution> solutions = BasicSolutionFinfor(Solution s: solutions) {
+////			System.out.println("---------------------------------");
+////			s.printData();
+////			System.out.println("--SOLUTION TIME: "+s.getTotalTime()+"--");
+////
+////			assert(s.getTotalTime() == 28);
+////		}der.findOptimalSolution(solutionTreeCreator.getTreeRoot());
 //
-//			assert(s.getTotalTime() == 28);
-//		}
 //
 //		long endtimeSolution = new Date().getTime();
 //		long timeSolutionfinder = endtimeSolution -startimeSolution ;
