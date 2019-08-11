@@ -1,6 +1,6 @@
 package main.controller;
 
-import Graph.GraphController;
+import graph.GraphController;
 
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.implementations.DefaultGraph;
