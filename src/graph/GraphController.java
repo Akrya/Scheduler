@@ -36,6 +36,7 @@ public class GraphController {
 //        }
 //    }
 
+    
     public static TaskGraph parseInputFile(TaskGraph inputGraph, String dotFileName) {
 
         FileSource fileSource = new FileSourceDOT();
@@ -52,7 +53,7 @@ public class GraphController {
 
     /**
      * Takes the input of the current graph and the desired file name, to output a dotfile of the current graph.
-     * @param graph
+     * @param inputGraph
      * @param fileName
      */
     public static void outputGraphDotFile(TaskGraph inputGraph, String fileName){
