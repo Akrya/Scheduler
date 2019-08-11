@@ -14,14 +14,14 @@ public class Main {
 
         int totalArgs = args.length;
 
-        System.out.println(totalArgs);
+//        System.out.println(totalArgs);
 
         if (totalArgs < 2) {
             printInputArgumentsError();
         } else {
 
             if (args[0].contains(".dot")) {
-                System.out.println("There is a dot file");
+//                System.out.println("There is a dot file");
                 controller.setGraphFilename(args[0]);
             } else {
                 printInputArgumentsError();
@@ -29,26 +29,26 @@ public class Main {
 
             try {
                 int numOfProcessors = Integer.parseInt(args[1]);
-                System.out.println(numOfProcessors);
+//                System.out.println(numOfProcessors);
                 controller.setNumOfProcessors(numOfProcessors);
             } catch (NumberFormatException e) {
                 printInputArgumentsError();
             }
 
-            System.out.println("This is executed before");
+//            System.out.println("This is executed before");
 
             if (totalArgs > 2) {
-                System.out.println("This is executed");
+//                System.out.println("This is executed");
                 String[] remainingArgs = Arrays.copyOfRange(args, 2,totalArgs);
                 int remainingArgsLength = remainingArgs.length;
                 boolean[] valuesSet = new boolean[3];
 
                 for (int i = 0; i < remainingArgsLength; i++) {
                     if (remainingArgs[i].contains("-p")) {
-                        System.out.println(remainingArgs[i]);
+//                        System.out.println(remainingArgs[i]);
                         try {
                             int numOfCores = Integer.parseInt(remainingArgs[i+1]);
-                            System.out.println(numOfCores);
+//                            System.out.println(numOfCores);
                             controller.setNumOfCores(numOfCores);
                             valuesSet[0] = true;
                             i++;
@@ -58,14 +58,14 @@ public class Main {
                             printInputArgumentsError();
                         }
                     } else if (remainingArgs[i].contains("-v")) {
-                        System.out.println(remainingArgs[i]);
+//                        System.out.println(remainingArgs[i]);
                         controller.setVisualizeSearch(true);
                         valuesSet[1] = true;
                     } else if (remainingArgs[i].contains("-o")) {
-                        System.out.println(remainingArgs[i]);
+//                        System.out.println(remainingArgs[i]);
                         try {
                             String outputFileName = remainingArgs[i+1];
-                            System.out.println(outputFileName);
+//                            System.out.println(outputFileName);
                             valuesSet[2] = true;
                             i++;
                         } catch (ArrayIndexOutOfBoundsException e) {
@@ -92,7 +92,7 @@ public class Main {
                 controller.setVisualizeSearch(false);
                 String inputFileName = controller.getGraphFilename();
                 controller.setOutputFileName(inputFileName.replace(".dot","") + "-output.dot");
-                System.out.println(controller.getOutputFileName());
+//                System.out.println(controller.getOutputFileName());
             }
 
             controller.initialise();

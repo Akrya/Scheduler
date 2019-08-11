@@ -38,12 +38,12 @@ public class BasicSolutionFinder {
 		for(SolutionNode node: rootOfTree.children) {
 			if(node.isSolutionComplete()) {
 				if(node.solution.getTotalTime() < minCost) {
-					System.out.println("Found a better solution with time "+node.solution.getTotalTime());
+//					System.out.println("Found a better solution with time "+node.solution.getTotalTime());
 					minCost = node.solution.getTotalTime();
 					solutions.clear();
 					solutions.add(node.solution);
 				} else if(node.solution.getTotalTime() == minCost) {
-					System.out.println("Found a similar solution with time "+node.solution.getTotalTime());
+//					System.out.println("Found a similar solution with time "+node.solution.getTotalTime());
 					solutions.add(node.solution);
 				}
 			}
