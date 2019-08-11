@@ -29,11 +29,14 @@ public class Controller {
 
     private Solution solution;
 
+    /**
+     *  Method that handles the parsing of the dot file and makes a graph object using the
+     *  GraphStream library. Builds the solution tree and then calls the find solution method
+     *  on the tree.
+     */
     public void initialise() {
 
         inputGraph = new TaskGraph("inputGraph");
-
-//        inputGraph = GraphController.parseInputFile(inputGraph, dotFileName);
 
         inputGraph = GraphController.parseInputFile(inputGraph, dotFileName);
 
@@ -44,12 +47,15 @@ public class Controller {
 
         writeOutputFile();
 
-        if (visualizeSearch) {
-            GraphController.viewGraph(inputGraph);
-        }
+//        if (visualizeSearch) {
+//            GraphController.viewGraph(inputGraph);
+//        }
 
     }
 
+    /**
+     * Constructs strings that need to be written onto the dot file.
+     */
     private void writeOutputFile() {
 
         File outputFile = new File(outputFileName);
@@ -82,13 +88,16 @@ public class Controller {
         }
 
         // Writing the final line
-
         String finalLine = "}\n";
-
         fileWriter(outputFile, finalLine);
 
     }
 
+    /**
+     * Writes the strings provided as the parameter to the output file using BufferedWriter
+     * @param outputFile - The output dot file
+     * @param line - The line that needs to be written in that file
+     */
     private void fileWriter(File outputFile, String line) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile, true));
@@ -99,18 +108,23 @@ public class Controller {
         }
     }
 
+    /**
+     * Calls the findOptimalSolution method from the BasicSolutionFinder Class onto the
+     * solution tree that was the input parameter. Assigns a random solution from the list
+     * of minimal solutions found to the solution parameter for the controller class
+     * @param solutionTreeCreator - A tree that represents the search space of the algorithm
+     */
     private void findSolution(SolutionTreeCreator solutionTreeCreator) {
         List<Solution> solutions = BasicSolutionFinder.findOptimalSolution(solutionTreeCreator.getTreeRoot());
 
-//        System.out.println(solutions.size());
-
         Random rand = new Random();
-        int randomOptimalSolution = rand.nextInt((solutions.size() - 1));
+        int randomSolution = rand.nextInt((solutions.size() - 1));
 
-        solution = solutions.get(randomOptimalSolution);
+        solution = solutions.get(randomSolution);
 
     }
 
+    // Getters and Setters for the various fields for this class
 
     public String getGraphFilename() {
         return dotFileName;
