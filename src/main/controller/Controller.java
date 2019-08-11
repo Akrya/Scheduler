@@ -4,12 +4,16 @@ import graph.GraphController;
 
 import graph.TaskGraph;
 import org.graphstream.graph.Graph;
+import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.DefaultGraph;
 import solutionfinder.BasicSolutionFinder;
 import solutiontreecreator.SolutionTreeCreator;
+import solutiontreecreator.data.Processor;
 import solutiontreecreator.data.Solution;
+import sun.java2d.pipe.SolidTextRenderer;
 
 import java.util.List;
+import java.util.Random;
 
 public class Controller {
 
@@ -34,6 +38,10 @@ public class Controller {
 
         findSolution(solutionTreeCreator);
 
+        GraphController.outputGraphDotFile(inputGraph, outputFileName);
+
+
+
         if (visualizeSearch) {
             GraphController.viewGraph(inputGraph);
         }
@@ -49,10 +57,38 @@ public class Controller {
 
         System.out.println(solutions.size());
 
+        Random rand = new Random();
+        int randomOptimalSolution = rand.nextInt((solutions.size() - 1));
+
+        Solution optimalSolution = solutions.get(randomOptimalSolution);
+
         for (Solution s: solutions) {
+            s.printData();
             System.out.println(s.getTotalTime());
             System.out.println(s.getTaskList().toString());
             s.stringData();
+        }
+
+        Processor[] processors = optimalSolution.getProcessors();
+        for (Node n: inputGraph.getNodeSet()) {
+            System.out.println("Running through the nodes ///////////////////////////////////////");
+            for (int i = 0; i < processors.length; i++) {
+                Object[] tasks = processors[i].mapOfTasksAndStartTimes.keySet().toArray();
+                System.out.println(tasks[0].toString());
+//                System.out.println();
+                System.out.println("Running through the processors *******************************");
+                if (processors[i].mapOfTasksAndStartTimes.keySet().contains(n.getId())) {
+                    System.out.println("Found node --------------------------------------");
+                    GraphController.changeAttribute(n.getId(), "Start", (int) Math.round(processors[i].mapOfTasksAndStartTimes.get(n)), inputGraph);
+                    GraphController.changeAttribute(n.getId(), "Processor", i, inputGraph);
+                }
+            }
+//            for (Processor p: processors) {
+//                if (p.mapOfTasksAndStartTimes.keySet().contains(n.getId())) {
+//                    GraphController.changeAttribute(n.getId(), "Start", (int) Math.round(p.mapOfTasksAndStartTimes.get(n)), inputGraph);
+//                    GraphController.changeAttribute(n.getId(), "Processor", );
+//                }
+//            }
         }
 
     }
