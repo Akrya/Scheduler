@@ -1,11 +1,8 @@
 package graph;
 
-import javafx.concurrent.Task;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
-import org.graphstream.graph.implementations.DefaultGraph;
-import org.graphstream.stream.file.FileSinkDOT;
 import org.graphstream.stream.file.FileSource;
 import org.graphstream.stream.file.FileSourceDOT;
 import org.graphstream.ui.view.Viewer;
@@ -14,29 +11,6 @@ import java.io.IOException;
 
 public class GraphController {
 
-    private String FilePath;
-    private Graph g;
-
-
-    /**
-     * Constructor for the GraphController class
-     * Takes an input of the filepath of the dot file that we want to schedule for.
-     * It creates a graph object which reflects the dot file. We can read and edit this graph.
-     * @param filePath
-     */
-//    public GraphController(String filePath){
-//        FilePath = filePath;
-//        g = new DefaultGraph("g");
-//        FileSource fs = new FileSourceDOT();
-//        fs.addSink(g);
-//        try {
-//            fs.readAll(FilePath);
-//        } catch(IOException e){
-//            e.printStackTrace();
-//        }
-//    }
-
-    
     public static TaskGraph parseInputFile(TaskGraph inputGraph, String dotFileName) {
 
         FileSource fileSource = new FileSourceDOT();
@@ -49,20 +23,6 @@ public class GraphController {
 
         return inputGraph;
 
-    }
-
-    /**
-     * Takes the input of the current graph and the desired file name, to output a dotfile of the current graph.
-     * @param inputGraph
-     * @param fileName
-     */
-    public static void outputGraphDotFile(TaskGraph inputGraph, String fileName){
-        FileSinkDOT dotSink = new FileSinkDOT();
-        try{
-            dotSink.writeAll(inputGraph,fileName);
-        } catch (IOException e){
-            e.printStackTrace();
-        }
     }
 
     public static double getNodeWeight(String nodeID, Graph inputGraph){

@@ -3,19 +3,17 @@ package main.controller;
 import graph.GraphController;
 
 import graph.TaskGraph;
-import org.graphstream.graph.Graph;
+import org.graphstream.graph.Edge;
 import org.graphstream.graph.Node;
-import org.graphstream.graph.implementations.DefaultGraph;
 import solutionfinder.BasicSolutionFinder;
 import solutiontreecreator.SolutionTreeCreator;
 import solutiontreecreator.data.Processor;
 import solutiontreecreator.data.Solution;
-import sun.java2d.pipe.SolidTextRenderer;
 
 import java.io.BufferedWriter;
-import java.io.FileOutputStream;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.List;
 import java.util.Random;
 
@@ -29,9 +27,8 @@ public class Controller {
 
     private TaskGraph inputGraph;
 
-    /**
-     * Create and displays the dot file as a graph
-     */
+    private Solution solution;
+
     public void initialise() {
 
         inputGraph = new TaskGraph("inputGraph");
@@ -45,9 +42,7 @@ public class Controller {
 
         findSolution(solutionTreeCreator);
 
-//        GraphController.outputGraphDotFile(inputGraph, outputFileName);
-
-
+        writeOutputFile();
 
         if (visualizeSearch) {
             GraphController.viewGraph(inputGraph);
@@ -55,57 +50,68 @@ public class Controller {
 
     }
 
-    /**
-     * Takes the solution graph and generates the output file
-     */
-//    private void writeOutputFile() {
-//        GraphController.outputGraphDotFile(inputGraph, outputFileName);
-//    }
+    private void writeOutputFile() {
 
+        File outputFile = new File(outputFileName);
+
+        if (outputFile.exists()) {
+            outputFile.delete();
+        }
+
+        String initialLine = "digraph \"" + outputFileName.replace(".dot", "") + "\" {\n";
+
+        fileWriter(outputFile, initialLine);
+
+        Processor[] processors = solution.getProcessors();
+
+        // Writing the nodes to the file
+        for (int i = 0; i < processors.length; i++) {
+            for (Node n: processors[i].mapOfTasksAndStartTimes.keySet()) {
+                String nextLine = "\t " + n.getId() + "\t " + "[Weight=" + GraphController.getNodeWeight(n.getId(),
+                        inputGraph) + ",Start=" + processors[i].mapOfTasksAndStartTimes.get(n) + ",Processor="
+                        + i + "];\n";
+                fileWriter(outputFile, nextLine);
+            }
+        }
+
+        // Writing the edges onto the file
+        for (Edge e: inputGraph.getEdgeSet()) {
+            String nextLine = "\t " + e.getSourceNode().getId() + " -> " + e.getTargetNode().getId() + "\t" +
+                    "[Weight=" + GraphController.getEdgeWeight(e.getSourceNode().getId(), e.getTargetNode().getId(), inputGraph) + "];\n";
+            fileWriter(outputFile, nextLine);
+        }
+
+        // Writing the final line
+
+        String finalLine = "}\n";
+
+        fileWriter(outputFile, finalLine);
+
+    }
+
+    private void fileWriter(File outputFile, String line) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile, true));
+            writer.append(line);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void findSolution(SolutionTreeCreator solutionTreeCreator) {
         List<Solution> solutions = BasicSolutionFinder.findOptimalSolution(solutionTreeCreator.getTreeRoot());
 
-        System.out.println(solutions.size());
+//        System.out.println(solutions.size());
 
         Random rand = new Random();
         int randomOptimalSolution = rand.nextInt((solutions.size() - 1));
 
-        Solution optimalSolution = solutions.get(randomOptimalSolution);
-
-        for (Solution s: solutions) {
-            s.printData();
-            System.out.println(s.getTotalTime());
-            System.out.println(s.getTaskList().toString());
-            s.stringData();
-        }
-        Processor[] processors = optimalSolution.getProcessors();
-        for (Node n: inputGraph.getNodeSet()) {
-            System.out.println("Running through the nodes ///////////////////////////////////////");
-            for (int i = 0; i < processors.length; i++) {
-                Object[] tasks = processors[i].mapOfTasksAndStartTimes.keySet().toArray();
-                System.out.println(tasks[0].toString());
-//                System.out.println();
-                System.out.println("Running through the processors *******************************");
-                if (processors[i].mapOfTasksAndStartTimes.keySet().contains(n.getId())) {
-                    System.out.println("Found node --------------------------------------");
-                    GraphController.changeAttribute(n.getId(), "Start", (int) Math.round(processors[i].mapOfTasksAndStartTimes.get(n)), inputGraph);
-                    GraphController.changeAttribute(n.getId(), "Processor", i, inputGraph);
-                }
-            }
-//            for (Processor p: processors) {
-//                if (p.mapOfTasksAndStartTimes.keySet().contains(n.getId())) {
-//                    GraphController.changeAttribute(n.getId(), "Start", (int) Math.round(p.mapOfTasksAndStartTimes.get(n)), inputGraph);
-//                    GraphController.changeAttribute(n.getId(), "Processor", );
-//                }
-//            }
-        }
+        solution = solutions.get(randomOptimalSolution);
 
     }
 
-    /**
-     * Setters and getters for fields
-     */
+
     public String getGraphFilename() {
         return dotFileName;
     }
