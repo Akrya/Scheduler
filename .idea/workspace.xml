@@ -7,14 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f316569b-5fd1-4aa8-a246-737288b15ade" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/scheduler_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/scheduler_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/scheduler_jar/scheduler.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/scheduler_jar/scheduler.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/graph/GraphController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/graph/GraphController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/graph/GraphController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/graph/GraphController.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -122,7 +116,8 @@
       <workItem from="1565220504619" duration="39000" />
       <workItem from="1565308264022" duration="263000" />
       <workItem from="1565421104796" duration="1672000" />
-      <workItem from="1565471280122" duration="15000" />
+      <workItem from="1565471280122" duration="789000" />
+      <workItem from="1565490156371" duration="179000" />
     </task>
     <servers />
   </component>

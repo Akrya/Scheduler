@@ -1,6 +1,5 @@
 package main.graph;
 
-import main.controller.Controller;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
@@ -9,10 +8,6 @@ import org.graphstream.stream.file.FileSourceDOT;
 import org.graphstream.ui.view.Viewer;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Stack;
 
 public class GraphController {
 
