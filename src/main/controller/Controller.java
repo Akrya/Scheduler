@@ -2,8 +2,14 @@ package main.controller;
 
 import graph.GraphController;
 
+import graph.TaskGraph;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.implementations.DefaultGraph;
+import solutionfinder.BasicSolutionFinder;
+import solutiontreecreator.SolutionTreeCreator;
+import solutiontreecreator.data.Solution;
+
+import java.util.List;
 
 public class Controller {
 
@@ -12,16 +18,24 @@ public class Controller {
     private int numOfCores;
     private boolean visualizeSearch;
     private String outputFileName;
-    private Graph inputGraph;
+
+    private TaskGraph inputGraph;
 
     /**
      * Create and displays the dot file as a graph
      */
     public void initialise() {
 
-        inputGraph = new DefaultGraph("inputGraph");
+        inputGraph = new TaskGraph("inputGraph");
+
+//        inputGraph = GraphController.parseInputFile(inputGraph, dotFileName);
 
         inputGraph = GraphController.parseInputFile(inputGraph, dotFileName);
+
+        SolutionTreeCreator solutionTreeCreator = new SolutionTreeCreator(numOfProcessors, inputGraph);
+        solutionTreeCreator.buildSolutionTree();
+
+        findSolution(solutionTreeCreator);
 
         if (visualizeSearch) {
             GraphController.viewGraph(inputGraph);
@@ -33,6 +47,19 @@ public class Controller {
      * Takes the solution graph and generates the output file
      */
     private void writeOutputFile() {
+        GraphController.outputGraphDotFile(inputGraph, outputFileName);
+    }
+
+    private void findSolution(SolutionTreeCreator solutionTreeCreator) {
+        List<Solution> solutions = BasicSolutionFinder.findOptimalSolution(solutionTreeCreator.getTreeRoot());
+
+        System.out.println(solutions.size());
+
+        for (Solution s: solutions) {
+            System.out.println(s.getTotalTime());
+            System.out.println(s.getTaskList().toString());
+            s.stringData();
+        }
 
     }
 
