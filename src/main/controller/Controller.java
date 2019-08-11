@@ -12,9 +12,11 @@ public class Controller {
     private int numOfCores;
     private boolean visualizeSearch;
     private String outputFileName;
-
     private Graph inputGraph;
 
+    /**
+     * Create and displays the dot file as a graph
+     */
     public void initialise() {
 
         inputGraph = new DefaultGraph("inputGraph");
@@ -27,6 +29,9 @@ public class Controller {
 
     }
 
+    /**
+     * Takes the solution graph and generates the output file
+     */
     private void writeOutputFile() {
 
     }
