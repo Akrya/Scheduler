@@ -36,7 +36,9 @@ public class Controller {
 
     }
 
-
+    /**
+     * Setters and getters for fields
+     */
     public String getGraphFilename() {
         return dotFileName;
     }

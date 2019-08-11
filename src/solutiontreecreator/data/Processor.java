@@ -21,8 +21,7 @@ public class Processor {
 	
 	/**
 	 * Adds a task to the timeline.
-	 * @param task
-	 * @param offset
+	 * @param task the task represented by a node
 	 */
 	public void addTask(Node task) {
 		mapOfTasksAndStartTimes.put(task, endTime);
@@ -31,8 +30,8 @@ public class Processor {
 	
 	/**
 	 * Adds a task to the timeline at a specific time interval.
-	 * @param task
-	 * @param time
+	 * @param task the task represented by a node
+	 * @param time the time at which the task begins
 	 */
 	public void addTaskSpecificTime(Node task, double time) {
 		mapOfTasksAndStartTimes.put(task, time);
@@ -41,8 +40,8 @@ public class Processor {
 	
 	/**
 	 * Adds a task with a delay to the timeline.
-	 * @param task
-	 * @param offset
+	 * @param task the task represented by a node
+	 * @param delay
 	 */
 	public void addTaskWithDelay(Node task, double delay) {
 		mapOfTasksAndStartTimes.put(task, endTime+delay);

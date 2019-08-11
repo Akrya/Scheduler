@@ -11,22 +11,20 @@ public class Main {
     public static void main(String args[]) {
 
         // Parsing the input arguments and assigning necessary fields in the controller class
-
         int totalArgs = args.length;
 
         System.out.println(totalArgs);
 
+        // checks if input contains the correct number of arguments
         if (totalArgs < 2) {
             printInputArgumentsError();
         } else {
-
             if (args[0].contains(".dot")) {
                 System.out.println("There is a dot file");
                 controller.setGraphFilename(args[0]);
             } else {
                 printInputArgumentsError();
             }
-
             try {
                 int numOfProcessors = Integer.parseInt(args[1]);
                 System.out.println(numOfProcessors);
@@ -101,6 +99,9 @@ public class Main {
 
     }
 
+    /**
+     * Prints help message if incorrect number of arguments is detected.
+     */
     private static void printInputArgumentsError() {
         System.out.println("Invalid input");
         System.out.println("Please run the jar file using the following interface ->\n");
