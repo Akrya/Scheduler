@@ -35,6 +35,13 @@ public class GraphController {
 //        }
 //    }
 
+    /**
+     * Takes a default graph and the DOT filename as input and returns a graph object with the parameters
+     * specified by the DOT file.
+     * @param inputGraph
+     * @param dotFileName
+     * @return
+     */
     public static Graph parseInputFile(Graph inputGraph, String dotFileName) {
 
         FileSource fileSource = new FileSourceDOT();
@@ -51,7 +58,7 @@ public class GraphController {
 
     /**
      * Takes the input of the current graph and the desired file name, to output a dotfile of the current graph.
-     * @param graph
+     * @param inputGraph
      * @param fileName
      */
     public static void outputGraphDotFile(Graph inputGraph, String fileName){
