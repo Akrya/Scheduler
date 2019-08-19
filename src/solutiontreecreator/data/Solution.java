@@ -149,9 +149,12 @@ public class Solution {
 			System.out.println("{Processor number: "+i+"}");
 			System.out.println("- - - - - - - - - - - -");
 			for(Node n: processors[i].mapOfTasksAndStartTimes.keySet()) {
-				System.out.println("Node "+n.getId()+"| Start time:"+processors[i].mapOfTasksAndStartTimes.get(n));
+				System.out.println("Node " + n.getId() + "| Start time:" + processors[i].mapOfTasksAndStartTimes.get(n));
 			}
 		}
+		System.out.println("- - - - - - - - - - - -");
+		System.out.println(this.getTotalTime());
+		System.out.println("- - - - - - - - - - - -");
 	}
 
 	/**
@@ -184,5 +187,17 @@ public class Solution {
 		}
 		
 		return longestTime;
+	}
+
+	/**
+	 * Calculates the heuristic value of the encased solution.
+	 * This needs to be an underestimate.
+	 */
+	public double getHeuristic(){
+		double estimate = this.getTotalTime();
+		for(Node n : this.getTasksLeft()){
+			estimate += (double)n.getAttribute("Weight");
+		}
+		return estimate;
 	}
 }

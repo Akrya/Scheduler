@@ -95,7 +95,7 @@ public class SolutionNode {
 	 * Returns true when this solution is complete.
 	 */
 	public boolean isSolutionComplete() {
-		if(solution.getTasksLeft().isEmpty()) {
+		if (solution.getTasksLeft().isEmpty()) {
 			return true;
 		} else {
 			return false;
