@@ -1,58 +1,45 @@
-package Graph;
+package graph;
 
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
-import org.graphstream.graph.implementations.DefaultGraph;
-import org.graphstream.stream.file.FileSinkDOT;
 import org.graphstream.stream.file.FileSource;
 import org.graphstream.stream.file.FileSourceDOT;
 import org.graphstream.ui.view.Viewer;
-
 import java.io.IOException;
 
 public class GraphController {
 
-    private String FilePath;
-    private Graph g;
-
-
     /**
-     * Constructor for the GraphController class
-     * Takes an input of the filepath of the dot file that we want to schedule for.
-     * It creates a graph object which reflects the dot file. We can read and edit this graph.
-     * @param filePath
+     * Changes the input TaskGraph object to adhere to the constraints given in the input DOT file.
+     * @param inputGraph A blank TaskGraph object.
+     * @param dotFileName Name of the DOT File you want to convert to TaskGraph into.
+     * @return The TaskGraph which now contains the information from the DOT File.
      */
-    public GraphController(String filePath){
-        FilePath = filePath;
-        g = new DefaultGraph("g");
-        FileSource fs = new FileSourceDOT();
-        fs.addSink(g);
+    public static TaskGraph parseInputFile(TaskGraph inputGraph, String dotFileName) {
+
+        FileSource fileSource = new FileSourceDOT();
+        fileSource.addSink(inputGraph);
         try {
-            fs.readAll(FilePath);
-        } catch(IOException e){
+            fileSource.readAll(dotFileName);
+        } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return inputGraph;
+
     }
 
     /**
-     * Takes the input of the current graph and the desired file name, to output a dotfile of the current graph.
-     * @param graph
-     * @param fileName
+     * A getter which returns the weight of a node.
+     * @param nodeID Unique string identifying the node from which you want to find the node weight from.
+     * @param inputGraph The graph you want to read from.
+     * @return A double of the weight of the desired node.
      */
-    public static void outputGraphDotFile(GraphController graph, String fileName){
-        FileSinkDOT dotSink = new FileSinkDOT();
-        try{
-            dotSink.writeAll(graph.g,fileName);
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
-    public double getNodeWeight(String nodeID){
+    public static double getNodeWeight(String nodeID, Graph inputGraph){
         double value = 0;
         try {
-            Node n = g.getNode(nodeID);
+            Node n = inputGraph.getNode(nodeID);
             value = n.getAttribute("Weight");
         } catch (NullPointerException e){
             e.printStackTrace();
@@ -60,10 +47,17 @@ public class GraphController {
         return value;
     }
 
-    public double getEdgeWeight(String firstNode, String secondNode){
+    /**
+     * A getter which returns the weight between two nodes.
+     * @param firstNode Unique string identifying the first node.
+     * @param secondNode Unique string identifying the second node.
+     * @param inputGraph The graph you want to read from.
+     * @return A double value of the weight between the first node and the second node.
+     */
+    public static double getEdgeWeight(String firstNode, String secondNode, Graph inputGraph){
         double edgeWeight = 0;
         try {
-            Edge e = g.getEdge("(" + firstNode + ";" + secondNode + ")");
+            Edge e = inputGraph.getEdge("(" + firstNode + ";" + secondNode + ")");
             edgeWeight = e.getNumber("Weight");
         } catch (NullPointerException e){
             e.printStackTrace();
@@ -73,19 +67,46 @@ public class GraphController {
 
     /**
      * Can change or add an attribute to any node given its id.
-     * @param nodeID
-     * @param attributeName
-     * @param attributeValue
+     * @param nodeID Unique string identifying the node.
+     * @param attributeName Name of the attribute you want to add/change.
+     * @param attributeValue An integer value of the attribute you want to add.
      */
-    public void changeAttribute(String nodeID, String attributeName, int attributeValue){
-        Node n = g.getNode(nodeID);
+    public static void changeAttribute(String nodeID, String attributeName, int attributeValue, Graph inputGraph){
+        Node n = inputGraph.getNode(nodeID);
         n.addAttribute(attributeName,attributeValue);
     }
 
-    public void viewGraph(){
-        for (Node node : g) {
+    /**
+     * Creates a visualisation of a graph.
+     * @param inputGraph Graph you want to visualise.
+     */
+    public static void viewGraph(Graph inputGraph){
+        for (Node node : inputGraph) {
             node.addAttribute("ui.label", node.getId());
         }
-        Viewer viewer = g.display();
+        Viewer viewer = inputGraph.display();
     }
+
+    /**
+     * Dump information of all nodes and edges of this graph in the console.
+     * @param inputGraph Graph you want to read from.
+     */
+    public static void printGraphInConsole(Graph inputGraph) {
+        // Node info dump
+        System.out.println("-----------------------------------");
+        System.out.println("-------------NODE DUMP-------------");
+        System.out.println("-----------------------------------");
+        for(Node n : inputGraph.getEachNode()) {
+            System.out.println(n.getId()+": "+n.getNumber("Weight"));
+        }
+
+        // Edge info dump
+        System.out.println("-----------------------------------");
+        System.out.println("-------------EDGE DUMP-------------");
+        System.out.println("-----------------------------------");
+        for(Edge e : inputGraph.getEachEdge()) {
+            System.out.println(e.getId()+": "+e.getNumber("Weight"));
+        }
+    }
+
 }

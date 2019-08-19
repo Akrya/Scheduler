@@ -2,7 +2,6 @@ package solutiontreecreator.data;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Node;
 
@@ -46,9 +45,8 @@ public class Solution {
 	 * one task must finish before the other starts.
 	 * If on different processors, for each dependency, 
 	 * start time >= start time of dependency + dependency's weight + edge weight 
-	 * @param n
-	 * @param predecessorLink
-	 * @param processorIndex
+	 * @param n task represented as a node in the graph
+	 * @param targetProcessorIndex
 	 */
 	public boolean addTask(Node n, int targetProcessorIndex) {
 		// Create dependency edge list
@@ -158,7 +156,7 @@ public class Solution {
 
 	/**
 	 * Method for generating a string representation of the solution.
-	 * @return 
+	 * @return string containing the processor, node and start time
 	 */
 	public String stringData() {
 		String data = "";
@@ -174,7 +172,7 @@ public class Solution {
 	
 	/**
 	 * Find the total time taken for this solution's schedules.
-	 * @return
+	 * @return the longest time taken by any of the processors
 	 */
 	public double getTotalTime() {
 		double longestTime = 0;
