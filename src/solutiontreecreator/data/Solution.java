@@ -62,40 +62,27 @@ public class Solution {
 		if(taskList.containsAll(dependencyTasks)) {
 			// Calculate latest dependency end time
 			double latestTime = 0;
-			double latestTimeWithDelay = 0;
-			for(Processor p: processors) {
+			for(int i = 0; i < processors.length; i++) {
 				for(Edge dependencyLink: dependencyLinks) {
 					double tempTime = 0;
-					if(p.mapOfTasksAndStartTimes.get(dependencyLink.getSourceNode())!=null) {
-						tempTime = p.mapOfTasksAndStartTimes.get(dependencyLink.getSourceNode()) + (double)dependencyLink.getSourceNode().getAttribute("Weight");
-					} else {
-						tempTime = 0;
-					}
-					double tempTimeWithDelay = tempTime + (double)dependencyLink.getAttribute("Weight");
-					if(tempTime > latestTime) {
-						latestTime = tempTime;
-					}
-					if(tempTimeWithDelay > latestTimeWithDelay) {
-						latestTimeWithDelay = tempTimeWithDelay;
+					if(processors[i].mapOfTasksAndStartTimes.get(dependencyLink.getSourceNode())!=null) {
+						tempTime = processors[i].mapOfTasksAndStartTimes.get(dependencyLink.getSourceNode()) + (double)dependencyLink.getSourceNode().getAttribute("Weight");
+						// Dependency on another processor
+						if(targetProcessorIndex != i){
+							tempTime += (double)dependencyLink.getAttribute("Weight");
+						}
+						if(tempTime > latestTime) {
+							latestTime = tempTime;
+						}
 					}
 				}
 			}
-			
-			if(currentProcessor == targetProcessorIndex) {
-				// System.out.println("Task successfully added at processor "+targetProcessorIndex+" : "+n.getId());
-				processors[targetProcessorIndex].addTaskSpecificTime(n, Math.max(latestTime, processors[targetProcessorIndex].getEndTime()));
-				taskList.add(n);
-				tasksLeft.remove(n);
-				currentProcessor = targetProcessorIndex;
-				return true;
-			} else {
-				// System.out.println("Task successfully added at another processor processor "+targetProcessorIndex+" : "+n.getId());
-				processors[targetProcessorIndex].addTaskSpecificTime(n, Math.max(latestTimeWithDelay, processors[targetProcessorIndex].getEndTime()));
-				taskList.add(n);
-				tasksLeft.remove(n);
-				currentProcessor = targetProcessorIndex;
-				return true;
-			}
+
+			processors[targetProcessorIndex].addTaskSpecificTime(n, Math.max(latestTime, processors[targetProcessorIndex].getEndTime()));
+			taskList.add(n);
+			tasksLeft.remove(n);
+			currentProcessor = targetProcessorIndex;
+			return true;
 		} else {
 			// System.out.println("Task unsuccessfully added at processor "+targetProcessorIndex+" : "+n.getId());
 			return false;
