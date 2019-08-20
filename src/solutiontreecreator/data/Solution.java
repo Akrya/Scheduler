@@ -185,6 +185,6 @@ public class Solution {
 		for(Node n : this.getTasksLeft()){
 			estimate += (double)n.getAttribute("Weight");
 		}
-		return estimate;
+		return estimate/numProcessors;
 	}
 }

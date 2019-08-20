@@ -11,7 +11,7 @@ public class TestAStarSearch {
     @Test
     public void testOne(){
         // Parse input file
-        String path = getClass().getClassLoader().getResource("graphfiles/Nodes_10_Random.dot").getPath();
+        String path = getClass().getClassLoader().getResource("graphfiles/Nodes_11_OutTree.dot").getPath();
         System.out.println(path);
         TaskGraph taskGraph = GraphController.parseInputFile(new TaskGraph("1"), path);
 
