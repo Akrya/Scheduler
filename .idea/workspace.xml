@@ -7,13 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d8f6ada-435d-40b9-b38a-dd515125d7d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/controller/GanttChartController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Nodes_7_OutTree-output.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Nodes_7_OutTree-output.dot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/ganttchart.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/ganttchart.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/controller/GanttChattController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/controller/GanttChartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/GanttChartController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/visualization/GanttChartFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualization/GanttChartFX.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" afterDir="false" />
@@ -99,7 +95,7 @@
       <workItem from="1566377753803" duration="240000" />
       <workItem from="1566429186039" duration="203000" />
       <workItem from="1566432755083" duration="1809000" />
-      <workItem from="1566456863944" duration="6391000" />
+      <workItem from="1566456863944" duration="8536000" />
     </task>
     <servers />
   </component>
@@ -124,8 +120,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/controller/GanttChartController.java</url>
-          <line>80</line>
-          <option name="timeStamp" value="17" />
+          <line>90</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/visualization/GanttChartFX.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

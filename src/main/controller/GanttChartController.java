@@ -72,7 +72,7 @@ public class GanttChartController {
             for (Node n: processors[i].mapOfTasksAndStartTimes.keySet()) {
                 newSeries.getData().add(new XYChart.Data(processors[i].mapOfTasksAndStartTimes.get(n),
                         processorTitle.get(i), new GanttChartFX.ExtraData(GraphController.getNodeWeight(n.getId(),
-                        Main.getController().getGraph()), "status-blue")));
+                        Main.getController().getGraph()), "status-red")));
 //                currentXValue++;
             }
             seriesList.add(newSeries);
@@ -81,6 +81,8 @@ public class GanttChartController {
         for (XYChart.Series s: seriesList) {
             ganttChart.getData().add(s);
         }
+
+        ganttChart.getStylesheets().add(Main.class.getClassLoader().getResource("ganttchart.css").toExternalForm());
 
     }
 
