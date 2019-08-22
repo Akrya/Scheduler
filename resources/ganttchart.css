@@ -7,3 +7,9 @@
 .status-blue {
     -fx-background-color:rgba(0,0,128,0.7);
 }
+.status-darkGreen {
+    -fx-background-color: rgba(25,76,25,0.7);
+}
+.status-orange {
+    -fx-background-color: rgba(235, 184, 96);
+}
