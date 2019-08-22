@@ -5,17 +5,14 @@ import graph.GraphController;
 import graph.TaskGraph;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Node;
-import solutionfinder.BasicSolutionFinder;
-import solutiontreecreator.SolutionTreeCreator;
-import solutiontreecreator.data.Processor;
-import solutiontreecreator.data.Solution;
+import solutionfinder.AStarParallelSolutionFinder;
+import solutionfinder.data.Processor;
+import solutionfinder.data.Solution;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
-import java.util.Random;
 
 public class Controller {
 
@@ -40,10 +37,12 @@ public class Controller {
 
         inputGraph = GraphController.parseInputFile(inputGraph, dotFileName);
 
-        SolutionTreeCreator solutionTreeCreator = new SolutionTreeCreator(numOfProcessors, inputGraph);
-        solutionTreeCreator.buildSolutionTree();
-
-        findSolution(solutionTreeCreator);
+        AStarParallelSolutionFinder solutionFinder = new AStarParallelSolutionFinder(numOfProcessors, inputGraph);
+        try {
+            solution = solutionFinder.findOptimal();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         writeOutputFile();
 
@@ -106,22 +105,6 @@ public class Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Calls the findOptimalSolution method from the BasicSolutionFinder Class onto the
-     * solution tree that was the input parameter. Assigns a random solution from the list
-     * of minimal solutions found to the solution parameter for the controller class
-     * @param solutionTreeCreator - A tree that represents the search space of the algorithm
-     */
-    private void findSolution(SolutionTreeCreator solutionTreeCreator) {
-        List<Solution> solutions = BasicSolutionFinder.findOptimalSolution(solutionTreeCreator.getTreeRoot());
-
-        Random rand = new Random();
-        int randomSolution = rand.nextInt((solutions.size() - 1));
-
-        solution = solutions.get(randomSolution);
-
     }
 
     // Getters and Setters for the various fields for this class
