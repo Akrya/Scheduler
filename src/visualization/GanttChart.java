@@ -60,7 +60,7 @@ public class GanttChart extends JFrame {
 
         for (int i = 0; i < processors.length; i++) {
             counter = 0;
-            String processorName = "Processor " + 0;
+            String processorName = "Processor " + i;
             subTasks = new ArrayList<>();
             for (Node n: processors[i].mapOfTasksAndStartTimes.keySet()) {
                 if (counter == 0) {
