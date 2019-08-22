@@ -3,6 +3,7 @@ package main.controller;
 import graph.GraphController;
 
 import graph.TaskGraph;
+import main.Main;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Node;
 import solutionfinder.BasicSolutionFinder;
@@ -50,14 +51,16 @@ public class Controller {
 
         writeOutputFile();
 
-        GanttChart ganttChart = new GanttChart("Times");
-        ganttChart.pack();
-        RefineryUtilities.centerFrameOnScreen(ganttChart);
-        ganttChart.setVisible(true);
 
-//        if (visualizeSearch) {
-//            GraphController.viewGraph(inputGraph);
-//        }
+
+//        GanttChart ganttChart = new GanttChart("Times");
+//        ganttChart.pack();
+//        RefineryUtilities.centerFrameOnScreen(ganttChart);
+//        ganttChart.setVisible(true);
+
+        if (visualizeSearch) {
+
+        }
 
     }
 

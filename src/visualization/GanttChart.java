@@ -32,8 +32,8 @@ public class GanttChart extends JFrame {
 
         JFreeChart chart = ChartFactory.createGanttChart(
                 "Gantt Chart of the different processes",
-                "Time",
                 "Processors",
+                "Time",
                 dataset
         );
 
@@ -54,6 +54,7 @@ public class GanttChart extends JFrame {
 
         TaskSeries series1 = new TaskSeries("Execution Time");
         Processor[] processors = Main.getController().getSolution().getProcessors();
+        System.out.println(processors.length);
         int counter;
         Task initialTask = null;
         List<Task> subTasks;
@@ -65,12 +66,14 @@ public class GanttChart extends JFrame {
             for (Node n: processors[i].mapOfTasksAndStartTimes.keySet()) {
                 if (counter == 0) {
                     long startTime = processors[i].mapOfTasksAndStartTimes.get(n).longValue();
-                    long endTime = processors[i].mapOfTasksAndStartTimes.get(n).longValue() + (long) GraphController.getNodeWeight(n.getId(), Main.getController().getGraph());                    initialTask = new Task(processorName, new SimpleTimePeriod(startTime, endTime));
+                    long endTime = processors[i].mapOfTasksAndStartTimes.get(n).longValue() + (long) GraphController.getNodeWeight(n.getId(), Main.getController().getGraph());
+                    initialTask = new Task(processorName, new SimpleTimePeriod(startTime, endTime));
                     counter++;
                 } else {
                     long startTime = processors[i].mapOfTasksAndStartTimes.get(n).longValue();
                     long endTime = processors[i].mapOfTasksAndStartTimes.get(n).longValue() + (long) GraphController.getNodeWeight(n.getId(), Main.getController().getGraph());
                     subTasks.add(new Task(processorName + 1, new SimpleTimePeriod(startTime, endTime)));
+                    System.out.println("ADDDDDDDDDDDDDD");
                 }
             }
 
@@ -80,9 +83,12 @@ public class GanttChart extends JFrame {
                 }
             }
 
+           System.out.println(initialTask.getSubtaskCount());
             series1.add(initialTask);
 
         }
+
+
 
         TaskSeriesCollection dataset = new TaskSeriesCollection();
         dataset.add(series1);
