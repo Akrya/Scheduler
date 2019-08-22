@@ -9,6 +9,7 @@ import solutionfinder.BasicSolutionFinder;
 import solutiontreecreator.SolutionTreeCreator;
 import solutiontreecreator.data.Processor;
 import solutiontreecreator.data.Solution;
+import visualization.GanttChart;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -16,6 +17,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Random;
+
+import org.jfree.ui.RefineryUtilities;
 
 public class Controller {
 
@@ -46,6 +49,11 @@ public class Controller {
         findSolution(solutionTreeCreator);
 
         writeOutputFile();
+
+        GanttChart ganttChart = new GanttChart("Times");
+        ganttChart.pack();
+        RefineryUtilities.centerFrameOnScreen(ganttChart);
+        ganttChart.setVisible(true);
 
 //        if (visualizeSearch) {
 //            GraphController.viewGraph(inputGraph);
@@ -164,6 +172,14 @@ public class Controller {
 
     public void setOutputFileName(String outputFileName) {
         this.outputFileName = outputFileName;
+    }
+
+    public Solution getSolution() {
+        return solution;
+    }
+
+    public TaskGraph getGraph() {
+        return inputGraph;
     }
 
 }
