@@ -7,6 +7,7 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import visualization.GanttChartFX;
@@ -15,7 +16,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
-public class GanttChattController implements Initializable {
+public class ViewController implements Initializable {
 
     @FXML
     Pane graphPane, chartPane;
@@ -67,6 +68,14 @@ public class GanttChattController implements Initializable {
 
         chart.getStylesheets().add(getClass().getClassLoader().getResource("ganttchart.css").toExternalForm());
         chartPane.getChildren().add(chart);
+    }
+
+    public void graphButtonClick(MouseEvent mouseEvent) {
+        graphPane.toFront();
+    }
+
+    public void chartButtonClick(MouseEvent mouseEvent) {
+        chartPane.toFront();
     }
 }
 
