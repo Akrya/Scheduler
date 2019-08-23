@@ -45,25 +45,31 @@ public class AStarSolutionFinder{
      * Finds the optimal solution.
      */
     public Solution findOptimal() throws InterruptedException {
-        BlockingDeque<Solution> optimalSolutions = new LinkedBlockingDeque<>();
+        BlockingDeque<Solution> closed = new LinkedBlockingDeque<>();
         Solution emptySolution = new Solution(taskGraph, numProcessors);
         BlockingDeque<Solution> open = new LinkedBlockingDeque<Solution>();
         open.push(emptySolution);
         while (!open.isEmpty()) {
             Solution s = open.takeFirst();
             solutionsExplored++;
-            if (s.getTasksLeft().isEmpty() && (optimalSolutions.isEmpty() || s.getTotalTime() < optimalSolutions.peek().getTotalTime())) {
+            if (s.getTasksLeft().isEmpty() && (closed.isEmpty() || s.getTotalTime() < closed.peek().getTotalTime())) {
                 System.out.println("Found optimal candidate with cost " + s.getTotalTime());
                 System.out.println("Stack size is " + open.size());
-                optimalSolutions.putFirst(s);
+                closed.putFirst(s);
             }
-            if (optimalSolutions.isEmpty() || s.getTotalTime() <= optimalSolutions.peekFirst().getTotalTime()) {
+            // Check if solution needs to be pruned
+            boolean flag1 = true;
+            if(!closed.isEmpty()){
+                flag1 = s.getTotalTime() <= closed.peekFirst().getTotalTime();
+            }
+
+            if (flag1) {
                 // Check if s is worth investigating
                 expandSolution(s, open);
             }
         }
 
-        return optimalSolutions.peek();
+        return closed.peek();
     }
 
     /**
@@ -85,6 +91,19 @@ public class AStarSolutionFinder{
                 }
             }
         }
+    }
+
+    /**
+     * Helper method to check if there is an equivalent solution to s in open.
+     * @param s Solution to check for
+     * @param open Deque containing a collection of solutions
+     */
+    public static void checkEquivalent(Solution s, BlockingDeque<Solution> open){
+        BlockingDeque<Solution> tempQueue = new LinkedBlockingDeque<Solution>();
+        tempQueue.addAll(open);
+
+        double tmax = s.getTotalTime();
+
     }
 
     /**

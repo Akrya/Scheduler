@@ -1,7 +1,7 @@
 package solutionfinder.data;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Node;
 
@@ -201,11 +201,16 @@ public class Solution {
 	/**
 	 * Calculates the heuristic value of the encased solution.
 	 * This needs to be an underestimate.
+	 * We are using a proposed f(s) function in a University of Auckland research paper.
 	 */
 	public double getHeuristic(){
-		// Hieuristic in lectures
-		// return ((this.getProcessingTime()+this.getIdleTime())/this.getNumProcessors());
-		return this.getProcessingTime()/(this.getTotalTime()*this.getNumProcessors());
+		double fIdleTime = this.getProcessingTime()+this.getIdleTime()/this.getNumProcessors();
+		double fBottomLevel = 0;
+		List<Double> bottomLevels = new List<Double>();
+
+
+		double fDataReadyTime = 0;
+		return Math.max(Math.max(fIdleTime, fBottomLevel), fDataReadyTime);
 	}
 
 	/**

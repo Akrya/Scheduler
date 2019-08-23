@@ -79,7 +79,7 @@ public class AStarParallelSolutionFinder extends AStarSolutionFinder {
 
         @Override
         public void run() {
-            //System.out.println("Adding a thread to leave " + (threads.size()) + " amount of threads left.");
+            System.out.println("Adding a thread to leave " + (threads.size()) + " amount of threads left.");
             try {
                 expandSolution(solution, open);
             } catch (InterruptedException e) {

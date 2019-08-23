@@ -55,7 +55,7 @@ public class TestAStarSearchParallel {
         assertEquals(optimalSolution.getTotalTime(), 50.0f, 0.0f);
     }
 
-    @Test
+    //@Test
     public void test11Nodes(){
         // Parse input file
         String path = getClass().getClassLoader().getResource("graphfiles/Nodes_11_OutTree.dot").getPath();

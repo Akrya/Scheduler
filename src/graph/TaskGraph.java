@@ -36,4 +36,8 @@ public class TaskGraph extends SingleGraph{
 		}
 		return rootNodes;
 	}
+
+	public static double getBottomLevelOfNode(Node n, TaskGraph graph){
+		return 0.0f;
+	}
 }
