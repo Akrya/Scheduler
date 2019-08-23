@@ -15,6 +15,9 @@ import javafx.scene.chart.ValueAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+import main.controller.GanttChartController;
+import main.controller.TextRectangle;
 
 // Referred to https://stackoverflow.com/questions/27975898/gantt-chart-from-scratch
 public class GanttChartFX<X,Y> extends XYChart<X,Y> {
@@ -23,12 +26,14 @@ public class GanttChartFX<X,Y> extends XYChart<X,Y> {
 
         public double length;
         public String styleClass;
+        public String text;
 
 
-        public ExtraData(double lengthMs, String styleClass) {
+        public ExtraData(double lengthMs, String styleClass, String text) {
             super();
             this.length = lengthMs;
             this.styleClass = styleClass;
+            this.text = text;
         }
         public double getLength() {
             return length;
@@ -42,6 +47,8 @@ public class GanttChartFX<X,Y> extends XYChart<X,Y> {
         public void setStyleClass(String styleClass) {
             this.styleClass = styleClass;
         }
+        public String getText() { return text;}
+        public void setText(String text) {this.text = text;}
 
     }
 
@@ -67,6 +74,10 @@ public class GanttChartFX<X,Y> extends XYChart<X,Y> {
         return ((ExtraData) obj).getLength();
     }
 
+    private static String getText(Object obj) {
+        return ((ExtraData) obj).getText();
+    }
+
     @Override protected void layoutPlotChildren() {
 
         for (int seriesIndex=0; seriesIndex < getData().size(); seriesIndex++) {
@@ -83,22 +94,28 @@ public class GanttChartFX<X,Y> extends XYChart<X,Y> {
                 }
                 Node block = item.getNode();
                 Rectangle ellipse;
+//                Text text;
+                GanttChartController.setTextX(getText(item.getExtraValue()), new Double(x));
+                GanttChartController.setTextY(getText(item.getExtraValue()), new Double(y));
                 if (block != null) {
                     if (block instanceof StackPane) {
                         StackPane region = (StackPane)item.getNode();
                         if (region.getShape() == null) {
                             ellipse = new Rectangle( getLength( item.getExtraValue()), getBlockHeight());
                         } else if (region.getShape() instanceof Rectangle) {
-                            ellipse = (Rectangle)region.getShape();
+                            ellipse = (Rectangle) region.getShape();
                         } else {
                             return;
                         }
                         ellipse.setWidth( getLength( item.getExtraValue()) * ((getXAxis() instanceof NumberAxis) ? Math.abs(((NumberAxis)getXAxis()).getScale()) : 1));
                         ellipse.setHeight(getBlockHeight() * ((getYAxis() instanceof NumberAxis) ? Math.abs(((NumberAxis)getYAxis()).getScale()) : 1));
                         y -= getBlockHeight() / 2.0;
+//                        ellipse.displayText(x,y);
 
                         region.setShape(null);
+//                        region.getChildren().addAll(ellipse, text);
                         region.setShape(ellipse);
+//                        region.setAccessibleText(text.toString());
                         region.setScaleShape(false);
                         region.setCenterShape(false);
                         region.setCacheShape(false);
