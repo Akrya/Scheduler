@@ -83,11 +83,13 @@ public class AStarSolutionFinder{
         // Expand s's children
         for (Node n : s.getTasksLeft()) {
             for (int i = 0; i < numProcessors; i++) {
-                Solution child = createCopy(s);
+                Solution child = this.createCopy(s);
                 boolean addSuccess = child.addTask(n, i);
                 // Place the child in the proper location in the open array
                 if (addSuccess) {
-                    insertSolutionIntoDeque(child, open);
+                    if(child != null){
+                        insertSolutionIntoDeque(child, open);
+                    }
                 }
             }
         }
@@ -110,14 +112,27 @@ public class AStarSolutionFinder{
      * Inserts a solution into a double ended queue in such a way that the heuristics are in order.
      */
     public synchronized void insertSolutionIntoDeque(Solution s, BlockingDeque<Solution> open) throws InterruptedException {
+        // Check if the queue is empty.
         if(open.isEmpty()){
             open.putFirst(s);
             return;
         }
+
+        // Check if the queue has any duplicates.
+        for(Solution openS: open){
+            if(openS.equals(s)){
+                return;
+            }
+        }
+
+        // Insert the solution s based on heuristics.
         Stack<Solution> sortingStack = new Stack<Solution>();
         boolean placeFound = false;
         while (!placeFound) {
-            if(open.isEmpty() || s.getHeuristic() >= open.peek().getHeuristic()){
+            if(open.isEmpty()){
+                open.putFirst(s);
+                placeFound = true;
+            } else if(s.getHeuristic() >= open.peek().getHeuristic()){
                 open.putFirst(s);
                 placeFound = true;
             } else {

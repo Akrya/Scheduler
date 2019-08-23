@@ -60,6 +60,7 @@ public class Solution {
 
 		// All dependencies must've been added already.
 		if(taskList.containsAll(dependencyTasks)) {
+
 			// Calculate latest dependency end time
 			double latestTime = 0;
 			for(int i = 0; i < processors.length; i++) {
@@ -90,6 +91,30 @@ public class Solution {
 
 	}
 
+	/**
+	 * Get the earliest data ready time.
+	 * @param n
+	 * @return
+	 */
+	public double getDataReadyTime(Node n){
+		List<Edge> dependencyLinks = new ArrayList<>(n.getEnteringEdgeSet());
+
+		// Calculate latest dependency end time
+		double latestTime = 0;
+		for(int i = 0; i < processors.length; i++) {
+			for(Edge dependencyLink: dependencyLinks) {
+				double tempTime = 0;
+				if(processors[i].mapOfTasksAndStartTimes.get(dependencyLink.getSourceNode())!=null) {
+					tempTime = processors[i].mapOfTasksAndStartTimes.get(dependencyLink.getSourceNode()) + (double)dependencyLink.getSourceNode().getAttribute("Weight");
+					if(tempTime > latestTime) {
+						latestTime = tempTime;
+					}
+				}
+			}
+		}
+
+		return latestTime;
+	}
 
 	// Getters and setters
 	public List<Node> getTaskList(){
@@ -204,13 +229,62 @@ public class Solution {
 	 * We are using a proposed f(s) function in a University of Auckland research paper.
 	 */
 	public double getHeuristic(){
-		double fIdleTime = this.getProcessingTime()+this.getIdleTime()/this.getNumProcessors();
-		double fBottomLevel = 0;
-		List<Double> bottomLevels = new List<Double>();
+		List<Double> heuristicCandidates = new ArrayList<>();
 
+		heuristicCandidates.add(calculateFIdleTime());
+		heuristicCandidates.add(calculateFBottomLevel());
+		heuristicCandidates.add(calculateFDataReadyTime());
 
-		double fDataReadyTime = 0;
-		return Math.max(Math.max(fIdleTime, fBottomLevel), fDataReadyTime);
+		return Collections.max(heuristicCandidates);
+	}
+
+	// All heuristic methods
+
+	/**
+	 * Calculate f-idle-time(s) for this solution.
+	 * @return
+	 */
+	public double calculateFIdleTime(){
+		 return (this.getProcessingTime()+this.getIdleTime())/this.getNumProcessors();
+	}
+
+	/**
+	 * Calculate f-bl(s) for this solution.
+	 * @return
+	 */
+	public double calculateFBottomLevel(){
+		List<Double> bottomLevelCandidates = new ArrayList<>();
+
+		for(Node n: this.getTaskList()){
+			double bottomLevel = 0;
+			for(Processor p : processors){
+				if(p.mapOfTasksAndStartTimes.containsKey(n)){
+					bottomLevel = this.taskGraph.nodesAndBottomLevels.get(n);
+					bottomLevel += p.mapOfTasksAndStartTimes.get(n);
+					bottomLevelCandidates.add(bottomLevel);
+				}
+			}
+		}
+
+		return Collections.max(bottomLevelCandidates);
+	}
+
+	/**
+	 * Calculate f-DRT(s) for this solution.
+	 * @return
+	 */
+	public double calculateFDataReadyTime(){
+		List<Double> dataReadyTimeCandidates = new ArrayList<>();
+
+		for(Node n: this.getTasksLeft()){
+			dataReadyTimeCandidates.add(this.getDataReadyTime(n)+this.taskGraph.nodesAndBottomLevels.get(n));
+		}
+
+		if(dataReadyTimeCandidates.isEmpty()){
+			return 0.0;
+		} else {
+			return Collections.max(dataReadyTimeCandidates);
+		}
 	}
 
 	/**
@@ -225,4 +299,21 @@ public class Solution {
 		}
 		return num;
 	}
+
+	/**
+	 * Two tasks are equal if all of their tasks and start times are equal.
+	 * @param o
+	 * @return
+	 */
+	@Override
+	public boolean equals(Object o){
+		Solution other = (Solution)o;
+		if(other.getTaskList().containsAll(this.getTaskList())
+				&& (other.getTotalTime() == this.getTotalTime())){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }

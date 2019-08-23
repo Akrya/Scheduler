@@ -79,7 +79,7 @@ public class AStarParallelSolutionFinder extends AStarSolutionFinder {
 
         @Override
         public void run() {
-            System.out.println("Adding a thread to leave " + (threads.size()) + " amount of threads left.");
+            // System.out.println("Adding a thread to leave " + (threads.size()) + " amount of threads left.");
             try {
                 expandSolution(solution, open);
             } catch (InterruptedException e) {
@@ -87,28 +87,5 @@ public class AStarParallelSolutionFinder extends AStarSolutionFinder {
             }
             a.threads.remove(id);
         }
-    }
-
-    /**
-     * Helper function for creating a copy of a solution.
-     *
-     * @param solution
-     * @return
-     */
-    public Solution createCopy(Solution solution) {
-        Solution solutionCopy = new Solution(taskGraph, numProcessors);
-
-        solutionCopy.setTaskList(new ArrayList<Node>(solution.getTaskList()));
-        solutionCopy.setTasksLeft(new ArrayList<Node>(solution.getTasksLeft()));
-        solutionCopy.setCurrentProcessor(solution.getCurrentProcessor());
-
-        // Copy all of solutionNode's processor data to the copy
-        for (int i = 0; i < solution.getNumProcessors(); i++) {
-            solutionCopy.getProcessor(i).mapOfTasksAndStartTimes
-                    .putAll(solution.getProcessor(i).mapOfTasksAndStartTimes);
-            solutionCopy.getProcessor(i).setEndTime(solution.getProcessor(i).getEndTime());
-        }
-
-        return solutionCopy;
     }
 }

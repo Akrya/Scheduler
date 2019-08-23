@@ -1,7 +1,11 @@
 package graph;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+
+import org.graphstream.graph.Edge;
 import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.SingleGraph;
 
@@ -13,8 +17,11 @@ import org.graphstream.graph.implementations.SingleGraph;
  */
 public class TaskGraph extends SingleGraph{
 
+	public HashMap<Node, Double> nodesAndBottomLevels;
+
 	public TaskGraph(String id) {
 		super(id);
+		nodesAndBottomLevels = new HashMap<>();
 	}
 
 	/**
@@ -37,7 +44,25 @@ public class TaskGraph extends SingleGraph{
 		return rootNodes;
 	}
 
-	public static double getBottomLevelOfNode(Node n, TaskGraph graph){
-		return 0.0f;
+	public void setUpBottomLevels(){
+		for(Node n: this.getNodeSet()){
+			nodesAndBottomLevels.put(n, getBottomLevelOfNode(n));
+		}
+	}
+
+	/**
+	 * Calculates the bottom level of a node n. This is the length of the longest path.
+	 * Bottom level is recursively defined in the 2003 Oliver Sinnen paper.
+	 * @param n
+	 * @return
+	 */
+	public static double getBottomLevelOfNode(Node n){
+		List<Double> bottomLevelCandidates = new ArrayList<Double>();
+		bottomLevelCandidates.add(0.0);
+		for(Edge e: n.getLeavingEdgeSet()){
+			bottomLevelCandidates.add((double)n.getAttribute("Weight")+getBottomLevelOfNode(e.getTargetNode()));
+		}
+
+		return Collections.max(bottomLevelCandidates);
 	}
 }
