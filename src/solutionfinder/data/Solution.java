@@ -12,7 +12,7 @@ import graph.TaskGraph;
  * 
  * @author Terence Qu
  */
-public class Solution {
+public class Solution{
 
 	private int numProcessors;
 	private Processor[] processors;
@@ -315,5 +315,4 @@ public class Solution {
 			return false;
 		}
 	}
-
 }

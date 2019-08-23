@@ -1,14 +1,9 @@
 package solutionfinder;
 
 import graph.TaskGraph;
-import org.graphstream.graph.Node;
 import solutionfinder.data.Solution;
 
-import java.util.ArrayList;
-import java.util.Stack;
-import java.util.concurrent.BlockingDeque;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.*;
 
 /**
  * Class that is used to find the optimal schedule using a parallel A*.
@@ -31,20 +26,20 @@ public class AStarParallelSolutionFinder extends AStarSolutionFinder {
      * Finds the optimal solution.
      */
     public Solution findOptimal() throws InterruptedException {
-        BlockingDeque<Solution> optimalSolutions = new LinkedBlockingDeque<>();
+        LinkedBlockingDeque<Solution> closed = new LinkedBlockingDeque<Solution>();
         Solution emptySolution = new Solution(taskGraph, numProcessors);
-        BlockingDeque<Solution> open = new LinkedBlockingDeque<Solution>();
-        open.push(emptySolution);
+        PriorityBlockingQueue<Solution> open = new PriorityBlockingQueue<Solution>(1000, new SolutionHeuristicComparator());
+        open.add(emptySolution);
         while (!open.isEmpty() || !threads.isEmpty()) {
-            Solution s = open.takeFirst();
+            Solution s = open.take();
             solutionsExplored++;
-            if (s.getTasksLeft().isEmpty() && (optimalSolutions.isEmpty() || s.getTotalTime() < optimalSolutions.peek().getTotalTime())) {
-                System.out.println("Found optimal candidate with cost " + s.getTotalTime());
+            if (s.getTasksLeft().isEmpty() && (closed.isEmpty() || s.getTotalTime() < closed.peekFirst().getTotalTime())) {
+                System.out.println("Found complete solution with cost " + s.getTotalTime());
                 System.out.println("Stack size is " + open.size());
-                optimalSolutions.putFirst(s);
+                closed.putFirst(s);
             }
             // Check if s is worth investigating
-            if (optimalSolutions.isEmpty() || s.getTotalTime() <= optimalSolutions.peekFirst().getTotalTime()) {
+            if (closed.isEmpty() || s.getTotalTime() <= closed.peekFirst().getTotalTime()) {
                 // Check if should spawn a new thread
                 if (open.size() > MAX_THREADS && threads.size() < MAX_THREADS) {
                     BranchThread thread = new BranchThread(this, threadId++, s, open);
@@ -57,7 +52,7 @@ public class AStarParallelSolutionFinder extends AStarSolutionFinder {
         for (Thread t : threads.values()) {
             t.join();
         }
-        return optimalSolutions.peek();
+        return closed.peek();
     }
 
     /**
@@ -67,9 +62,9 @@ public class AStarParallelSolutionFinder extends AStarSolutionFinder {
         private AStarParallelSolutionFinder a;
         private int id;
         private Solution solution;
-        private BlockingDeque<Solution> open;
+        private PriorityBlockingQueue<Solution> open;
 
-        public BranchThread(AStarParallelSolutionFinder a, int id, Solution solution, BlockingDeque<Solution> open) {
+        public BranchThread(AStarParallelSolutionFinder a, int id, Solution solution, PriorityBlockingQueue<Solution> open) {
             a.threads.put(id, this);
             this.a = a;
             this.id = id;
