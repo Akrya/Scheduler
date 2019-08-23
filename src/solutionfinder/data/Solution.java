@@ -204,7 +204,8 @@ public class Solution {
 	 */
 	public double getHeuristic(){
 		// Hieuristic in lectures
-		return ((this.getProcessingTime()+this.getIdleTime())/this.getNumProcessors());
+		// return ((this.getProcessingTime()+this.getIdleTime())/this.getNumProcessors());
+		return this.getProcessingTime()/(this.getTotalTime()*this.getNumProcessors());
 	}
 
 	/**
