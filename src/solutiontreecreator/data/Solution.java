@@ -1,11 +1,11 @@
 package solutiontreecreator.data;
 
-import java.util.ArrayList;
-import java.util.List;
+import graph.TaskGraph;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Node;
 
-import graph.TaskGraph;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class represents a solution, a series of tasks scheduled amongst multiple processors.

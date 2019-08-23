@@ -16,7 +16,7 @@
                   <Button fx:id="graphButton" layoutX="37.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#graphButtonClick" text="Graph" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="50.0" />
                   <Button fx:id="chartButton" layoutX="37.0" layoutY="111.0" mnemonicParsing="false" onMouseClicked="#chartButtonClick" text="Chart" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="90.0" />
                   <ProgressIndicator fx:id="progressSpin" layoutX="10.0" layoutY="150.0" minHeight="-Infinity" prefHeight="100.0" prefWidth="100.0" progress="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="281.0" text="Time Elapsed" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="280.0" text="Time Elapsed" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                      <font>
                         <Font size="14.0" />
                      </font>

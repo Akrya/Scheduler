@@ -1,10 +1,10 @@
 package solutionfinder;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import solutiontreecreator.data.Solution;
 import solutiontreecreator.data.SolutionNode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A class with static methods that allow for the search of an optimal solution within a solution tree.
