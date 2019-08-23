@@ -23,7 +23,7 @@ public class GUI extends Application {
 
         // show application
         primaryStage.setTitle(APPLICATION_TITLE);
-        primaryStage.setScene(new Scene(root, 1200, 800));
+        primaryStage.setScene(new Scene(root, 900, 600));
         primaryStage.show();
     }
 

@@ -7,16 +7,16 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="back" stylesheets="@../mainstyle.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ViewController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" styleClass="back" stylesheets="@../mainstyle.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ViewController">
    <children>
       <BorderPane layoutX="146.0" layoutY="68.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <right>
-            <AnchorPane prefHeight="400.0" prefWidth="120.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="600.0" prefWidth="150.0" BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="graphButton" layoutX="37.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#graphButtonClick" text="Graph" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="50.0" />
                   <Button fx:id="chartButton" layoutX="37.0" layoutY="111.0" mnemonicParsing="false" onMouseClicked="#chartButtonClick" text="Chart" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="90.0" />
                   <ProgressIndicator fx:id="progressSpin" layoutX="10.0" layoutY="150.0" minHeight="-Infinity" prefHeight="100.0" prefWidth="100.0" progress="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="281.0" text="Time Elapsed">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="281.0" text="Time Elapsed" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -29,7 +29,7 @@
             <AnchorPane prefHeight="400.0" prefWidth="462.0" BorderPane.alignment="CENTER">
                <children>
                   <AnchorPane fx:id="graphPane" prefHeight="200.0" prefWidth="200.0" styleClass="graphpane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <AnchorPane fx:id="chartPane" styleClass="chartpane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <AnchorPane fx:id="chartPane" prefHeight="600.0" prefWidth="750.0" styleClass="chartpane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
          </center>
