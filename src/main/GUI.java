@@ -13,18 +13,19 @@ public class GUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-//        GanttChartController ganttChartController = GanttChartController.getInstance();
-//        ganttChartController.setPrimaryStage(primaryStage);
-//        Main.getController().initialise();
+        GanttChartController ganttChartController = GanttChartController.getInstance();
+        ganttChartController.setPrimaryStage(primaryStage);
+        Main.getController().initialise();
+        Main.getController().startGanttVisualise();
+//        FXMLLoader loader = new FXMLLoader();
+//        loader.setLocation(getClass().getResource(MAIN_MENU_SCENE));
+//        Parent root = loader.load();
 //        Main.getController().startGanttVisualise();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(MAIN_MENU_SCENE));
-        Parent root = loader.load();
-
-        // show application
-        primaryStage.setTitle(APPLICATION_TITLE);
-        primaryStage.setScene(new Scene(root, 1200, 800));
-        primaryStage.show();
+//
+//        // show application
+//        primaryStage.setTitle(APPLICATION_TITLE);
+//        primaryStage.setScene(new Scene(root, 1200, 800));
+//        primaryStage.show();
     }
 
     public static void launchApplication(String args[]) {

@@ -1,19 +1,12 @@
 package main.controller;
 
 import graph.GraphController;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Bounds;
-import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import main.Main;
 
 import javafx.scene.Scene;
@@ -99,6 +92,7 @@ public class GanttChartController {
                 newSeries.getData().add(new XYChart.Data(processors[i].mapOfTasksAndStartTimes.get(n),
                         processorTitle.get(i), new GanttChartFX.ExtraData(GraphController.getNodeWeight(n.getId(),
                         Main.getController().getGraph()), currentColour, n.getId())));
+                System.out.println(newSeries.getData());
 
                 newSeries.setName(n.getId());
 
@@ -124,15 +118,15 @@ public class GanttChartController {
         textY.put(nodeId, yVal);
     }
 
-    public GanttChartFX getGanttChart() {
+    public static GanttChartFX getGanttChart() {
         return ganttChart;
     }
 
-//    public static void showStage() {
-//        chart = new Scene(ganttChart, 620, 350);
-//        primaryStage.setScene(chart);
-//        primaryStage.show();
-//    }
+    public static void showStage() {
+        chart = new Scene(ganttChart, 620, 350);
+        primaryStage.setScene(chart);
+        primaryStage.show();
+    }
 
 }
 

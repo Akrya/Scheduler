@@ -1,5 +1,4 @@
 package visualization;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,9 +14,7 @@ import javafx.scene.chart.ValueAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import main.controller.GanttChartController;
-import main.controller.TextRectangle;
 
 // Referred to https://stackoverflow.com/questions/27975898/gantt-chart-from-scratch
 public class GanttChartFX<X,Y> extends XYChart<X,Y> {
@@ -94,7 +91,6 @@ public class GanttChartFX<X,Y> extends XYChart<X,Y> {
                 }
                 Node block = item.getNode();
                 Rectangle ellipse;
-//                Text text;
                 GanttChartController.setTextX(getText(item.getExtraValue()), new Double(x));
                 GanttChartController.setTextY(getText(item.getExtraValue()), new Double(y));
                 if (block != null) {
@@ -110,12 +106,9 @@ public class GanttChartFX<X,Y> extends XYChart<X,Y> {
                         ellipse.setWidth( getLength( item.getExtraValue()) * ((getXAxis() instanceof NumberAxis) ? Math.abs(((NumberAxis)getXAxis()).getScale()) : 1));
                         ellipse.setHeight(getBlockHeight() * ((getYAxis() instanceof NumberAxis) ? Math.abs(((NumberAxis)getYAxis()).getScale()) : 1));
                         y -= getBlockHeight() / 2.0;
-//                        ellipse.displayText(x,y);
 
                         region.setShape(null);
-//                        region.getChildren().addAll(ellipse, text);
                         region.setShape(ellipse);
-//                        region.setAccessibleText(text.toString());
                         region.setScaleShape(false);
                         region.setCenterShape(false);
                         region.setCacheShape(false);
