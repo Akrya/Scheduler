@@ -3,14 +3,14 @@ package main.controller;
 import graph.GraphController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
-import main.Main;
-
-import javafx.scene.Scene;
 import javafx.stage.Stage;
+import main.Main;
 import org.graphstream.graph.Node;
 import solutiontreecreator.data.Processor;
 import visualization.GanttChartFX;
@@ -63,11 +63,11 @@ public class GanttChartController {
         }
 
         xAxis.setLabel("Time");
-        xAxis.setTickLabelFill(Color.CHOCOLATE);
+        xAxis.setTickLabelFill(Color.BLACK);
         xAxis.setMinorTickCount(4);
 
         yAxis.setLabel("Processors");
-        yAxis.setTickLabelFill(Color.CHOCOLATE);
+        yAxis.setTickLabelFill(Color.BLACK);
         yAxis.setTickLabelGap(10);
         yAxis.setCategories(processorTitle);
 
@@ -92,7 +92,6 @@ public class GanttChartController {
                 newSeries.getData().add(new XYChart.Data(processors[i].mapOfTasksAndStartTimes.get(n),
                         processorTitle.get(i), new GanttChartFX.ExtraData(GraphController.getNodeWeight(n.getId(),
                         Main.getController().getGraph()), currentColour, n.getId())));
-                System.out.println(newSeries.getData());
 
                 newSeries.setName(n.getId());
 
@@ -105,7 +104,6 @@ public class GanttChartController {
         for (XYChart.Series s: seriesList) {
             ganttChart.getData().add(s);
         }
-
         ganttChart.getStylesheets().add(Main.class.getClassLoader().getResource("ganttchart.css").toExternalForm());
 
     }
@@ -121,11 +119,11 @@ public class GanttChartController {
     public static GanttChartFX getGanttChart() {
         return ganttChart;
     }
-
-    public static void showStage() {
-        chart = new Scene(ganttChart, 620, 350);
-        primaryStage.setScene(chart);
-        primaryStage.show();
+    public static HashMap getTextX() {
+        return textX;
+    }
+    public static HashMap getTextY() {
+        return textY;
     }
 
 }

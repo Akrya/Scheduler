@@ -6,6 +6,7 @@ import org.graphstream.graph.Node;
 import org.graphstream.stream.file.FileSource;
 import org.graphstream.stream.file.FileSourceDOT;
 import org.graphstream.ui.view.Viewer;
+
 import java.io.IOException;
 
 public class GraphController {

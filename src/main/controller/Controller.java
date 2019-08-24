@@ -1,7 +1,6 @@
 package main.controller;
 
 import graph.GraphController;
-
 import graph.TaskGraph;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Node;
@@ -206,7 +205,6 @@ public class Controller {
      */
     public void startGanttVisualise() {
         GanttChartController.initialiseChart();
-        GanttChartController.showStage();
     }
 
 

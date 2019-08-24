@@ -1,13 +1,12 @@
 package solutiontreecreator;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.graphstream.graph.Node;
-
 import graph.TaskGraph;
+import org.graphstream.graph.Node;
 import solutiontreecreator.data.Solution;
 import solutiontreecreator.data.SolutionNode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class that is used to create a solution tree from a task graph.

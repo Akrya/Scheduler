@@ -1,9 +1,10 @@
 package graph;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.SingleGraph;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
