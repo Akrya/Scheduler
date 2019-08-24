@@ -12,7 +12,7 @@ import java.util.concurrent.*;
  */
 public class AStarParallelSolutionFinder extends AStarSolutionFinder {
 
-    public static final int MAX_THREADS = 8;
+    public static final int MAX_THREADS = 16;
     public ConcurrentHashMap<Integer, Thread> threads;
     private int threadId;
 
@@ -26,33 +26,47 @@ public class AStarParallelSolutionFinder extends AStarSolutionFinder {
      * Finds the optimal solution.
      */
     public Solution findOptimal() throws InterruptedException {
-        LinkedBlockingDeque<Solution> closed = new LinkedBlockingDeque<Solution>();
         Solution emptySolution = new Solution(taskGraph, numProcessors);
+
         PriorityBlockingQueue<Solution> open = new PriorityBlockingQueue<Solution>(1000, new SolutionHeuristicComparator());
+        PriorityBlockingQueue<Solution> closed = new PriorityBlockingQueue<Solution>(1000, new SolutionHeuristicComparator());
+
         open.add(emptySolution);
-        while (!open.isEmpty() || !threads.isEmpty()) {
-            Solution s = open.take();
+
+        // Main loop
+        while (!open.isEmpty()) {
+            Solution s;
+            synchronized (this) {
+                s = open.take();
+            }
             solutionsExplored++;
-            if (s.getTasksLeft().isEmpty() && (closed.isEmpty() || s.getTotalTime() < closed.peekFirst().getTotalTime())) {
+            if(s.getHeuristic() != this.lastExaminedHeuristic){
+                // this.printDebugData(s, open, closed);
+            }
+            lastExaminedHeuristic = s.getHeuristic();
+
+            // If complete solution is found, return it
+            if (s.getTasksLeft().isEmpty() && (optimalSolution == null || s.getTotalTime() < optimalSolution.getTotalTime())) {
                 System.out.println("Found complete solution with cost " + s.getTotalTime());
                 System.out.println("Stack size is " + open.size());
-                closed.putFirst(s);
+                optimalSolution = s;
             }
-            // Check if s is worth investigating
-            if (closed.isEmpty() || s.getTotalTime() <= closed.peekFirst().getTotalTime()) {
-                // Check if should spawn a new thread
-                if (open.size() > MAX_THREADS && threads.size() < MAX_THREADS) {
-                    BranchThread thread = new BranchThread(this, threadId++, s, open);
+
+            // Check if should spawn a new thread for solution expansion
+            if(optimalSolution == null || s.getTotalTime() < optimalSolution.getTotalTime()){
+                if (threads.size() < MAX_THREADS && open.size() > MAX_THREADS) {
+                    BranchThread thread = new BranchThread();
+                    thread.passParameters(this, threadId++, s, open, closed);
                     thread.start();
                 } else {
-                    expandSolution(s, open);
+                    this.expandSolution(s, open, closed);
                 }
             }
         }
         for (Thread t : threads.values()) {
             t.join();
         }
-        return closed.peek();
+        return optimalSolution;
     }
 
     /**
@@ -63,20 +77,22 @@ public class AStarParallelSolutionFinder extends AStarSolutionFinder {
         private int id;
         private Solution solution;
         private PriorityBlockingQueue<Solution> open;
+        private PriorityBlockingQueue<Solution> closed;
 
-        public BranchThread(AStarParallelSolutionFinder a, int id, Solution solution, PriorityBlockingQueue<Solution> open) {
+        public void passParameters(AStarParallelSolutionFinder a, int id, Solution solution, PriorityBlockingQueue<Solution> open,  PriorityBlockingQueue<Solution> closed) {
             a.threads.put(id, this);
             this.a = a;
             this.id = id;
             this.solution = solution;
             this.open = open;
+            this.closed = closed;
         }
 
         @Override
         public void run() {
             // System.out.println("Adding a thread to leave " + (threads.size()) + " amount of threads left.");
             try {
-                expandSolution(solution, open);
+                expandSolution(solution, open, closed);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

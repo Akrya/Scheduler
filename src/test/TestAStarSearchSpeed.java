@@ -2,14 +2,10 @@ package test;
 
 import graph.GraphController;
 import graph.TaskGraph;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import solutionfinder.AStarParallelSolutionFinder;
 import solutionfinder.AStarSolutionFinder;
 import solutionfinder.data.Solution;
-
-import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 

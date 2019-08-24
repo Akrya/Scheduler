@@ -5,7 +5,7 @@ import graph.GraphController;
 import graph.TaskGraph;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Node;
-import solutionfinder.AStarParallelSolutionFinder;
+import solutionfinder.AStarSolutionFinder;
 import solutionfinder.data.Processor;
 import solutionfinder.data.Solution;
 
@@ -37,7 +37,7 @@ public class Controller {
 
         inputGraph = GraphController.parseInputFile(inputGraph, dotFileName);
 
-        AStarParallelSolutionFinder solutionFinder = new AStarParallelSolutionFinder(numOfProcessors, inputGraph);
+        AStarSolutionFinder solutionFinder = new AStarSolutionFinder(numOfProcessors, inputGraph);
         try {
             solution = solutionFinder.findOptimal();
         } catch (InterruptedException e) {

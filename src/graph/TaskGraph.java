@@ -1,9 +1,6 @@
 package graph;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Node;
@@ -47,6 +44,10 @@ public class TaskGraph extends SingleGraph{
 	public void setUpBottomLevels(){
 		for(Node n: this.getNodeSet()){
 			nodesAndBottomLevels.put(n, getBottomLevelOfNode(n));
+		}
+
+		for(Map.Entry<Node, Double> entry: nodesAndBottomLevels.entrySet()){
+			System.out.println("Bottom level of node "+entry.getKey()+": "+entry.getValue());
 		}
 	}
 

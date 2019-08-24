@@ -1,5 +1,6 @@
 package solutionfinder.data;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 import org.graphstream.graph.Edge;
@@ -21,7 +22,7 @@ public class Solution{
 	private TaskGraph taskGraph;
 	private List<Node> taskList;
 	private List<Node> tasksLeft;
-
+	private Node latestTask;
 
 	public Solution(TaskGraph taskGraph, int numProcessors) {
 		this.taskGraph = taskGraph;
@@ -83,6 +84,7 @@ public class Solution{
 			taskList.add(n);
 			tasksLeft.remove(n);
 			currentProcessor = targetProcessorIndex;
+			latestTask = n;
 			return true;
 		} else {
 			// System.out.println("Task unsuccessfully added at processor "+targetProcessorIndex+" : "+n.getId());
@@ -96,24 +98,36 @@ public class Solution{
 	 * @param n
 	 * @return
 	 */
-	public double getDataReadyTime(Node n){
+	public double getMinimumDataReadyTime(Node n){
 		List<Edge> dependencyLinks = new ArrayList<>(n.getEnteringEdgeSet());
 
+		double minDataReadyTime = Double.POSITIVE_INFINITY;
 		// Calculate latest dependency end time
-		double latestTime = 0;
-		for(int i = 0; i < processors.length; i++) {
-			for(Edge dependencyLink: dependencyLinks) {
-				double tempTime = 0;
-				if(processors[i].mapOfTasksAndStartTimes.get(dependencyLink.getSourceNode())!=null) {
-					tempTime = processors[i].mapOfTasksAndStartTimes.get(dependencyLink.getSourceNode()) + (double)dependencyLink.getSourceNode().getAttribute("Weight");
-					if(tempTime > latestTime) {
-						latestTime = tempTime;
+		for(int targetProcessorIndex = 0; targetProcessorIndex < processors.length; targetProcessorIndex++){
+			double latestTime = 0;
+			for(int i = 0; i < processors.length; i++) {
+				for(Edge dependencyLink: dependencyLinks) {
+					double tempTime = 0;
+					if(processors[i].mapOfTasksAndStartTimes.get(dependencyLink.getSourceNode())!=null) {
+						tempTime = processors[i].mapOfTasksAndStartTimes.get(dependencyLink.getSourceNode()) + (double)dependencyLink.getSourceNode().getAttribute("Weight");
+						// Time on another processor
+						if(targetProcessorIndex != i){
+							tempTime += (double)dependencyLink.getAttribute("Weight");
+						}
+						if(tempTime > latestTime) {
+							latestTime = tempTime;
+						}
 					}
 				}
 			}
+			latestTime = Math.max(latestTime, processors[targetProcessorIndex].getEndTime());
+
+			if(latestTime < minDataReadyTime){
+				minDataReadyTime = latestTime;
+			}
 		}
 
-		return latestTime;
+		return minDataReadyTime;
 	}
 
 	// Getters and setters
@@ -178,8 +192,9 @@ public class Solution{
 		for(int i = 0; i < numProcessors; i++) {
 			data += "{PROCESSOR: "+i+"}";
 			for(Node n: processors[i].mapOfTasksAndStartTimes.keySet()) {
-				data += "|Node "+n.getId()+"| Start time:"+processors[i].mapOfTasksAndStartTimes.get(n);
+				data += "\n|Node "+n.getId()+"| Start time:"+processors[i].mapOfTasksAndStartTimes.get(n);
 			}
+			data+="\n";
 		}
 
 		return data+"";
@@ -206,7 +221,12 @@ public class Solution{
 	 * @return
 	 */
 	public double getIdleTime(){
-		return this.getTotalTime()-this.getProcessingTime();
+		double time = 0;
+		for(Processor p: this.getProcessors()){
+			time += p.getEndTime();
+		}
+		time -= getProcessingTime();
+		return time;
 	}
 
 	/**
@@ -216,8 +236,8 @@ public class Solution{
 	public double getProcessingTime(){
 		double time = 0;
 		for(Processor p: this.getProcessors()){
-			for(double tvalue: p.mapOfTasksAndStartTimes.values()){
-				time += tvalue;
+			for(Node task: p.mapOfTasksAndStartTimes.keySet()){
+				time += (double)task.getAttribute("Weight");
 			}
 		}
 		return time;
@@ -259,14 +279,17 @@ public class Solution{
 			double bottomLevel = 0;
 			for(Processor p : processors){
 				if(p.mapOfTasksAndStartTimes.containsKey(n)){
-					bottomLevel = this.taskGraph.nodesAndBottomLevels.get(n);
-					bottomLevel += p.mapOfTasksAndStartTimes.get(n);
+					bottomLevel = this.taskGraph.nodesAndBottomLevels.get(n)+p.mapOfTasksAndStartTimes.get(n);
 					bottomLevelCandidates.add(bottomLevel);
 				}
 			}
 		}
 
-		return Collections.max(bottomLevelCandidates);
+		if(bottomLevelCandidates.isEmpty()){
+			return 0;
+		} else {
+			return Collections.max(bottomLevelCandidates);
+		}
 	}
 
 	/**
@@ -277,7 +300,18 @@ public class Solution{
 		List<Double> dataReadyTimeCandidates = new ArrayList<>();
 
 		for(Node n: this.getTasksLeft()){
-			dataReadyTimeCandidates.add(this.getDataReadyTime(n)+this.taskGraph.nodesAndBottomLevels.get(n));
+			List<Edge> dependencyLinks = new ArrayList<>(n.getEnteringEdgeSet());
+
+			// Create dependency node list
+			List<Node> dependencyTasks = new ArrayList<Node>();
+			for(Edge dependency: dependencyLinks) {
+				dependencyTasks.add(dependency.getSourceNode());
+			}
+
+			if(!taskList.containsAll(dependencyTasks)) {
+				double dataReadyTime = this.getMinimumDataReadyTime(n)+this.taskGraph.nodesAndBottomLevels.get(n);
+				dataReadyTimeCandidates.add(dataReadyTime);
+			}
 		}
 
 		if(dataReadyTimeCandidates.isEmpty()){
@@ -308,11 +342,55 @@ public class Solution{
 	@Override
 	public boolean equals(Object o){
 		Solution other = (Solution)o;
-		if(other.getTaskList().containsAll(this.getTaskList())
-				&& (other.getTotalTime() == this.getTotalTime())){
-			return true;
-		} else {
+
+		PriorityQueue<Map.Entry<Node, Double>> tasksForThis = new PriorityQueue<>(100, new Comparator<Map.Entry<Node, Double>>() {
+			@Override
+			public int compare(Map.Entry<Node, Double> e1, Map.Entry<Node, Double> e2) {
+				if(e1.getValue() > e2.getValue()){
+					return 1;
+				} else if (e1.getValue() < e2.getValue()){
+					return -1;
+				} else {
+					return e1.getKey().getId().compareTo(e2.getKey().getId());
+				}
+			}
+		});
+		PriorityQueue<Map.Entry<Node, Double>> tasksForOther = new PriorityQueue<>(100, new Comparator<Map.Entry<Node, Double>>() {
+			@Override
+			public int compare(Map.Entry<Node, Double> e1, Map.Entry<Node, Double> e2) {
+				if(e1.getValue() > e2.getValue()){
+					return 1;
+				} else if (e1.getValue() < e2.getValue()){
+					return -1;
+				} else {
+					return e1.getKey().getId().compareTo(e2.getKey().getId());
+				}
+			}
+		});
+
+		// Add tasks to tasksForThis
+		for(Processor pThis: this.processors){
+			tasksForThis.addAll(pThis.mapOfTasksAndStartTimes.entrySet());
+		}
+
+		// Add tasks to tasksForOther
+		for(Processor pOther: other.processors){
+			tasksForOther.addAll(pOther.mapOfTasksAndStartTimes.entrySet());
+		}
+
+		if(tasksForThis.size() != tasksForOther.size()){
 			return false;
 		}
+
+		// Compare each entry in tasksForThis and tasksForOther
+		while(!tasksForOther.isEmpty()){
+			Map.Entry<Node, Double> thisTask = tasksForThis.remove();
+			Map.Entry<Node, Double> otherTask = tasksForOther.remove();
+
+			if(!(thisTask.getValue().equals(otherTask.getValue()) && thisTask.getKey().equals(otherTask.getKey()))){
+				return false;
+			}
+		}
+		return true;
 	}
 }

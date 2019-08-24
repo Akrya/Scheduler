@@ -7,14 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d8f6ada-435d-40b9-b38a-dd515125d7d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/TestAStarSearchSpeed.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/TestAStarSearchParallel2Processors.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/TestAStarSearchSequential2Processors.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graph/TaskGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/TaskGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/solutionfinder/AStarParallelSolutionFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/AStarParallelSolutionFinder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/solutionfinder/AStarSolutionFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/AStarSolutionFinder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/solutionfinder/data/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/data/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/TestAStarSearchParallel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestAStarSearchParallel4Processors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/TestAStarSearchSequential4Processors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestAStarSearchSequential4Processors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestAStarSearchSpeed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestAStarSearchSpeed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,6 +50,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1566535688833" />
+    <property name="ignore.virus.scanning.warn.message" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="SDKs" />
@@ -58,6 +61,7 @@
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="test" />
+      <recent name="solutionfinder.data" />
       <recent name="solutiontreecreator" />
     </key>
   </component>
@@ -73,10 +77,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestAStarSearchSpeed">
+  <component name="RunManager" selected="JUnit.TestAStarSearchParallel2Processors">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="306Project1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestAStarSearchParallel2Processors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="306Project1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.TestAStarSearchParallel2Processors" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -96,7 +115,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestAStarSearchSequential" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestAStarSearchSequential2Processors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="306Project1" />
       <extension name="coverage">
         <pattern>
@@ -105,7 +124,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.TestAStarSearchSequential" />
+      <option name="MAIN_CLASS_NAME" value="test.TestAStarSearchSequential2Processors" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -126,7 +145,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestAStarSearchSpeed" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestAStarSearchSequential4Processors.test07Nodes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="306Project1" />
       <extension name="coverage">
         <pattern>
@@ -135,8 +154,9 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.TestAStarSearchSpeed" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="test.TestAStarSearchSequential4Processors" />
+      <option name="METHOD_NAME" value="test07Nodes" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -144,16 +164,18 @@
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.TestAStarSearchParallel4Processors" />
-      <item itemvalue="JUnit.TestAStarSearchSequential" />
       <item itemvalue="JUnit.TestAStarSearchSequential4Processors" />
-      <item itemvalue="JUnit.TestAStarSearchSpeed" />
+      <item itemvalue="JUnit.TestAStarSearchSequential4Processors.test07Nodes" />
+      <item itemvalue="JUnit.TestAStarSearchSequential2Processors" />
+      <item itemvalue="JUnit.TestAStarSearchParallel2Processors" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestAStarSearchSpeed" />
+        <item itemvalue="JUnit.TestAStarSearchParallel2Processors" />
+        <item itemvalue="JUnit.TestAStarSearchSequential2Processors" />
         <item itemvalue="JUnit.TestAStarSearchParallel4Processors" />
         <item itemvalue="JUnit.TestAStarSearchSequential4Processors" />
-        <item itemvalue="JUnit.TestAStarSearchSequential" />
+        <item itemvalue="JUnit.TestAStarSearchSequential4Processors.test07Nodes" />
       </list>
     </recent_temporary>
   </component>
@@ -201,7 +223,21 @@
       <option name="project" value="LOCAL" />
       <updated>1566291484035</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Many changes &lt;See below&gt;&#10;&#10;- Added a proper heuristic, this is the one used in the 2003 paper by&#10;Oliver Sinnen.&#10;- Fixed some concurrency issues with multithreading.&#10;- Added more unit tests.">
+      <created>1566554774329</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1566554774329</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Switched to priority queue for easier sorting of heuristic values.">
+      <created>1566562001680</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1566562001680</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,6 +260,8 @@
     <MESSAGE value="Sequential A* search algorithm completed." />
     <MESSAGE value="Sequential A* search now works perfectly, addTask fixed" />
     <MESSAGE value="Parallel A* search algorithm completed." />
-    <option name="LAST_COMMIT_MESSAGE" value="Parallel A* search algorithm completed." />
+    <MESSAGE value="Many changes &lt;See below&gt;&#10;&#10;- Added a proper heuristic, this is the one used in the 2003 paper by&#10;Oliver Sinnen.&#10;- Fixed some concurrency issues with multithreading.&#10;- Added more unit tests." />
+    <MESSAGE value="Switched to priority queue for easier sorting of heuristic values." />
+    <option name="LAST_COMMIT_MESSAGE" value="Switched to priority queue for easier sorting of heuristic values." />
   </component>
 </project>

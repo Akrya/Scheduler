@@ -20,11 +20,15 @@ public class AStarSolutionFinder {
     protected final int numProcessors;
     protected TaskGraph taskGraph;
     protected int solutionsExplored;
+    protected Solution optimalSolution;
+    protected double lastExaminedHeuristic;
 
     public AStarSolutionFinder(int numProcessors, TaskGraph taskGraph) {
         this.numProcessors = numProcessors;
         this.taskGraph = taskGraph;
         solutionsExplored = 0;
+        optimalSolution = null;
+        lastExaminedHeuristic = Double.POSITIVE_INFINITY;
     }
 
     /**
@@ -45,45 +49,46 @@ public class AStarSolutionFinder {
      * Finds the optimal solution.
      */
     public Solution findOptimal() throws InterruptedException {
-        BlockingDeque<Solution> closed = new LinkedBlockingDeque<Solution>();
         Solution emptySolution = new Solution(taskGraph, numProcessors);
+
         PriorityBlockingQueue<Solution> open = new PriorityBlockingQueue<Solution>(1000, new SolutionHeuristicComparator());
+        PriorityBlockingQueue<Solution> closed = new PriorityBlockingQueue<Solution>(1000, new SolutionHeuristicComparator());
+
         open.add(emptySolution);
+
+        // Main loop
         while (!open.isEmpty()) {
             Solution s;
             synchronized (this) {
                 s = open.take();
             }
             solutionsExplored++;
-            if (s.getTasksLeft().isEmpty() && (closed.isEmpty() || s.getTotalTime() < closed.peekFirst().getTotalTime())) {
-                if(closed.peek() != null){
-                    System.out.println("Found complete solution with cost " + s.getTotalTime());
-                }
-                System.out.println("Stack size is " + open.size());
-                closed.putFirst(s);
+            if(s.getHeuristic() != this.lastExaminedHeuristic){
+                // this.printDebugData(s, open, closed);
             }
-            // Check if solution needs to be pruned
-            boolean flag1 = true;
-            if (!closed.isEmpty()) {
-                flag1 = s.getTotalTime() <= closed.peek().getTotalTime();
+            lastExaminedHeuristic = s.getHeuristic();
+
+            // If complete solution is found, return it
+            if (s.getTasksLeft().isEmpty() && (optimalSolution == null || s.getTotalTime() < optimalSolution.getTotalTime())) {
+                System.out.println("Found complete solution with cost " + s.getTotalTime());
+                System.out.println("Stack size is " + open.size());
+                optimalSolution = s;
             }
 
-            if (flag1) {
-                // Check if s is worth investigating
-                expandSolution(s, open);
+            // Expand the solution
+            if(optimalSolution == null || s.getTotalTime() < optimalSolution.getTotalTime()){
+                expandSolution(s, open, closed);
             }
         }
-
-        return closed.peek();
+        return optimalSolution;
     }
 
     /**
      * Helper function for findSolution(). Intended to be run on a seperate thread
-     *
      * @param s
      * @param open
      */
-    public void expandSolution(Solution s, PriorityBlockingQueue<Solution> open) throws InterruptedException {
+    public void expandSolution(Solution s, PriorityBlockingQueue<Solution> open, PriorityBlockingQueue<Solution> closed) throws InterruptedException {
         // System.out.println("Stack size is now "+open.size());
         // Expand s's children
         for (Node n : s.getTasksLeft()) {
@@ -93,39 +98,28 @@ public class AStarSolutionFinder {
                 // Place the child in the proper location in the open array
                 if (addSuccess) {
                     if (child != null) {
-                        insertSolutionIntoDeque(child, open);
+                        // Check if there are any duplicates in open or closed
+                        for (Solution openS : open) {
+                            if (openS.equals(s)) {
+                                // System.out.println("Found duplicate in open.");
+                                return;
+                            }
+                        }
+                        for (Solution closedS : closed) {
+                            if (closedS.equals(s)) {
+                                // System.out.println("Found duplicate in closed.");
+                                return;
+                            }
+                        }
+
+                        // System.out.println("Adding element.");
+                        // Add the child to open
+                        open.add(child);
                     }
                 }
             }
         }
-    }
-
-    /**
-     * Helper method to check if there is an equivalent solution to s in open.
-     *
-     * @param s    Solution to check for
-     * @param open Deque containing a collection of solutions
-     */
-    public static void checkEquivalent(Solution s, PriorityBlockingQueue<Solution> open) {
-        BlockingDeque<Solution> tempQueue = new LinkedBlockingDeque<Solution>();
-        tempQueue.addAll(open);
-
-        double tmax = s.getTotalTime();
-
-    }
-
-    /**
-     * Inserts a solution into a double ended queue in such a way that the heuristics are in order.
-     */
-    public void insertSolutionIntoDeque(Solution s, PriorityBlockingQueue<Solution> open) throws InterruptedException {
-        // Check if the queue has any duplicates.
-        for (Solution openS : open) {
-            if (openS.equals(s)) {
-                return;
-            }
-        }
-
-        open.add(s);
+        closed.add(s);
     }
 
     /**
@@ -145,6 +139,20 @@ public class AStarSolutionFinder {
         }
 
         System.out.println("");
+    }
+
+    /**
+     * Prints the solution data, and amount of solutions on the stack to the console.
+     */
+    public void printDebugData(Solution s, PriorityBlockingQueue<Solution> open, PriorityBlockingQueue<Solution> closed){
+        System.out.println("Open size: "+open.size()+" || Closed size: "+closed.size());
+        System.out.println("Current solution being examined: "
+                +s.getHeuristic()
+                +" IdleTime: " +s.calculateFIdleTime()
+                +" BottomLevel: "+s.calculateFBottomLevel()
+                +" DRT:" +s.calculateFDataReadyTime()+
+                " NumOfTasks:"+s.getTaskList().size());
+        System.out.println(s.stringData());
     }
 
     /**
@@ -170,15 +178,15 @@ public class AStarSolutionFinder {
         return solutionCopy;
     }
 
-    protected class SolutionHeuristicComparator implements Comparator {
+    public static class SolutionHeuristicComparator implements Comparator {
 
         @Override
         public int compare(Object o1, Object o2) {
-            Solution s1 = (Solution)o1;
-            Solution s2 = (Solution)o2;
-            if(s1.getHeuristic() < s2.getHeuristic()){
+            Solution s1 = (Solution) o1;
+            Solution s2 = (Solution) o2;
+            if (s1.getHeuristic() > s2.getHeuristic()) {
                 return 1;
-            } else if (s1.getHeuristic() > s2.getHeuristic()){
+            } else if (s1.getHeuristic() < s2.getHeuristic()) {
                 return -1;
             }
             return 0;
