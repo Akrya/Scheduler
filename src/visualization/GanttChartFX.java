@@ -16,7 +16,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import main.controller.GanttChartController;
 
-// Referred to https://stackoverflow.com/questions/27975898/gantt-chart-from-scratch
+// Referred to https://stackoverflow.com/questions/27975898/gantt-chart-from-scratch to get the custom
+// implementation of the XY Chart
 public class GanttChartFX<X,Y> extends XYChart<X,Y> {
 
     public static class ExtraData {

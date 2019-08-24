@@ -8,10 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="097e553d-3217-4489-8a05-da9ac0b59f31" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nodes_7_OutTree-output.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Nodes_7_OutTree-output.dot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/controller/GanttChartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/GanttChartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/controller/TextRectangle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/visualization/GanttChartFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualization/GanttChartFX.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -86,7 +83,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3d8f6ada-435d-40b9-b38a-dd515125d7d8" name="Default Changelist" comment="" />
+      <changelist id="097e553d-3217-4489-8a05-da9ac0b59f31" name="Default Changelist" comment="" />
       <created>1565491682221</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -100,6 +97,7 @@
       <workItem from="1566456863944" duration="8536000" />
       <workItem from="1566471144270" duration="634000" />
       <workItem from="1566516956656" duration="3202000" />
+      <workItem from="1566688760542" duration="478000" />
     </task>
     <servers />
   </component>
@@ -124,7 +122,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/visualization/GanttChartFX.java</url>
-          <line>79</line>
+          <line>80</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -139,7 +137,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/visualization/GanttChartFX.java</url>
-          <line>93</line>
+          <line>94</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
