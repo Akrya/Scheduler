@@ -17,6 +17,9 @@ public class TestGraphController {
         Nodes_7_OutTree = GraphController.defaultGraph(Nodes_7_OutTree,"Nodes_7_OutTree.dot");
     }
 
+    /**
+     * Tests that it can get the correct weight of each node.
+     */
     @Test
     public void testNodeWeight(){
         assertEquals(GraphController.getNodeWeight("0",Nodes_7_OutTree),5,0);
@@ -28,6 +31,9 @@ public class TestGraphController {
         assertEquals(GraphController.getNodeWeight("6",Nodes_7_OutTree),7,0);
     }
 
+    /**
+     *  Tests that it can get the correct weights of each edge.
+     */
     @Test
     public void testEdgeWeight(){
         assertEquals(GraphController.getEdgeWeight("0","1",Nodes_7_OutTree),15,0);
@@ -38,6 +44,9 @@ public class TestGraphController {
         assertEquals(GraphController.getEdgeWeight("1","6",Nodes_7_OutTree),21,0);
     }
 
+    /**
+     *  Tests whether changing the attribute is changed correctly.
+     */
     @Test
     public void testChangeAttribute(){
         assertEquals(GraphController.getNodeWeight("0",Nodes_7_OutTree),5,0);
