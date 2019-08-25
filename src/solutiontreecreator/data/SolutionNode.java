@@ -1,9 +1,9 @@
 package solutiontreecreator.data;
 
+import org.graphstream.graph.Node;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import org.graphstream.graph.Node;
 
 /**
  * This class represents a node in a solution tree. It contains a solution and information on parent and children nodes. 

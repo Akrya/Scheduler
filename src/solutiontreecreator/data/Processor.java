@@ -1,7 +1,8 @@
 package solutiontreecreator.data;
 
-import java.util.HashMap;
 import org.graphstream.graph.Node;
+
+import java.util.HashMap;
 
 /**
  * Class that represents a processor. This contains a set of scheduled tasks in a specific order.
