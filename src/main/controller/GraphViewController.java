@@ -30,7 +30,7 @@ public class GraphViewController {
             "text-background-color:white;" +
             "text-style:bold;" +
             "text-alignment:under;" +
-            "text-size:16px;" +
+            "text-size:30px;" +
             "}" +
             "edge {" +
             "shape: cubic-curve;" +
