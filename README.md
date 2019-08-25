@@ -1,6 +1,6 @@
 # 306Project1
 Project 1 for SOFTENG 306. Team 8.
-This project is a about using AI and parallel processing power to solve difficult scheduling problems.
+This project is about using AI and parallel processing power to solve difficult scheduling problems.
 
 ## Command Line Interface
 ````+
