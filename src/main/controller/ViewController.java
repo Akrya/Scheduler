@@ -104,6 +104,15 @@ public class ViewController implements Initializable {
     public static void stopTimer() {
         timer.stop();
     }
+    public void setPruned(int pruned){
+        solutionsPruned.setText(Integer.toString(pruned));
+    }
+    public void setExplored(int explored){
+        solutionsExplored.setText(Integer.toString(explored));
+    }
+    public void setStackSize(int stack){
+        stackSize.setText(Integer.toString(stack));
+    }
 
 }
 
