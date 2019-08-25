@@ -23,7 +23,7 @@ Optional:
 
 ## Plan
 Plan for the Project includes a Gantt Chart, Network Depenency Graph and a Work Breakdown Structure
-The files can be found in the folder ProjectManagement
+The files can be found in the directory resources/ProjectManagement
 
 ## Other Information 
 Details on the meetings, decisions and background research can be found in our GitHub Wiki
