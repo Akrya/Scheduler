@@ -7,11 +7,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fe06911-bbc5-4940-a1c1-c960dfb1b8a7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/scheduler_jar/Nodes_7_OutTree-output.dot" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/scheduler_jar/Nodes_7_OutTree-output.dot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/scheduler_jar/scheduler-final-T8.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/scheduler_jar/scheduler-final-T8.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sh.exe.stackdump" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/controller/GanttChartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/GanttChartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/controller/GraphViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/GraphViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/controller/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/ViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/solutionfinder/AStarSolutionFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/AStarSolutionFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visualization/GanttChartFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualization/GanttChartFX.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -277,8 +285,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/controller/Controller.java</url>
-          <line>89</line>
+          <line>87</line>
           <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/controller/GanttChartController.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

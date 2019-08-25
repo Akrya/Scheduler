@@ -32,7 +32,7 @@ public class AStarSolutionFinder {
     protected Solution optimalSolution;
     protected double lastExaminedHeuristic;
     protected Solution partialSolution;
-    protected int solutionsPruned;
+    protected static int solutionsPruned;
     protected int cooldown;
 
 
@@ -97,8 +97,6 @@ public class AStarSolutionFinder {
 
             // If complete solution is found, return it
             if (s.getTasksLeft().isEmpty() && (optimalSolution == null || s.getTotalTime() < optimalSolution.getTotalTime())) {
-                System.out.println("Found complete solution with cost " + s.getTotalTime());
-                System.out.println("Stack size is " + open.size());
                 optimalSolution = s;
                 Main.getController().setOptimalSolution(s);
             }
@@ -108,7 +106,7 @@ public class AStarSolutionFinder {
                 expandSolution(s, open, closed);
             }
         }
-        System.out.println("Search has finished!");
+
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -139,14 +137,12 @@ public class AStarSolutionFinder {
                         // Check if there are any duplicates in open or closed
                         for (Solution openS : open) {
                             if (openS.equals(s)) {
-                                // System.out.println("Found duplicate in open.");
                                 solutionsPruned += s.getNumberOfChildren();
                                 return;
                             }
                         }
                         for (Solution closedS : closed) {
                             if (closedS.equals(s)) {
-                                // System.out.println("Found duplicate in closed.");
                                 solutionsPruned += s.getNumberOfChildren();
                                 return;
                             }
@@ -238,4 +234,9 @@ public class AStarSolutionFinder {
             }
         }
     }
+
+    public static int getSolutionsPruned() {
+        return solutionsPruned;
+    }
+
 }

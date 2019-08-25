@@ -18,8 +18,8 @@ public class GanttChartController {
 
     private static List<String> colours = new ArrayList<>(
             Arrays.asList("status-red", "status-blue", "status-green", "status-orange", "status-darkGreen"));
-    private static String currentColour = null;
-    private static String previousColour = null;
+    private static String currentColour = "";
+    private static String previousColour = "";
 
     final static NumberAxis xAxis = new NumberAxis();
     final static CategoryAxis yAxis = new CategoryAxis();
@@ -35,7 +35,7 @@ public class GanttChartController {
      * randomised.
      */
     public static void initialiseChart() {
-        System.out.println("Gantt chart controller initialized!");
+
         Processor[] processors = Main.getController().getOptimalSolution().getProcessors();
         ObservableList<String> processorTitle = FXCollections.observableArrayList();
         List<XYChart.Series> seriesList = new ArrayList<>();
@@ -57,19 +57,36 @@ public class GanttChartController {
         ganttChart.setLegendVisible(false);
         ganttChart.setBlockHeight(50);
 
+        Random rand = new Random();
+        int randomColour;
+
         for (int i = 0; i < processors.length; i++) {
             XYChart.Series newSeries = new XYChart.Series();
-            for (Node n: processors[i].mapOfTasksAndStartTimes.keySet()) {
-                if (currentColour == null) {
-                    Random rand = new Random();
-                    int randomColour = rand.nextInt((colours.size() - 1));
+            
+            List<Node> nodes = new ArrayList<>(processors[i].mapOfTasksAndStartTimes.keySet());
+            Node tempNode;
+
+            for (int j = 0; j < nodes.size(); j++) {
+                for (int k = 1; k < (nodes.size()-j); k++) {
+                    if (processors[i].mapOfTasksAndStartTimes.get(nodes.get(k-1)) > processors[i].mapOfTasksAndStartTimes.get(nodes.get(k))) {
+                        tempNode = nodes.get(k-1);
+                        nodes.set(k-1, nodes.get(k));
+                        nodes.set(k, tempNode);
+                    }
+                }
+            }
+
+            for (Node n: nodes) {
+
+                if (currentColour.isEmpty()) {
+                    randomColour = rand.nextInt(colours.size() - 1);
                     currentColour = colours.get(randomColour);
                 } else {
-                    Random rand = new Random();
-                    int randomColour = rand.nextInt((colours.size() - 1));
+                    randomColour = rand.nextInt(colours.size() - 1);
                     currentColour = colours.get(randomColour);
                     colours.add(previousColour);
                 }
+
 
                 newSeries.getData().add(new XYChart.Data(processors[i].mapOfTasksAndStartTimes.get(n),
                         processorTitle.get(i), new GanttChartFX.ExtraData(GraphController.getNodeWeight(n.getId(),
@@ -78,7 +95,8 @@ public class GanttChartController {
                 newSeries.setName(n.getId());
 
                 previousColour = currentColour;
-                colours.remove(currentColour);
+                colours.remove(previousColour);
+
             }
             seriesList.add(newSeries);
         }

@@ -47,8 +47,6 @@ public class ViewController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("View controller initialized!");
-        // graphPane = new Pane();
 
         graphPane.toFront();
         graphPane.setMinSize(graphPane.getPrefWidth(),graphPane.getPrefWidth());

@@ -107,8 +107,6 @@ public class GraphViewController {
                 }
             }
         } catch (Exception e){
-            System.out.println("EXCEPTION!!!");
-            System.out.println(solution.stringData());
             e.printStackTrace();
         }
 

@@ -56,7 +56,6 @@ public class Controller {
             public void run() {
                 inputGraph.setUpBottomLevels();
 
-                System.out.println("Starting to find solution");
                 if (inputGraph != null) {
                     if (numOfCores != 1) {
                         AStarParallelSolutionFinder solutionFinder = new AStarParallelSolutionFinder(numOfProcessors, inputGraph, numOfCores);
@@ -76,7 +75,6 @@ public class Controller {
                         }
                     }
 
-                    System.out.println(optimalSolution.stringData());
                 }
             }
         });
@@ -88,7 +86,7 @@ public class Controller {
         if (isVisualizeSearch()) {
             writeOutputFile();
             viewController.finish();
-            ViewController.getGraphViewController().setGraphColours(ViewController.getGraphViewController().getGraph(), optimalSolution);
+            viewController.getGraphViewController().setGraphColours(ViewController.getGraphViewController().getGraph(), optimalSolution);
             GanttChartController.initialiseChart();
 
         } else {

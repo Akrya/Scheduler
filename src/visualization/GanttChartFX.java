@@ -14,7 +14,8 @@ import java.util.Iterator;
 import java.util.List;
 
 // Referred to https://stackoverflow.com/questions/27975898/gantt-chart-from-scratch to get the custom
-// implementation of the XY Chart
+// implementation of the XY Chart. Added fields and methods to the custom class to get the text that needs
+// to be displayed onto the rectangles
 public class GanttChartFX<X,Y> extends XYChart<X,Y> {
 
     public static class ExtraData {
@@ -22,7 +23,6 @@ public class GanttChartFX<X,Y> extends XYChart<X,Y> {
         public double length;
         public String styleClass;
         public String text;
-
 
         public ExtraData(double lengthMs, String styleClass, String text) {
             super();
