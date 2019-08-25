@@ -1,12 +1,14 @@
 package main.controller;
 
 import javafx.animation.AnimationTimer;
+import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import org.graphstream.ui.swingViewer.ViewPanel;
 import visualization.GanttChartFX;
 
 import java.net.URL;
@@ -30,7 +32,15 @@ public class ViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+//        graphPane = new Pane();
         graphPane.toFront();
+        graphPane.setMinSize(graphPane.getPrefWidth(),graphPane.getPrefWidth());
+        GraphViewController graphView = new GraphViewController();
+        SwingNode view = graphView.viewGraph();
+        view.resize(750,600);
+        graphPane.getChildren().add(view);
+
+
         GanttChartFX chart = GanttChartController.getGanttChart();
         chart.setMinSize(chartPane.getPrefWidth(),chartPane.getPrefHeight());
         chartPane.getChildren().add(chart);
