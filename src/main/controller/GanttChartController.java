@@ -34,14 +34,6 @@ public class GanttChartController {
     private GanttChartController() {
     }
 
-//    /**
-//     * The singleton of this class is returned
-//     * @return
-//     */
-//    public static GanttChartController getInstance() {
-//        return ourInstance;
-//    }
-
     /**
      * Initialises the chart that needs to be displayed. The values for the blocks are taken
      * from the final solution that is found by the solution finder. The colours for the boxes are also

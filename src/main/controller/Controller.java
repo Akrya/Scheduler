@@ -58,6 +58,7 @@ public class Controller {
 
         File outputFile = new File(outputFileName);
 
+        // Deletes an existing dot file with the same file name if there exists
         if (outputFile.exists()) {
             outputFile.delete();
         }

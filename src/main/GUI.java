@@ -10,8 +10,6 @@ public class GUI extends Application {
     private static final String MAIN_MENU_SCENE = "/views/Main.fxml";
     private static final String APPLICATION_TITLE = "Scheduler";
 
-
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         Main.getController().startGanttVisualise();

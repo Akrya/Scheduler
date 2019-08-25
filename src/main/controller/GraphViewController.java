@@ -3,7 +3,6 @@ package main.controller;
 import graph.GraphController;
 import javafx.embed.swing.SwingNode;
 import main.Main;
-
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.DefaultGraph;

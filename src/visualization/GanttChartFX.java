@@ -1,7 +1,4 @@
 package visualization;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 import javafx.beans.NamedArg;
 import javafx.collections.FXCollections;
@@ -11,6 +8,10 @@ import javafx.scene.chart.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import main.controller.GanttChartController;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 // Referred to https://stackoverflow.com/questions/27975898/gantt-chart-from-scratch to get the custom
 // implementation of the XY Chart
