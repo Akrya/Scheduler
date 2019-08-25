@@ -6,7 +6,13 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="097e553d-3217-4489-8a05-da9ac0b59f31" name="Default Changelist" comment="" />
+    <list default="true" id="097e553d-3217-4489-8a05-da9ac0b59f31" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Nodes_7_OutTree-output.dot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/mainstyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/mainstyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/controller/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/ViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
