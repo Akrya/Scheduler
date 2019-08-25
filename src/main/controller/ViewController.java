@@ -1,6 +1,7 @@
 package main.controller;
 
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import main.Main;
 import visualization.GanttChartFX;
 
 import java.net.URL;
@@ -29,17 +31,21 @@ public class ViewController implements Initializable {
     private static HashMap<String, Double> textX;
     private static HashMap<String, Double> textY;
 
+    private static GraphViewController graphView = new GraphViewController();
+
+    private static AnimationTimer timer;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
 //        graphPane = new Pane();
         graphPane.toFront();
         graphPane.setMinSize(graphPane.getPrefWidth(),graphPane.getPrefWidth());
-        GraphViewController graphView = new GraphViewController();
+        graphView.setProcessorColours(Main.getController().getNumOfProcessors());
         SwingNode view = graphView.viewGraph();
         view.setStyle("-fx-background-color:rgba(0,0,0,0.5)");
         view.resize(750,600);
         graphPane.getChildren().add(view);
-
 
         GanttChartFX chart = GanttChartController.getGanttChart();
         chart.setMinSize(chartPane.getPrefWidth(),chartPane.getPrefHeight());
@@ -47,7 +53,7 @@ public class ViewController implements Initializable {
         double startTime = System.currentTimeMillis();
         DecimalFormat f = new DecimalFormat("##.00");
 
-        AnimationTimer timer = new AnimationTimer() {
+        timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 double elapsedMillis = System.currentTimeMillis() - startTime;
@@ -75,6 +81,14 @@ public class ViewController implements Initializable {
             l.setLayoutY(textY.get(s)+30);
             chartPane.getChildren().add(l);
         }
+    }
+
+    public static GraphViewController getGraphViewController() {
+        return graphView;
+    }
+
+    public static void stopTimer() {
+        timer.stop();
     }
 
 }

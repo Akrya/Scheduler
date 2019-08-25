@@ -7,31 +7,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d8f6ada-435d-40b9-b38a-dd515125d7d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Nodes_7_OutTree-output.dot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Nodes_7_OutTree.dot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/scheduler_jar/Nodes_7_OutTree-output.dot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/scheduler_jar/Nodes_7_OutTree.dot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/ganttchart.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/mainstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Main.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/GUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/controller/GanttChartController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/controller/GraphViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/controller/ViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/Graph/TestGraphController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/visualization/GanttChartFX.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/306Project1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/scheduler_jar/scheduler-basic-T8.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/scheduler_jar/scheduler-basic-T8.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nodes_7_OutTree-output.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Nodes_7_OutTree-output.dot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/scheduler_jar/Nodes_7_OutTree-output.dot" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/scheduler_jar/Nodes_7_OutTree-output.dot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/scheduler_jar/scheduler-basic-T8.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graph/GraphController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/GraphController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graph/TaskGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/TaskGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/controller/GanttChartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/GanttChartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/controller/GraphViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/GraphViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/controller/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/ViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/solutionfinder/AStarParallelSolutionFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/AStarParallelSolutionFinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/solutionfinder/AStarSolutionFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/AStarSolutionFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestAStarSearchParallel2Processors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestAStarSearchParallel2Processors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestAStarSearchParallel4Processors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestAStarSearchParallel4Processors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestAStarSearchSpeed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestAStarSearchSpeed.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" afterDir="false" />
     </list>
@@ -70,7 +62,7 @@
     <property name="ignore.virus.scanning.warn.message" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -94,10 +86,11 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestAStarSearchParallel2Processors">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="306Project1" />
+      <option name="PROGRAM_PARAMETERS" value="2" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -188,8 +181,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestAStarSearchParallel2Processors" />
         <item itemvalue="JUnit.TestAStarSearchSequential2Processors" />
+        <item itemvalue="JUnit.TestAStarSearchParallel2Processors" />
         <item itemvalue="JUnit.TestAStarSearchParallel4Processors" />
         <item itemvalue="JUnit.TestAStarSearchSequential4Processors" />
         <item itemvalue="JUnit.TestAStarSearchSequential4Processors.test07Nodes" />
@@ -280,5 +273,16 @@
     <MESSAGE value="Many changes &lt;See below&gt;&#10;&#10;- Added a proper heuristic, this is the one used in the 2003 paper by&#10;Oliver Sinnen.&#10;- Fixed some concurrency issues with multithreading.&#10;- Added more unit tests." />
     <MESSAGE value="Switched to priority queue for easier sorting of heuristic values." />
     <option name="LAST_COMMIT_MESSAGE" value="Switched to priority queue for easier sorting of heuristic values." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/Main.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
