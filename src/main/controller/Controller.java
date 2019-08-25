@@ -78,7 +78,6 @@ public class Controller {
             if (visualizeSearch) {
                 writeOutputFile();
                 ViewController.getGraphViewController().setGraphColours(ViewController.getGraphViewController().getGraph());
-                ViewController.stopTimer();
                 GanttChartController.initialiseChart();
             } else {
                 writeOutputFile();

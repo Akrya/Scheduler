@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import main.Main;
@@ -27,6 +28,8 @@ public class ViewController implements Initializable {
     Button graphButton, chartButton;
     @FXML
     Label timeElapsed, solutionsPruned, solutionsExplored, stackSize;
+    @FXML
+    ProgressIndicator progressSpin;
 
     private static HashMap<String, Double> textX;
     private static HashMap<String, Double> textY;
@@ -45,13 +48,10 @@ public class ViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-//        graphPane = new Pane();
         graphPane.toFront();
         graphPane.setMinSize(graphPane.getPrefWidth(),graphPane.getPrefWidth());
         graphView.setProcessorColours(Main.getController().getNumOfProcessors());
         SwingNode view = graphView.viewGraph();
-        view.setStyle("-fx-background-color:rgba(0,0,0,0.5)");
-        view.resize(750,600);
         graphPane.getChildren().add(view);
 
         GanttChartFX chart = GanttChartController.getGanttChart();
@@ -102,8 +102,9 @@ public class ViewController implements Initializable {
         return graphView;
     }
 
-    public static void stopTimer() {
+    public void finish() {
         timer.stop();
+        progressSpin.setProgress(100);
     }
     public void setPruned(int pruned){
         solutionsPruned.setText(Integer.toString(pruned));

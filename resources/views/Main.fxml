@@ -30,7 +30,7 @@
                   </AnchorPane>
                   <Button fx:id="graphButton" layoutX="37.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#graphButtonClick" text="Graph" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0" />
                   <Button fx:id="chartButton" layoutX="37.0" layoutY="111.0" mnemonicParsing="false" onMouseClicked="#chartButtonClick" text="Chart" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="90.0" />
-                  <ProgressIndicator fx:id="progressSpin" layoutX="10.0" layoutY="155.0" minHeight="-Infinity" prefHeight="100.0" prefWidth="100.0" progress="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+                  <ProgressIndicator fx:id="progressSpin" layoutX="10.0" layoutY="155.0" minHeight="-Infinity" prefHeight="100.0" prefWidth="100.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="275.0" text="Time Elapsed" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="16.0">
                      <font>
                         <Font size="14.0" />
@@ -43,8 +43,8 @@
          <center>
             <AnchorPane prefHeight="400.0" prefWidth="462.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="chartPane" prefHeight="600.0" prefWidth="750.0" styleClass="graphpane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <AnchorPane fx:id="graphPane" prefHeight="200.0" prefWidth="200.0" styleClass="chartpane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <AnchorPane fx:id="chartPane" prefHeight="600.0" prefWidth="750.0" styleClass="graphpane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
          </center>
