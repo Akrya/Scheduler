@@ -82,34 +82,25 @@ public class AStarSolutionFinder {
             partialSolution = s;
             lastExaminedHeuristic = s.getHeuristic();
 
-            Main.getController().setPartialSolution(s);
+            Main.getController().setOptimalSolution(s);
+            Main.getController().setSolution(s);
 
-            Thread thread = new Thread(new Runnable() {
+            Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
-                    ViewController.getGraphViewController().setProcessorColours(numProcessors);
-                    ViewController.getGraphViewController().setGraphColours(ViewController.getGraphViewController().getGraph());
-                    ViewController.getGraphViewController().viewGraph();
+                    Main.getGUI().getViewController().getGraphViewController()
+                            .setProcessorColours(numProcessors);
+                    Main.getGUI().getViewController().getGraphViewController()
+                            .setGraphColours(ViewController.getGraphViewController().getGraph(), partialSolution);
                 }
             });
-            if(Main.getController().isVisualizeSearch()){
-                if(thread.isAlive()){
-                    thread.join();
-                } else {
-                    if(cooldown >= 5){
-                        cooldown = 0;
-                        thread.start();
-                    } else {
-                        cooldown++;
-                    }
-                }
-            }
 
             // If complete solution is found, return it
             if (s.getTasksLeft().isEmpty() && (optimalSolution == null || s.getTotalTime() < optimalSolution.getTotalTime())) {
                 System.out.println("Found complete solution with cost " + s.getTotalTime());
                 System.out.println("Stack size is " + open.size());
                 optimalSolution = s;
+                Main.getController().setOptimalSolution(s);
             }
 
             // Expand the solution
@@ -118,6 +109,13 @@ public class AStarSolutionFinder {
             }
         }
         System.out.println("Search has finished!");
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Main.getController().setOptimalSolution(optimalSolution);
+                Main.getController().finalize();
+            }
+        });
         return optimalSolution;
     }
 

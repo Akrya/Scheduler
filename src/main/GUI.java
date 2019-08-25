@@ -13,24 +13,24 @@ public class GUI extends Application {
     private static final String MAIN_MENU_SCENE = "/views/Main.fxml";
     private static final String APPLICATION_TITLE = "Scheduler";
     private static Stage stage;
+    private ViewController viewController;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
-//        Main.getController().startGanttVisualise();
+        // Main.getController().startGanttVisualise();
         stage = primaryStage;
 
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(MAIN_MENU_SCENE));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(MAIN_MENU_SCENE));
         Parent root = loader.load();
-        ViewController vcontroller = loader.getController();
+        viewController = loader.getController();
+
         // show application
         primaryStage.setTitle(APPLICATION_TITLE);
         primaryStage.setScene(new Scene(root, 940, 590));
         primaryStage.setResizable(false);
         primaryStage.show();
-        Main.getController().startSolutionFind();
-        vcontroller.finish();
 
-        Main.getController().initialiseSolutionFind();
+        Main.getController().startSolutionFind();
 
         // close the process when closing the window.
         primaryStage.setOnCloseRequest(e -> {
@@ -41,5 +41,9 @@ public class GUI extends Application {
 
     public static void launchApplication(String args[]) {
         launch(args);
+    }
+
+    public ViewController getViewController(){
+        return viewController;
     }
 }

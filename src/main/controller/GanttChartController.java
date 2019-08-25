@@ -32,6 +32,7 @@ public class GanttChartController {
     private static HashMap<String, Double> textY = new HashMap<>();
 
     private GanttChartController() {
+
     }
 
     /**
@@ -41,7 +42,7 @@ public class GanttChartController {
      */
     public static void initialiseChart() {
         System.out.println("Gantt chart controller initialized!");
-        Processor[] processors = Main.getController().getSolution().getProcessors();
+        Processor[] processors = Main.getController().getOptimalSolution().getProcessors();
         ObservableList<String> processorTitle = FXCollections.observableArrayList();
         List<XYChart.Series> seriesList = new ArrayList<>();
 

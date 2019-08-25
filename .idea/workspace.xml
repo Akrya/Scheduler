@@ -10,9 +10,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Main.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/controller/GanttChartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/GanttChartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/controller/GraphViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/GraphViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/controller/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/ViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/solutionfinder/AStarSolutionFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/AStarSolutionFinder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,6 +25,11 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/306Project1$TestAStarSearchParallel2Processors.ic" NAME="TestAStarSearchParallel2Processors Coverage Results" MODIFIED="1566701391812" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>test.*</FILTER>
+    </SUITE>
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-738283407">
@@ -48,14 +58,61 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-19516803">
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="1806" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="1806" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="dot" value="2" />
+          <entry key="fxml" value="1" />
+          <entry key="java" value="6" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="6" />
+          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="XML" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.18" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/TestAStarSearchParallel2Processors.java">
+        <entry file="file://$PROJECT_DIR$/src/main/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="104" selection-start-line="23" selection-start-column="104" selection-end-line="23" selection-end-column="104" />
+            <state relative-caret-position="262">
+              <caret line="85" column="42" lean-forward="true" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#10303#10304#0" expanded="true" />
+                <element signature="e#10351#10352#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/controller/GraphViewController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1615">
+              <caret line="109" column="47" selection-start-line="109" selection-start-column="47" selection-end-line="109" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,69 +121,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/solutionfinder/AStarParallelSolutionFinder.java">
+        <entry file="file://$PROJECT_DIR$/src/main/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="35">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/TestAStarSearchParallel4Processors.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="79" column="40" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/TestAStarSearchSpeed.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="46" column="105" selection-start-line="46" selection-start-column="105" selection-end-line="46" selection-end-column="105" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/graph/GraphController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/mainstyle.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="42" column="39" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/controller/ViewController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="104" column="11" selection-start-line="104" selection-start-column="11" selection-end-line="104" selection-end-column="11" />
-              <folding>
-                <element signature="e#1939#2198#0" expanded="true" />
-                <element signature="e#2197#2198#0" expanded="true" />
-                <element signature="e#2445#2446#0" expanded="true" />
-                <element signature="e#2480#2481#0" expanded="true" />
-                <element signature="e#3217#3218#0" expanded="true" />
-                <element signature="e#3249#3250#0" expanded="true" />
-                <element signature="e#3345#3346#0" expanded="true" />
-                <element signature="e#3410#3411#0" expanded="true" />
-                <element signature="e#3453#3454#0" expanded="true" />
-                <element signature="e#3520#3521#0" expanded="true" />
-                <element signature="e#3561#3562#0" expanded="true" />
-                <element signature="e#3625#3626#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="272">
+              <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -134,63 +132,68 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+            <state relative-caret-position="289">
+              <caret line="17" selection-start-line="17" selection-end-line="17" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/GUI.java">
+        <entry file="file://$PROJECT_DIR$/src/solutionfinder/AStarParallelSolutionFinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+            <state relative-caret-position="584">
+              <caret line="64" column="9" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/solutionfinder/AStarSolutionFinder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="115" column="29" lean-forward="true" selection-start-line="115" selection-start-column="29" selection-end-line="115" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Nodes_7_OutTree.dot">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/controller/GanttChartController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="680">
+              <caret line="52" column="31" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
               <folding>
-                <element signature="e#1199#1200#0" expanded="true" />
-                <element signature="e#1227#1228#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/graph/GraphController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/controller/Controller.java">
+        <entry file="file://$PROJECT_DIR$/src/main/controller/ViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="79" column="124" selection-start-line="79" selection-start-column="124" selection-end-line="79" selection-end-column="124" />
+            <state relative-caret-position="-643">
+              <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
               <folding>
-                <element signature="e#8474#8475#0" expanded="true" />
-                <element signature="e#8528#8529#0" expanded="true" />
-                <element signature="e#9481#9482#0" expanded="true" />
-                <element signature="e#9515#9516#0" expanded="true" />
-                <element signature="e#9573#9574#0" expanded="true" />
-                <element signature="e#9621#9622#0" expanded="true" />
-                <element signature="e#9660#9661#0" expanded="true" />
-                <element signature="e#9698#9699#0" expanded="true" />
-                <element signature="e#9757#9758#0" expanded="true" />
-                <element signature="e#9811#9812#0" expanded="true" />
-                <element signature="e#9845#9846#0" expanded="true" />
-                <element signature="e#9878#9879#0" expanded="true" />
-                <element signature="e#9927#9928#0" expanded="true" />
-                <element signature="e#9971#9972#0" expanded="true" />
-                <element signature="e#10013#10014#0" expanded="true" />
-                <element signature="e#10051#10052#0" expanded="true" />
-                <element signature="e#10114#10115#0" expanded="true" />
-                <element signature="e#10168#10169#0" expanded="true" />
-                <element signature="e#10209#10210#0" expanded="true" />
-                <element signature="e#10246#10247#0" expanded="true" />
-                <element signature="e#10306#10307#0" expanded="true" />
-                <element signature="e#10358#10359#0" expanded="true" />
-                <element signature="e#10395#10396#0" expanded="true" />
-                <element signature="e#10426#10427#0" expanded="true" />
-                <element signature="e#10461#10462#0" expanded="true" />
-                <element signature="e#10494#10495#0" expanded="true" />
-                <element signature="e#10530#10531#0" expanded="true" />
-                <element signature="e#10562#10563#0" expanded="true" />
-                <element signature="e#10626#10627#0" expanded="true" />
-                <element signature="e#10680#10681#0" expanded="true" />
-                <element signature="e#10724#10725#0" expanded="true" />
-                <element signature="e#10762#10763#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#3426#3427#0" expanded="true" />
+                <element signature="e#3454#3455#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -208,6 +211,11 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>stopt</find>
+      <find>startga</find>
+      <find>ViewController</find>
+      <find>v</find>
+      <find>solution</find>
+      <find>finalize</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -226,16 +234,19 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/controller/GraphViewController.java" />
-        <option value="$PROJECT_DIR$/src/main/controller/GanttChartController.java" />
         <option value="$PROJECT_DIR$/src/test/TestAStarSearchParallel2Processors.java" />
         <option value="$PROJECT_DIR$/src/test/TestAStarSearchParallel4Processors.java" />
         <option value="$PROJECT_DIR$/src/test/TestAStarSearchSpeed.java" />
         <option value="$PROJECT_DIR$/src/graph/GraphController.java" />
         <option value="$PROJECT_DIR$/resources/mainstyle.css" />
+        <option value="$PROJECT_DIR$/resources/views/Main.fxml" />
+        <option value="$PROJECT_DIR$/src/main/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/controller/GraphViewController.java" />
+        <option value="$PROJECT_DIR$/src/main/controller/GanttChartController.java" />
         <option value="$PROJECT_DIR$/src/main/GUI.java" />
-        <option value="$PROJECT_DIR$/src/main/controller/ViewController.java" />
+        <option value="$PROJECT_DIR$/src/solutionfinder/AStarSolutionFinder.java" />
         <option value="$PROJECT_DIR$/src/main/controller/Controller.java" />
+        <option value="$PROJECT_DIR$/src/main/controller/ViewController.java" />
       </list>
     </option>
   </component>
@@ -251,10 +262,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-42" />
-    <option name="y" value="-14" />
-    <option name="width" value="1364" />
-    <option name="height" value="766" />
+    <option name="x" value="145" />
+    <option name="width" value="1615" />
+    <option name="height" value="880" />
   </component>
   <component name="ProjectId" id="1PGDkKvt555FUVWy6NCWdJsN1va" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -263,6 +273,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -279,12 +290,24 @@
               <item name="306Project1" type="b2602c69:ProjectViewProjectNode" />
               <item name="306Project1" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="graphfiles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="306Project1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="306Project1" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="306Project1" type="b2602c69:ProjectViewProjectNode" />
               <item name="306Project1" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="306Project1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="306Project1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="graph" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="306Project1" type="b2602c69:ProjectViewProjectNode" />
@@ -318,10 +341,17 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="306Project1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="306Project1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="visualization" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -349,15 +379,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1566713182884" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1566720151159" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -371,6 +399,9 @@
       <recent name="test" />
       <recent name="solutionfinder.data" />
       <recent name="solutiontreecreator" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Terence\IdeaProjects\306Project1" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -389,7 +420,7 @@
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="306Project1" />
-      <option name="PROGRAM_PARAMETERS" value="Nodes_9_SeriesParallel.dot 2 -v" />
+      <option name="PROGRAM_PARAMETERS" value="Nodes_9_SeriesParallel.dot 4 -v" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -542,7 +573,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566562001680</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Merge branch 'finalMilestone' of https://github.com/DeshmukhChinmay/306Project1 into finalMilestone&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Nodes_7_OutTree-output.dot&#10;#&#9;src/main/GUI.java&#10;#&#9;src/main/Main.java&#10;#&#9;src/main/controller/Controller.java&#10;#&#9;src/main/controller/GraphViewController.java&#10;#&#9;src/main/controller/ViewController.java&#10;#&#9;src/solutionfinder/AStarSolutionFinder.java&#10;#&#9;src/test/TestAStarSearchParallel2Processors.java&#10;#&#9;src/test/TestAStarSearchParallel4Processors.java&#10;#&#9;src/test/TestAStarSearchSpeed.java&#10;#&#9;target/classes/main/Main.class&#10;#&#9;target/classes/main/controller/Controller.class">
+      <created>1566720002227</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1566720002227</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -554,10 +592,10 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21558245" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16510066" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -565,8 +603,8 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32923076" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.24923077" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32907802" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.20425531" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -574,7 +612,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32923076" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" weight="0.32923076" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3276923" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32765958" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -582,7 +620,7 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Maven Projects" order="7" visible="true" weight="0.18305598" />
+      <window_info anchor="right" id="Maven Projects" order="7" sideWeight="0.4992908" visible="true" weight="0.16174497" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
@@ -635,43 +673,33 @@
       </map>
     </option>
   </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Sequential A* search algorithm completed." />
     <MESSAGE value="Sequential A* search now works perfectly, addTask fixed" />
     <MESSAGE value="Parallel A* search algorithm completed." />
     <MESSAGE value="Many changes &lt;See below&gt;&#10;&#10;- Added a proper heuristic, this is the one used in the 2003 paper by&#10;Oliver Sinnen.&#10;- Fixed some concurrency issues with multithreading.&#10;- Added more unit tests." />
     <MESSAGE value="Switched to priority queue for easier sorting of heuristic values." />
-    <option name="LAST_COMMIT_MESSAGE" value="Switched to priority queue for easier sorting of heuristic values." />
+    <MESSAGE value="Merge branch 'finalMilestone' of https://github.com/DeshmukhChinmay/306Project1 into finalMilestone&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Nodes_7_OutTree-output.dot&#10;#&#9;src/main/GUI.java&#10;#&#9;src/main/Main.java&#10;#&#9;src/main/controller/Controller.java&#10;#&#9;src/main/controller/GraphViewController.java&#10;#&#9;src/main/controller/ViewController.java&#10;#&#9;src/solutionfinder/AStarSolutionFinder.java&#10;#&#9;src/test/TestAStarSearchParallel2Processors.java&#10;#&#9;src/test/TestAStarSearchParallel4Processors.java&#10;#&#9;src/test/TestAStarSearchSpeed.java&#10;#&#9;target/classes/main/Main.class&#10;#&#9;target/classes/main/controller/Controller.class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'finalMilestone' of https://github.com/DeshmukhChinmay/306Project1 into finalMilestone&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Nodes_7_OutTree-output.dot&#10;#&#9;src/main/GUI.java&#10;#&#9;src/main/Main.java&#10;#&#9;src/main/controller/Controller.java&#10;#&#9;src/main/controller/GraphViewController.java&#10;#&#9;src/main/controller/ViewController.java&#10;#&#9;src/solutionfinder/AStarSolutionFinder.java&#10;#&#9;src/test/TestAStarSearchParallel2Processors.java&#10;#&#9;src/test/TestAStarSearchParallel4Processors.java&#10;#&#9;src/test/TestAStarSearchSpeed.java&#10;#&#9;target/classes/main/Main.class&#10;#&#9;target/classes/main/controller/Controller.class" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/controller/GanttChartController.java</url>
+          <line>42</line>
+          <properties class="main.controller.GanttChartController" method="initialiseChart">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/solutionfinder/data/Solution.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-806">
-          <caret line="255" column="41" selection-start-line="255" selection-start-column="41" selection-end-line="255" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/controller/GraphViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/controller/GanttChartController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="21" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/solutionfinder/AStarParallelSolutionFinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/TestAStarSearchParallel2Processors.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -710,13 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/mainstyle.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
@@ -724,82 +745,108 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/controller/ViewController.java">
+    <entry file="file://$PROJECT_DIR$/resources/views/Main.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="104" column="11" selection-start-line="104" selection-start-column="11" selection-end-line="104" selection-end-column="11" />
+        <state relative-caret-position="740">
+          <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/solutionfinder/data/Solution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1869">
+          <caret line="259" selection-start-line="259" selection-end-line="259" />
           <folding>
-            <element signature="e#1939#2198#0" expanded="true" />
-            <element signature="e#2197#2198#0" expanded="true" />
-            <element signature="e#2445#2446#0" expanded="true" />
-            <element signature="e#2480#2481#0" expanded="true" />
-            <element signature="e#3217#3218#0" expanded="true" />
-            <element signature="e#3249#3250#0" expanded="true" />
-            <element signature="e#3345#3346#0" expanded="true" />
-            <element signature="e#3410#3411#0" expanded="true" />
-            <element signature="e#3453#3454#0" expanded="true" />
-            <element signature="e#3520#3521#0" expanded="true" />
-            <element signature="e#3561#3562#0" expanded="true" />
-            <element signature="e#3625#3626#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nodes_9_SeriesParallel.dot">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/controller/GraphViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1615">
+          <caret line="109" column="47" selection-start-line="109" selection-start-column="47" selection-end-line="109" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" selection-start-line="17" selection-end-line="17" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nodes_7_OutTree.dot">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/controller/GanttChartController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="52" column="31" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/graph/GraphController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+        <state relative-caret-position="17">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/GUI.java">
+    <entry file="file://$PROJECT_DIR$/src/solutionfinder/AStarParallelSolutionFinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
-          <folding>
-            <element signature="e#1199#1200#0" expanded="true" />
-            <element signature="e#1227#1228#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="584">
+          <caret line="64" column="9" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/solutionfinder/AStarSolutionFinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="115" column="29" lean-forward="true" selection-start-line="115" selection-start-column="29" selection-end-line="115" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="79" column="124" selection-start-line="79" selection-start-column="124" selection-end-line="79" selection-end-column="124" />
+        <state relative-caret-position="262">
+          <caret line="85" column="42" lean-forward="true" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
           <folding>
-            <element signature="e#8474#8475#0" expanded="true" />
-            <element signature="e#8528#8529#0" expanded="true" />
-            <element signature="e#9481#9482#0" expanded="true" />
-            <element signature="e#9515#9516#0" expanded="true" />
-            <element signature="e#9573#9574#0" expanded="true" />
-            <element signature="e#9621#9622#0" expanded="true" />
-            <element signature="e#9660#9661#0" expanded="true" />
-            <element signature="e#9698#9699#0" expanded="true" />
-            <element signature="e#9757#9758#0" expanded="true" />
-            <element signature="e#9811#9812#0" expanded="true" />
-            <element signature="e#9845#9846#0" expanded="true" />
-            <element signature="e#9878#9879#0" expanded="true" />
-            <element signature="e#9927#9928#0" expanded="true" />
-            <element signature="e#9971#9972#0" expanded="true" />
-            <element signature="e#10013#10014#0" expanded="true" />
-            <element signature="e#10051#10052#0" expanded="true" />
-            <element signature="e#10114#10115#0" expanded="true" />
-            <element signature="e#10168#10169#0" expanded="true" />
-            <element signature="e#10209#10210#0" expanded="true" />
-            <element signature="e#10246#10247#0" expanded="true" />
-            <element signature="e#10306#10307#0" expanded="true" />
-            <element signature="e#10358#10359#0" expanded="true" />
-            <element signature="e#10395#10396#0" expanded="true" />
-            <element signature="e#10426#10427#0" expanded="true" />
-            <element signature="e#10461#10462#0" expanded="true" />
-            <element signature="e#10494#10495#0" expanded="true" />
-            <element signature="e#10530#10531#0" expanded="true" />
-            <element signature="e#10562#10563#0" expanded="true" />
-            <element signature="e#10626#10627#0" expanded="true" />
-            <element signature="e#10680#10681#0" expanded="true" />
-            <element signature="e#10724#10725#0" expanded="true" />
-            <element signature="e#10762#10763#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#10303#10304#0" expanded="true" />
+            <element signature="e#10351#10352#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/controller/ViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-643">
+          <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3426#3427#0" expanded="true" />
+            <element signature="e#3454#3455#0" expanded="true" />
           </folding>
         </state>
       </provider>
