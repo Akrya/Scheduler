@@ -1,6 +1,7 @@
 package main;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,6 +24,12 @@ public class GUI extends Application {
         primaryStage.setTitle(APPLICATION_TITLE);
         primaryStage.setScene(new Scene(root, 900, 600));
         primaryStage.show();
+
+        // close the process when closing the window.
+        primaryStage.setOnCloseRequest(e -> {
+            Platform.exit();
+            System.exit(0);
+        });
     }
 
     public static void launchApplication(String args[]) {
