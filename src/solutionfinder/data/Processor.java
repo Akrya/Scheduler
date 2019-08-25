@@ -1,14 +1,16 @@
 package solutionfinder.data;
 
-import java.util.HashMap;
 import org.graphstream.graph.Node;
+
+import java.io.Serializable;
+import java.util.HashMap;
 
 /**
  * Class that represents a processor. This contains a set of scheduled tasks in a specific order.
  * 
  * @author Terence Qu
  */
-public class Processor {
+public class Processor implements Serializable {
 	
 	public final HashMap<Node, Double> mapOfTasksAndStartTimes;
 	private double endTime;

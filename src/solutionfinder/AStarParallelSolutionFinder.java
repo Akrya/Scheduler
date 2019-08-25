@@ -1,9 +1,13 @@
 package solutionfinder;
 
-import graph.TaskGraph;
+import main.graph.TaskGraph;
+import javafx.application.Platform;
+import main.Main;
+import main.controller.MainViewController;
 import solutionfinder.data.Solution;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.PriorityBlockingQueue;
 
 /**
  * Class that is used to find the optimal schedule using a parallel A*.
@@ -41,20 +45,32 @@ public class AStarParallelSolutionFinder extends AStarSolutionFinder {
                 s = open.take();
             }
             solutionsExplored++;
-            if(s.getHeuristic() != this.lastExaminedHeuristic){
-                // this.printDebugData(s, open, closed);
-            }
+            partialSolution = s;
             lastExaminedHeuristic = s.getHeuristic();
+
+            if (Main.getController().isVisualizeSearch()) {
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        Main.getGUI().getMainViewController().getGraphViewController()
+                                .setProcessorColours(numProcessors);
+                        Main.getGUI().getMainViewController().getGraphViewController()
+                                .setGraphColours(MainViewController.getGraphViewController().getGraph(), partialSolution);
+                        Main.getController().getMainViewController().setExplored(solutionsExplored);
+                        Main.getController().getMainViewController().setPruned(solutionsPruned);
+                        Main.getController().getMainViewController().setStackSize(open.size());
+                    }
+                });
+            }
+
 
             // If complete solution is found, return it
             if (s.getTasksLeft().isEmpty() && (optimalSolution == null || s.getTotalTime() < optimalSolution.getTotalTime())) {
-                System.out.println("Found complete solution with cost " + s.getTotalTime());
-                System.out.println("Stack size is " + open.size());
                 optimalSolution = s;
             }
 
             // Check if should spawn a new thread for solution expansion
-            if(optimalSolution == null || s.getTotalTime() < optimalSolution.getTotalTime()){
+            if (optimalSolution == null || s.getTotalTime() < optimalSolution.getTotalTime()) {
                 if (threads.size() < MAX_THREADS && open.size() > MAX_THREADS) {
                     BranchThread thread = new BranchThread();
                     thread.passParameters(this, threadId++, s, open, closed);
@@ -67,6 +83,10 @@ public class AStarParallelSolutionFinder extends AStarSolutionFinder {
         for (Thread t : threads.values()) {
             t.join();
         }
+
+        Main.getController().setOptimalSolution(optimalSolution);
+        Main.getController().finalize();
+
         return optimalSolution;
     }
 
@@ -80,7 +100,7 @@ public class AStarParallelSolutionFinder extends AStarSolutionFinder {
         private PriorityBlockingQueue<Solution> open;
         private PriorityBlockingQueue<Solution> closed;
 
-        public void passParameters(AStarParallelSolutionFinder a, int id, Solution solution, PriorityBlockingQueue<Solution> open,  PriorityBlockingQueue<Solution> closed) {
+        public void passParameters(AStarParallelSolutionFinder a, int id, Solution solution, PriorityBlockingQueue<Solution> open, PriorityBlockingQueue<Solution> closed) {
             a.threads.put(id, this);
             this.a = a;
             this.id = id;
@@ -91,7 +111,6 @@ public class AStarParallelSolutionFinder extends AStarSolutionFinder {
 
         @Override
         public void run() {
-            // System.out.println("Adding a thread to leave " + (threads.size()) + " amount of threads left.");
             try {
                 expandSolution(solution, open, closed);
             } catch (InterruptedException e) {

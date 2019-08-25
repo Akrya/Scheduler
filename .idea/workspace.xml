@@ -6,35 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d8f6ada-435d-40b9-b38a-dd515125d7d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Nodes_7_OutTree-output.dot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Nodes_7_OutTree.dot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/scheduler_jar/Nodes_7_OutTree-output.dot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/scheduler_jar/Nodes_7_OutTree.dot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/ganttchart.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/mainstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Main.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/GUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/controller/GanttChartController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/controller/GraphViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/controller/ViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/Graph/TestGraphController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/visualization/GanttChartFX.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/306Project1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/scheduler_jar/scheduler-basic-T8.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/scheduler_jar/scheduler-basic-T8.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/GraphController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/GraphController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/TaskGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/TaskGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/solutionfinder/AStarParallelSolutionFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/AStarParallelSolutionFinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" afterDir="false" />
-    </list>
+    <list default="true" id="0fe06911-bbc5-4940-a1c1-c960dfb1b8a7" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,21 +33,32 @@
       </map>
     </option>
   </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-42" />
+    <option name="y" value="-14" />
+    <option name="width" value="1364" />
+    <option name="height" value="766" />
+  </component>
   <component name="ProjectId" id="1PGDkKvt555FUVWy6NCWdJsN1va" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1566535688833" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1566710083057" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="main" />
+      <recent name="visualization" />
+      <recent name="test" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="test" />
       <recent name="solutionfinder.data" />
@@ -94,10 +77,11 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestAStarSearchParallel2Processors">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="306Project1" />
+      <option name="PROGRAM_PARAMETERS" value="Nodes_7_OutTree.dot 2 -p 2" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -188,8 +172,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestAStarSearchParallel2Processors" />
         <item itemvalue="JUnit.TestAStarSearchSequential2Processors" />
+        <item itemvalue="JUnit.TestAStarSearchParallel2Processors" />
         <item itemvalue="JUnit.TestAStarSearchParallel4Processors" />
         <item itemvalue="JUnit.TestAStarSearchSequential4Processors" />
         <item itemvalue="JUnit.TestAStarSearchSequential4Processors.test07Nodes" />
@@ -211,13 +195,14 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3d8f6ada-435d-40b9-b38a-dd515125d7d8" name="Default Changelist" comment="" />
+      <changelist id="0fe06911-bbc5-4940-a1c1-c960dfb1b8a7" name="Default Changelist" comment="" />
       <created>1565491682221</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1565491682221</updated>
       <workItem from="1565491686686" duration="133000" />
       <workItem from="1565517656165" duration="88000" />
+      <workItem from="1566732595408" duration="1598000" />
     </task>
     <task id="LOCAL-00001" summary="Sequential A* search algorithm completed.">
       <created>1566207580946</created>
@@ -280,5 +265,31 @@
     <MESSAGE value="Many changes &lt;See below&gt;&#10;&#10;- Added a proper heuristic, this is the one used in the 2003 paper by&#10;Oliver Sinnen.&#10;- Fixed some concurrency issues with multithreading.&#10;- Added more unit tests." />
     <MESSAGE value="Switched to priority queue for easier sorting of heuristic values." />
     <option name="LAST_COMMIT_MESSAGE" value="Switched to priority queue for easier sorting of heuristic values." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/GUI.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/controller/Controller.java</url>
+          <line>92</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/visualization/GanttChartCreator.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/controller/Controller.java</url>
+          <line>103</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

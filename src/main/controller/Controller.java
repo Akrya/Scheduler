@@ -1,21 +1,22 @@
 package main.controller;
 
-import graph.GraphController;
-import graph.TaskGraph;
+import main.graph.GraphTools;
+import main.graph.TaskGraph;
+import javafx.application.Platform;
+import main.Main;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Node;
 import solutionfinder.AStarParallelSolutionFinder;
 import solutionfinder.AStarSolutionFinder;
 import solutionfinder.data.Processor;
 import solutionfinder.data.Solution;
+import visualization.GanttChartCreator;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
 
 public class Controller {
 
@@ -24,48 +25,75 @@ public class Controller {
     private int numOfCores;
     private boolean visualizeSearch;
     private String outputFileName;
+    private boolean parseFine;
 
     private TaskGraph inputGraph;
 
     private Solution solution;
+    private Solution optimalSolution;
+
+    private MainViewController mainViewController;
 
     /**
-     *  Method that handles the parsing of the dot file and makes a graph object using the
-     *  GraphStream library. Builds the solution tree and then calls the find solution method
-     *  on the tree.
+     * Method that handles the parsing of the dot file and makes a main.graph object using the
+     * GraphStream library. Builds the solution tree and then calls the find solution method
+     * on the tree.
      */
     public void initialise() {
-
         inputGraph = new TaskGraph("inputGraph");
+        inputGraph = GraphTools.parseInputFile(inputGraph, dotFileName);
+        solution = new Solution(inputGraph, numOfProcessors);
+        optimalSolution = new Solution(inputGraph, numOfProcessors);
+    }
 
-        inputGraph = GraphController.parseInputFile(inputGraph, dotFileName);
-        inputGraph.setUpBottomLevels();
+    /**
+     * Starts the A star algorithm either sequentially or parallelized depending upon the input.
+     * Writes the result to the output file.
+     */
+    public void startSolutionFind() {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                inputGraph.setUpBottomLevels();
 
-        if (inputGraph != null) {
+                if (inputGraph != null) {
+                    if (numOfCores != 1) {
+                        AStarParallelSolutionFinder solutionFinder = new AStarParallelSolutionFinder(numOfProcessors, inputGraph, numOfCores);
+                        try {
+                            optimalSolution = solutionFinder.findOptimal();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
 
-            if(numOfCores != 1){
-                AStarParallelSolutionFinder solutionFinder = new AStarParallelSolutionFinder(numOfProcessors, inputGraph, numOfCores);
+                    } else {
+                        AStarSolutionFinder solutionFinder = new AStarSolutionFinder(numOfProcessors, inputGraph);
+                        try {
+                            optimalSolution = solutionFinder.findOptimal();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
 
-                try {
-                    solution = solutionFinder.findOptimal();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
                 }
-
-            } else {
-                AStarSolutionFinder solutionFinder = new AStarSolutionFinder(numOfProcessors, inputGraph);
-
-                try {
-                    solution = solutionFinder.findOptimal();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
             }
+        });
+        thread.start();
+    }
 
+    public void finalize(){
+        if (isVisualizeSearch()) {
+            writeOutputFile();
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    Main.getController().getMainViewController().finish();
+                    MainViewController.getGraphViewController().setGraphColours(MainViewController.getGraphViewController().getGraph(), optimalSolution);
+                    GanttChartCreator.initialiseChart();
+                }
+            });
+        } else {
             writeOutputFile();
         }
-
     }
 
     /**
@@ -84,12 +112,12 @@ public class Controller {
 
         fileWriter(outputFile, initialLine);
 
-        Processor[] processors = solution.getProcessors();
+        Processor[] processors = optimalSolution.getProcessors();
 
         // Writing the nodes to the file
         for (int i = 0; i < processors.length; i++) {
-            for (Node n: processors[i].mapOfTasksAndStartTimes.keySet()) {
-                String nextLine = "\t " + n.getId() + "\t " + "[Weight=" + GraphController.getNodeWeight(n.getId(),
+            for (Node n : processors[i].mapOfTasksAndStartTimes.keySet()) {
+                String nextLine = "\t " + n.getId() + "\t " + "[Weight=" + GraphTools.getNodeWeight(n.getId(),
                         inputGraph) + ",Start=" + processors[i].mapOfTasksAndStartTimes.get(n) + ",Processor="
                         + i + "];\n";
                 fileWriter(outputFile, nextLine);
@@ -97,9 +125,9 @@ public class Controller {
         }
 
         // Writing the edges onto the file
-        for (Edge e: inputGraph.getEdgeSet()) {
+        for (Edge e : inputGraph.getEdgeSet()) {
             String nextLine = "\t " + e.getSourceNode().getId() + " -> " + e.getTargetNode().getId() + "\t" +
-                    "[Weight=" + GraphController.getEdgeWeight(e.getSourceNode().getId(), e.getTargetNode().getId(), inputGraph) + "];\n";
+                    "[Weight=" + GraphTools.getEdgeWeight(e.getSourceNode().getId(), e.getTargetNode().getId(), inputGraph) + "];\n";
             fileWriter(outputFile, nextLine);
         }
 
@@ -112,7 +140,7 @@ public class Controller {
     /**
      * Writes the strings provided as the parameter to the output file using BufferedWriter
      * @param outputFile - The output dot file
-     * @param line - The line that needs to be written in that file
+     * @param line       - The line that needs to be written in that file
      */
     private void fileWriter(File outputFile, String line) {
         try {
@@ -136,50 +164,57 @@ public class Controller {
         // Checks if input contains the correct number of arguments
         if (totalArgs < 2) {
             printInputArgumentsError();
+            parseFine = false;
         } else {
             if (inputArgs[0].contains(".dot")) {
                 setGraphFilename(inputArgs[0]);
             } else {
                 printInputArgumentsError();
+                parseFine = false;
             }
             try {
                 int numOfProcessors = Integer.parseInt(inputArgs[1]);
                 setNumOfProcessors(numOfProcessors);
             } catch (NumberFormatException e) {
                 printInputArgumentsError();
+                parseFine = false;
             }
 
             if (totalArgs > 2) {
-                String[] remainingArgs = Arrays.copyOfRange(inputArgs, 2,totalArgs);
+                String[] remainingArgs = Arrays.copyOfRange(inputArgs, 2, totalArgs);
                 int remainingArgsLength = remainingArgs.length;
                 boolean[] valuesSet = new boolean[3];
 
                 for (int i = 0; i < remainingArgsLength; i++) {
                     if (remainingArgs[i].contains("-p")) {
                         try {
-                            int numOfCores = Integer.parseInt(remainingArgs[i+1]);
+                            int numOfCores = Integer.parseInt(remainingArgs[i + 1]);
                             setNumOfCores(numOfCores);
                             valuesSet[0] = true;
                             i++;
                         } catch (NumberFormatException e) {
                             printInputArgumentsError();
+                            parseFine = false;
                         } catch (ArrayIndexOutOfBoundsException e) {
                             printInputArgumentsError();
+                            parseFine = false;
                         }
                     } else if (remainingArgs[i].contains("-v")) {
                         setVisualizeSearch(true);
                         valuesSet[1] = true;
                     } else if (remainingArgs[i].contains("-o")) {
                         try {
-                            String outputFileName = remainingArgs[i+1];
+                            String outputFileName = remainingArgs[i + 1];
                             setOutputFileName(outputFileName + ".dot");
                             valuesSet[2] = true;
                             i++;
                         } catch (ArrayIndexOutOfBoundsException e) {
                             printInputArgumentsError();
+                            parseFine = false;
                         }
                     } else {
                         printInputArgumentsError();
+                        parseFine = false;
                     }
                 }
 
@@ -191,24 +226,20 @@ public class Controller {
                 }
                 if (valuesSet[2] != true) {
                     String inputFileName = getGraphFilename();
-                    setOutputFileName(inputFileName.replace(".dot","") + "-output.dot");
+                    setOutputFileName(inputFileName.replace(".dot", "") + "-output.dot");
                 }
+
+                parseFine = true;
 
             } else {
                 setNumOfCores(1);
                 setVisualizeSearch(false);
                 String inputFileName = getGraphFilename();
-                setOutputFileName(inputFileName.replace(".dot","") + "-output.dot");
+                setOutputFileName(inputFileName.replace(".dot", "") + "-output.dot");
+                parseFine = true;
             }
 
         }
-    }
-
-    /**
-     * Initialises the Gantt Chart.
-     */
-    public void startGanttVisualise() {
-        GanttChartController.initialiseChart();
     }
 
 
@@ -219,8 +250,8 @@ public class Controller {
         System.out.println("Invalid input");
         System.out.println("Please run the jar file using the following interface ->\n");
         System.out.println("java−jar scheduler . jar INPUT.dot P [OPTION]");
-        System.out.println("INPUT. dot   a task graph with integer weights in dot format");
-        System.out.println("P            number of  processors  to  schedule  the INPUT graph on");
+        System.out.println("INPUT. dot   a task main.graph with integer weights in dot format");
+        System.out.println("P            number of  processors  to  schedule  the INPUT main.graph on");
         System.out.println("Optional:");
         System.out.println("−p N use N cores for execution in parallel (default  is  sequential)");
         System.out.println("−v visualise the search");
@@ -228,7 +259,7 @@ public class Controller {
     }
 
 
-    // Getters and Setters for the various fields for this class
+// Getters and Setters for the various fields for this class
 
     public String getGraphFilename() {
         return dotFileName;
@@ -274,8 +305,31 @@ public class Controller {
         return solution;
     }
 
+    public void setSolution(Solution solution){
+        this.solution = solution;
+    }
+
     public TaskGraph getGraph() {
         return inputGraph;
     }
 
+    public boolean isParseFine() {
+        return parseFine;
+    }
+
+    public void setOptimalSolution(Solution optimalSolution) {
+        this.optimalSolution = optimalSolution;
+    }
+
+    public Solution getOptimalSolution() {
+        return optimalSolution;
+    }
+
+    public void setMainViewController(MainViewController mainViewController){
+        this.mainViewController = mainViewController;
+    }
+
+    public MainViewController getMainViewController(){
+        return mainViewController;
+    }
 }
