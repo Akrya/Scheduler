@@ -23,7 +23,7 @@ public class GraphController {
         File dotFile = new File(dotFileName);
 
         if (!dotFile.exists()) {
-            System.out.println("File does not exist. Please check if the input filename is correct" +
+            System.out.println("File does not exist. Please check if the input filename is correct " +
                     "and/or the file is in the same directory as the jar file.");
             return null;
         }

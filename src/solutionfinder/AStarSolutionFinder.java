@@ -1,12 +1,19 @@
 package solutionfinder;
 
+import com.jfoenix.utils.JFXUtilities;
 import com.sun.jmx.remote.internal.ArrayQueue;
 import graph.TaskGraph;
 import jdk.nashorn.internal.ir.Block;
+import main.GUI;
+import main.Main;
+import main.controller.GraphViewController;
+import main.controller.ViewController;
+import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
 import solutionfinder.data.Solution;
 import sun.security.provider.NativePRNG;
 
+import javax.swing.*;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -22,6 +29,7 @@ public class AStarSolutionFinder {
     protected int solutionsExplored;
     protected Solution optimalSolution;
     protected double lastExaminedHeuristic;
+    protected Solution partialSolution;
 
     public AStarSolutionFinder(int numProcessors, TaskGraph taskGraph) {
         this.numProcessors = numProcessors;
@@ -56,6 +64,8 @@ public class AStarSolutionFinder {
 
         open.add(emptySolution);
 
+        partialSolution = emptySolution;
+
         // Main loop
         while (!open.isEmpty()) {
             Solution s;
@@ -63,20 +73,18 @@ public class AStarSolutionFinder {
                 s = open.take();
             }
             solutionsExplored++;
-            if(s.getHeuristic() != this.lastExaminedHeuristic){
+            if (s.getHeuristic() != this.lastExaminedHeuristic) {
                 // this.printDebugData(s, open, closed);
             }
             lastExaminedHeuristic = s.getHeuristic();
 
             // If complete solution is found, return it
             if (s.getTasksLeft().isEmpty() && (optimalSolution == null || s.getTotalTime() < optimalSolution.getTotalTime())) {
-                System.out.println("Found complete solution with cost " + s.getTotalTime());
-                System.out.println("Stack size is " + open.size());
                 optimalSolution = s;
             }
 
             // Expand the solution
-            if(optimalSolution == null || s.getTotalTime() < optimalSolution.getTotalTime()){
+            if (optimalSolution == null || s.getTotalTime() < optimalSolution.getTotalTime()) {
                 expandSolution(s, open, closed);
             }
         }
@@ -85,6 +93,7 @@ public class AStarSolutionFinder {
 
     /**
      * Helper function for findSolution(). Intended to be run on a seperate thread
+     *
      * @param s
      * @param open
      */
@@ -144,14 +153,14 @@ public class AStarSolutionFinder {
     /**
      * Prints the solution data, and amount of solutions on the stack to the console.
      */
-    public void printDebugData(Solution s, PriorityBlockingQueue<Solution> open, PriorityBlockingQueue<Solution> closed){
-        System.out.println("Open size: "+open.size()+" || Closed size: "+closed.size());
+    public void printDebugData(Solution s, PriorityBlockingQueue<Solution> open, PriorityBlockingQueue<Solution> closed) {
+        System.out.println("Open size: " + open.size() + " || Closed size: " + closed.size());
         System.out.println("Current solution being examined: "
-                +s.getHeuristic()
-                +" IdleTime: " +s.calculateFIdleTime()
-                +" BottomLevel: "+s.calculateFBottomLevel()
-                +" DRT:" +s.calculateFDataReadyTime()+
-                " NumOfTasks:"+s.getTaskList().size());
+                + s.getHeuristic()
+                + " IdleTime: " + s.calculateFIdleTime()
+                + " BottomLevel: " + s.calculateFBottomLevel()
+                + " DRT:" + s.calculateFDataReadyTime() +
+                " NumOfTasks:" + s.getTaskList().size());
         System.out.println(s.stringData());
     }
 

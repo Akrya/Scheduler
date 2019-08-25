@@ -9,13 +9,12 @@ import solutionfinder.AStarSolutionFinder;
 import solutionfinder.data.Processor;
 import solutionfinder.data.Solution;
 
+import javax.swing.text.View;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
 
 public class Controller {
 
@@ -24,10 +23,12 @@ public class Controller {
     private int numOfCores;
     private boolean visualizeSearch;
     private String outputFileName;
+    private boolean parseFine;
 
     private TaskGraph inputGraph;
 
     private Solution solution;
+    private Solution partialSolution;
 
     /**
      *  Method that handles the parsing of the dot file and makes a graph object using the
@@ -40,10 +41,20 @@ public class Controller {
 
         inputGraph = GraphController.parseInputFile(inputGraph, dotFileName);
 
+    }
+
+    /**
+     * Starts the A star algorithm either sequentially or parallelized depending upon the input.
+     * Writes the result to the output file.
+     */
+    public void startSolutionFind() {
+
         if (inputGraph != null) {
 
             inputGraph.setUpBottomLevels();
-            if(numOfCores != 1){
+
+            if (numOfCores != 1) {
+
                 AStarParallelSolutionFinder solutionFinder = new AStarParallelSolutionFinder(numOfProcessors, inputGraph, numOfCores);
 
                 try {
@@ -53,6 +64,7 @@ public class Controller {
                 }
 
             } else {
+
                 AStarSolutionFinder solutionFinder = new AStarSolutionFinder(numOfProcessors, inputGraph);
 
                 try {
@@ -63,9 +75,16 @@ public class Controller {
 
             }
 
-            writeOutputFile();
-        }
+            if (visualizeSearch) {
+                writeOutputFile();
+                ViewController.getGraphViewController().setGraphColours(ViewController.getGraphViewController().getGraph());
+                ViewController.stopTimer();
+                GanttChartController.initialiseChart();
+            } else {
+                writeOutputFile();
+            }
 
+        }
     }
 
     /**
@@ -136,17 +155,20 @@ public class Controller {
         // Checks if input contains the correct number of arguments
         if (totalArgs < 2) {
             printInputArgumentsError();
+            parseFine = false;
         } else {
             if (inputArgs[0].contains(".dot")) {
                 setGraphFilename(inputArgs[0]);
             } else {
                 printInputArgumentsError();
+                parseFine = false;
             }
             try {
                 int numOfProcessors = Integer.parseInt(inputArgs[1]);
                 setNumOfProcessors(numOfProcessors);
             } catch (NumberFormatException e) {
                 printInputArgumentsError();
+                parseFine = false;
             }
 
             if (totalArgs > 2) {
@@ -163,8 +185,10 @@ public class Controller {
                             i++;
                         } catch (NumberFormatException e) {
                             printInputArgumentsError();
+                            parseFine = false;
                         } catch (ArrayIndexOutOfBoundsException e) {
                             printInputArgumentsError();
+                            parseFine = false;
                         }
                     } else if (remainingArgs[i].contains("-v")) {
                         setVisualizeSearch(true);
@@ -177,9 +201,11 @@ public class Controller {
                             i++;
                         } catch (ArrayIndexOutOfBoundsException e) {
                             printInputArgumentsError();
+                            parseFine = false;
                         }
                     } else {
                         printInputArgumentsError();
+                        parseFine = false;
                     }
                 }
 
@@ -194,11 +220,14 @@ public class Controller {
                     setOutputFileName(inputFileName.replace(".dot","") + "-output.dot");
                 }
 
+                parseFine = true;
+
             } else {
                 setNumOfCores(1);
                 setVisualizeSearch(false);
                 String inputFileName = getGraphFilename();
                 setOutputFileName(inputFileName.replace(".dot","") + "-output.dot");
+                parseFine = true;
             }
 
         }
@@ -276,6 +305,18 @@ public class Controller {
 
     public TaskGraph getGraph() {
         return inputGraph;
+    }
+
+    public boolean isParseFine() {
+        return parseFine;
+    }
+
+    public void setPartialSolution(Solution partialSolution) {
+        this.partialSolution = partialSolution;
+    }
+
+    public Solution getPartialSolution() {
+        return partialSolution;
     }
 
 }
