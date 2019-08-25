@@ -95,7 +95,7 @@ public class GraphController {
      * @param attributeName Name of the attribute you want to add/change.
      * @param attributeValue An integer value of the attribute you want to add.
      */
-    public static void changeAttribute(String nodeID, String attributeName, int attributeValue, Graph inputGraph){
+    public static void changeAttribute(String nodeID, String attributeName, double attributeValue, Graph inputGraph){
         Node n = inputGraph.getNode(nodeID);
         n.addAttribute(attributeName,attributeValue);
     }
