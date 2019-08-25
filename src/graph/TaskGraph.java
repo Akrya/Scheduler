@@ -42,13 +42,11 @@ public class TaskGraph extends SingleGraph{
 	}
 
 	public void setUpBottomLevels(){
-		for(Node n: this.getNodeSet()){
+
+		for(Node n: this.getNodeSet()) {
 			nodesAndBottomLevels.put(n, getBottomLevelOfNode(n));
 		}
 
-		for(Map.Entry<Node, Double> entry: nodesAndBottomLevels.entrySet()){
-			System.out.println("Bottom level of node "+entry.getKey()+": "+entry.getValue());
-		}
 	}
 
 	/**

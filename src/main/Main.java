@@ -1,27 +1,23 @@
 package main;
 
-import com.sun.glass.ui.Application;
 import main.controller.Controller;
 
 public class Main {
 
     private static Controller controller = new Controller();
 
-
     public static void main(String args[]) {
 
         controller.parseInputArguments(args);
-        controller.initializeGraph();
-
-        // Running the visualisation only if the parsing of the input dot file was successful
-        if (controller.isVisualizeSearch()) {
+        if (controller.isParseFine()) {
+            controller.initialise();
             if (controller.getGraph() != null) {
-                GUI.launchApplication(args);
-            } else {
-                controller.initialiseSolutionFind();
+                if (controller.isVisualizeSearch()) {
+                    GUI.launchApplication(args);
+                } else {
+                    controller.startSolutionFind();
+                }
             }
-        } else {
-            controller.initialiseSolutionFind();
         }
 
     }
@@ -30,7 +26,4 @@ public class Main {
         return controller;
     }
 
-
-
 }
-

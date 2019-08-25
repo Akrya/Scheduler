@@ -21,8 +21,9 @@ public class GraphController {
     public static TaskGraph parseInputFile(TaskGraph inputGraph, String dotFileName) {
 
         File dotFile = new File(dotFileName);
+
         if (!dotFile.exists()) {
-            System.out.println("File does not exist. Please check if the input filename is correct" +
+            System.out.println("File does not exist. Please check if the input filename is correct " +
                     "and/or the file is in the same directory as the jar file.");
             return null;
         }
@@ -94,7 +95,7 @@ public class GraphController {
      * @param attributeName Name of the attribute you want to add/change.
      * @param attributeValue An integer value of the attribute you want to add.
      */
-    public static void changeAttribute(String nodeID, String attributeName, int attributeValue, Graph inputGraph){
+    public static void changeAttribute(String nodeID, String attributeName, double attributeValue, Graph inputGraph){
         Node n = inputGraph.getNode(nodeID);
         n.addAttribute(attributeName,attributeValue);
     }
