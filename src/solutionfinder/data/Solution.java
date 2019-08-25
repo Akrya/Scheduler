@@ -43,9 +43,9 @@ public class Solution implements Serializable {
 	/**
 	 * Adds a task to a processor. If two tasks are on the same processor,
 	 * one task must finish before the other starts.
-	 * If on different processors, for each dependency,
-	 * start time >= start time of dependency + dependency's weight + edge weight
-	 * @param n task represented as a node in the main.graph
+	 * If on different processors, for each dependency, 
+	 * start time >= start time of dependency + dependency's weight + edge weight 
+	 * @param n task represented as a node in the graph
 	 * @param targetProcessorIndex
 	 */
 	public boolean addTask(Node n, int targetProcessorIndex) {

@@ -6,32 +6,32 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d8f6ada-435d-40b9-b38a-dd515125d7d8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="956d16ee-403a-4995-bb82-a7e6d3efc29d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/out/artifacts/scheduler_jar/Nodes_8_Random.dot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/scheduler_jar/scheduler-final-T8.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/ProjectManagement/DependencyGraphP1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/ProjectManagement/Description of Plan.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/ProjectManagement/Gantt2-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/ProjectManagement/WBS.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/TestGraphTools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nodes_7_OutTree-output.dot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nodes_7_OutTree.dot" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/Nodes_10_Random.dot" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Nodes_10_Random.dot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/graphfiles/Nodes_10_Random.dot" beforeDir="false" afterPath="$PROJECT_DIR$/resources/graphfiles/Nodes_10_Random.dot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/GraphController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/graph/GraphTools.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/TaskGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/graph/TaskGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/controller/GanttChartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualization/GanttChartCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/controller/GraphViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualization/GraphViewCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/controller/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/MainViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/solutionfinder/AStarParallelSolutionFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/AStarParallelSolutionFinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/solutionfinder/AStarSolutionFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/AStarSolutionFinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/solutionfinder/data/Processor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/data/Processor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/scheduler_jar/Nodes_7_OutTree-output.dot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/scheduler_jar/scheduler-basic-T8.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/mainstyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/mainstyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/controller/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/MainViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/solutionfinder/data/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/data/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/Graph/TestGraphController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestGraphController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/TestAStarSearchParallel2Processors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestAStarSearchParallel2Processors.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/TestAStarSearchParallel4Processors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestAStarSearchParallel4Processors.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/TestAStarSearchSequential2Processors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestAStarSearchSequential2Processors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/TestAStarSearchSequential4Processors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestAStarSearchSequential4Processors.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/TestAStarSearchSpeed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestAStarSearchSpeed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/TestRandomStuff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestRandomStuff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/visualization/GanttChartFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualization/GanttChartFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
