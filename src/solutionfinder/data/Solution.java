@@ -1,6 +1,6 @@
 package solutionfinder.data;
 
-import java.lang.reflect.Array;
+import java.io.Serializable;
 import java.util.*;
 
 import org.graphstream.graph.Edge;
@@ -13,7 +13,7 @@ import graph.TaskGraph;
  * 
  * @author Terence Qu
  */
-public class Solution{
+public class Solution implements Serializable {
 
 	private int numProcessors;
 	private Processor[] processors;
@@ -166,6 +166,10 @@ public class Solution{
 	public void setCurrentProcessor(int currentProcessor) {
 		this.currentProcessor = currentProcessor;
 	}
+
+	public Node getLatestTask(){
+		return latestTask;
+	}
 	/**
 	 * Print the data of this solution to the console.
 	 */
@@ -246,7 +250,7 @@ public class Solution{
 	/**
 	 * Calculates the heuristic value of the encased solution.
 	 * This needs to be an underestimate.
-	 * We are using a proposed f(s) function in a University of Auckland research paper.
+	 * We are using a proposed f(s) function in a University of Auckland research paper by Oliver Sinnen.
 	 */
 	public double getHeuristic(){
 		List<Double> heuristicCandidates = new ArrayList<>();

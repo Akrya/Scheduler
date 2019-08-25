@@ -58,10 +58,20 @@ public class TaskGraph extends SingleGraph{
 	 * @return
 	 */
 	public static double getBottomLevelOfNode(Node n){
+		List<Node> independentNodes = new ArrayList<>(n.getGraph().getNodeSet());
+		independentNodes.remove(n);
+
 		List<Double> bottomLevelCandidates = new ArrayList<Double>();
 		bottomLevelCandidates.add(0.0);
 		for(Edge e: n.getLeavingEdgeSet()){
 			bottomLevelCandidates.add((double)n.getAttribute("Weight")+getBottomLevelOfNode(e.getTargetNode()));
+			independentNodes.remove(e.getTargetNode());
+		}
+
+		for(Double d: bottomLevelCandidates){
+			for(Node inode: independentNodes){
+				d = d+(double)inode.getAttribute("Weight");
+			}
 		}
 
 		return Collections.max(bottomLevelCandidates);

@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import main.controller.GanttChartController;
 
 public class GUI extends Application {
     private static final String MAIN_MENU_SCENE = "/views/Main.fxml";
@@ -22,6 +23,8 @@ public class GUI extends Application {
         primaryStage.setTitle(APPLICATION_TITLE);
         primaryStage.setScene(new Scene(root, 900, 600));
         primaryStage.show();
+
+        Main.getController().initialiseSolutionFind();
 
         // close the process when closing the window.
         primaryStage.setOnCloseRequest(e -> {

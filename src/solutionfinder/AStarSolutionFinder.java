@@ -1,12 +1,21 @@
 package solutionfinder;
 
 import com.sun.jmx.remote.internal.ArrayQueue;
+import graph.GraphController;
 import graph.TaskGraph;
+import javafx.application.Platform;
 import jdk.nashorn.internal.ir.Block;
+import main.Main;
+import main.controller.Controller;
+import main.controller.GanttChartController;
+import main.controller.GraphViewController;
+import main.controller.ViewController;
+import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
 import solutionfinder.data.Solution;
 import sun.security.provider.NativePRNG;
 
+import javax.swing.text.View;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -22,6 +31,10 @@ public class AStarSolutionFinder {
     protected int solutionsExplored;
     protected Solution optimalSolution;
     protected double lastExaminedHeuristic;
+    protected Solution partialSolution;
+    protected int solutionsPruned;
+    protected int cooldown;
+
 
     public AStarSolutionFinder(int numProcessors, TaskGraph taskGraph) {
         this.numProcessors = numProcessors;
@@ -29,6 +42,8 @@ public class AStarSolutionFinder {
         solutionsExplored = 0;
         optimalSolution = null;
         lastExaminedHeuristic = Double.POSITIVE_INFINITY;
+        solutionsPruned = 0;
+        cooldown = 0;
     }
 
     /**
@@ -49,6 +64,7 @@ public class AStarSolutionFinder {
      * Finds the optimal solution.
      */
     public Solution findOptimal() throws InterruptedException {
+
         Solution emptySolution = new Solution(taskGraph, numProcessors);
 
         PriorityBlockingQueue<Solution> open = new PriorityBlockingQueue<Solution>(1000, new SolutionHeuristicComparator());
@@ -63,10 +79,31 @@ public class AStarSolutionFinder {
                 s = open.take();
             }
             solutionsExplored++;
-            if(s.getHeuristic() != this.lastExaminedHeuristic){
-                // this.printDebugData(s, open, closed);
-            }
+            partialSolution = s;
             lastExaminedHeuristic = s.getHeuristic();
+
+            Main.getController().setPartialSolution(s);
+
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    ViewController.getGraphViewController().setProcessorColours(numProcessors);
+                    ViewController.getGraphViewController().setGraphColours(ViewController.getGraphViewController().getGraph());
+                    ViewController.getGraphViewController().viewGraph();
+                }
+            });
+            if(Main.getController().isVisualizeSearch()){
+                if(thread.isAlive()){
+                    thread.join();
+                } else {
+                    if(cooldown >= 5){
+                        cooldown = 0;
+                        thread.start();
+                    } else {
+                        cooldown++;
+                    }
+                }
+            }
 
             // If complete solution is found, return it
             if (s.getTasksLeft().isEmpty() && (optimalSolution == null || s.getTotalTime() < optimalSolution.getTotalTime())) {
@@ -76,15 +113,17 @@ public class AStarSolutionFinder {
             }
 
             // Expand the solution
-            if(optimalSolution == null || s.getTotalTime() < optimalSolution.getTotalTime()){
+            if (optimalSolution == null || s.getTotalTime() < optimalSolution.getTotalTime()) {
                 expandSolution(s, open, closed);
             }
         }
+        System.out.println("Search has finished!");
         return optimalSolution;
     }
 
     /**
      * Helper function for findSolution(). Intended to be run on a seperate thread
+     *
      * @param s
      * @param open
      */
@@ -102,12 +141,14 @@ public class AStarSolutionFinder {
                         for (Solution openS : open) {
                             if (openS.equals(s)) {
                                 // System.out.println("Found duplicate in open.");
+                                solutionsPruned += s.getNumberOfChildren();
                                 return;
                             }
                         }
                         for (Solution closedS : closed) {
                             if (closedS.equals(s)) {
                                 // System.out.println("Found duplicate in closed.");
+                                solutionsPruned += s.getNumberOfChildren();
                                 return;
                             }
                         }
@@ -144,14 +185,14 @@ public class AStarSolutionFinder {
     /**
      * Prints the solution data, and amount of solutions on the stack to the console.
      */
-    public void printDebugData(Solution s, PriorityBlockingQueue<Solution> open, PriorityBlockingQueue<Solution> closed){
-        System.out.println("Open size: "+open.size()+" || Closed size: "+closed.size());
+    public void printDebugData(Solution s, PriorityBlockingQueue<Solution> open, PriorityBlockingQueue<Solution> closed) {
+        System.out.println("Open size: " + open.size() + " || Closed size: " + closed.size());
         System.out.println("Current solution being examined: "
-                +s.getHeuristic()
-                +" IdleTime: " +s.calculateFIdleTime()
-                +" BottomLevel: "+s.calculateFBottomLevel()
-                +" DRT:" +s.calculateFDataReadyTime()+
-                " NumOfTasks:"+s.getTaskList().size());
+                + s.getHeuristic()
+                + " IdleTime: " + s.calculateFIdleTime()
+                + " BottomLevel: " + s.calculateFBottomLevel()
+                + " DRT:" + s.calculateFDataReadyTime() +
+                " NumOfTasks:" + s.getTaskList().size());
         System.out.println(s.stringData());
     }
 
@@ -188,8 +229,13 @@ public class AStarSolutionFinder {
                 return 1;
             } else if (s1.getHeuristic() < s2.getHeuristic()) {
                 return -1;
+            } else if (s1.getTaskList().size() < s2.getTaskList().size()) {
+                return 1;
+            } else if (s1.getTaskList().size() > s2.getTaskList().size()) {
+                return -1;
+            } else {
+                return 0;
             }
-            return 0;
         }
     }
 }

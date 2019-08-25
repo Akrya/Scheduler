@@ -9,7 +9,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.paint.Color;
 import main.Main;
 import org.graphstream.graph.Node;
-import solutiontreecreator.data.Processor;
+import solutionfinder.data.Processor;
 import visualization.GanttChartFX;
 
 import java.util.*;
@@ -40,7 +40,7 @@ public class GanttChartController {
      * randomised.
      */
     public static void initialiseChart() {
-
+        System.out.println("Gantt chart controller initialized!");
         Processor[] processors = Main.getController().getSolution().getProcessors();
         ObservableList<String> processorTitle = FXCollections.observableArrayList();
         List<XYChart.Series> seriesList = new ArrayList<>();
@@ -92,7 +92,6 @@ public class GanttChartController {
             ganttChart.getData().add(s);
         }
         ganttChart.getStylesheets().add(Main.class.getClassLoader().getResource("ganttchart.css").toExternalForm());
-
     }
 
     // Getters and setters for the fields for this class

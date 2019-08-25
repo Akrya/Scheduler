@@ -1,5 +1,6 @@
 package solutionfinder.data;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import org.graphstream.graph.Node;
 
@@ -8,7 +9,7 @@ import org.graphstream.graph.Node;
  * 
  * @author Terence Qu
  */
-public class Processor {
+public class Processor implements Serializable {
 	
 	public final HashMap<Node, Double> mapOfTasksAndStartTimes;
 	private double endTime;

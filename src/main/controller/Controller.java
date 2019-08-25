@@ -28,44 +28,59 @@ public class Controller {
     private TaskGraph inputGraph;
 
     private Solution solution;
+    private Solution partialSolution;
 
     /**
-     *  Method that handles the parsing of the dot file and makes a graph object using the
-     *  GraphStream library. Builds the solution tree and then calls the find solution method
-     *  on the tree.
+     * Method that handles the parsing of the dot file and makes a graph object using the
+     * GraphStream library. Builds the solution tree and then calls the find solution method
+     * on the tree.
      */
-    public void initialise() {
+    public void initialiseSolutionFind() {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("Starting to find solution");
+                if (inputGraph != null) {
+                    if (numOfCores != 1) {
+                        AStarParallelSolutionFinder solutionFinder = new AStarParallelSolutionFinder(numOfProcessors, inputGraph, numOfCores);
 
+                        try {
+                            solution = solutionFinder.findOptimal();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                    } else {
+                        AStarSolutionFinder solutionFinder = new AStarSolutionFinder(numOfProcessors, inputGraph);
+
+                        try {
+                            solution = solutionFinder.findOptimal();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                    writeOutputFile();
+                }
+            }
+        });
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e){
+
+        }
+
+    }
+
+    public void initializeGraph() {
         inputGraph = new TaskGraph("inputGraph");
 
         inputGraph = GraphController.parseInputFile(inputGraph, dotFileName);
         inputGraph.setUpBottomLevels();
-
-        if (inputGraph != null) {
-
-            if(numOfCores != 1){
-                AStarParallelSolutionFinder solutionFinder = new AStarParallelSolutionFinder(numOfProcessors, inputGraph, numOfCores);
-
-                try {
-                    solution = solutionFinder.findOptimal();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-            } else {
-                AStarSolutionFinder solutionFinder = new AStarSolutionFinder(numOfProcessors, inputGraph);
-
-                try {
-                    solution = solutionFinder.findOptimal();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-            writeOutputFile();
-        }
-
+        solution = new Solution(inputGraph, numOfCores);
+        partialSolution = new Solution(inputGraph, numOfCores);
     }
 
     /**
@@ -88,7 +103,7 @@ public class Controller {
 
         // Writing the nodes to the file
         for (int i = 0; i < processors.length; i++) {
-            for (Node n: processors[i].mapOfTasksAndStartTimes.keySet()) {
+            for (Node n : processors[i].mapOfTasksAndStartTimes.keySet()) {
                 String nextLine = "\t " + n.getId() + "\t " + "[Weight=" + GraphController.getNodeWeight(n.getId(),
                         inputGraph) + ",Start=" + processors[i].mapOfTasksAndStartTimes.get(n) + ",Processor="
                         + i + "];\n";
@@ -97,7 +112,7 @@ public class Controller {
         }
 
         // Writing the edges onto the file
-        for (Edge e: inputGraph.getEdgeSet()) {
+        for (Edge e : inputGraph.getEdgeSet()) {
             String nextLine = "\t " + e.getSourceNode().getId() + " -> " + e.getTargetNode().getId() + "\t" +
                     "[Weight=" + GraphController.getEdgeWeight(e.getSourceNode().getId(), e.getTargetNode().getId(), inputGraph) + "];\n";
             fileWriter(outputFile, nextLine);
@@ -111,8 +126,9 @@ public class Controller {
 
     /**
      * Writes the strings provided as the parameter to the output file using BufferedWriter
+     *
      * @param outputFile - The output dot file
-     * @param line - The line that needs to be written in that file
+     * @param line       - The line that needs to be written in that file
      */
     private void fileWriter(File outputFile, String line) {
         try {
@@ -127,6 +143,7 @@ public class Controller {
     /**
      * Parses the input arguments that are passed in through the command line. Assigns the necessary
      * fields in the controller class depending upon the input arguments.
+     *
      * @param inputArgs - An array of string containing the input arguments
      */
     public void parseInputArguments(String[] inputArgs) {
@@ -150,14 +167,14 @@ public class Controller {
             }
 
             if (totalArgs > 2) {
-                String[] remainingArgs = Arrays.copyOfRange(inputArgs, 2,totalArgs);
+                String[] remainingArgs = Arrays.copyOfRange(inputArgs, 2, totalArgs);
                 int remainingArgsLength = remainingArgs.length;
                 boolean[] valuesSet = new boolean[3];
 
                 for (int i = 0; i < remainingArgsLength; i++) {
                     if (remainingArgs[i].contains("-p")) {
                         try {
-                            int numOfCores = Integer.parseInt(remainingArgs[i+1]);
+                            int numOfCores = Integer.parseInt(remainingArgs[i + 1]);
                             setNumOfCores(numOfCores);
                             valuesSet[0] = true;
                             i++;
@@ -171,7 +188,7 @@ public class Controller {
                         valuesSet[1] = true;
                     } else if (remainingArgs[i].contains("-o")) {
                         try {
-                            String outputFileName = remainingArgs[i+1];
+                            String outputFileName = remainingArgs[i + 1];
                             setOutputFileName(outputFileName + ".dot");
                             valuesSet[2] = true;
                             i++;
@@ -191,14 +208,14 @@ public class Controller {
                 }
                 if (valuesSet[2] != true) {
                     String inputFileName = getGraphFilename();
-                    setOutputFileName(inputFileName.replace(".dot","") + "-output.dot");
+                    setOutputFileName(inputFileName.replace(".dot", "") + "-output.dot");
                 }
 
             } else {
                 setNumOfCores(1);
                 setVisualizeSearch(false);
                 String inputFileName = getGraphFilename();
-                setOutputFileName(inputFileName.replace(".dot","") + "-output.dot");
+                setOutputFileName(inputFileName.replace(".dot", "") + "-output.dot");
             }
 
         }
@@ -278,4 +295,11 @@ public class Controller {
         return inputGraph;
     }
 
+    public void setPartialSolution(Solution s) {
+        partialSolution = s;
+    }
+
+    public Solution getPartialSolution() {
+        return partialSolution;
+    }
 }

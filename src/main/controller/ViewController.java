@@ -1,6 +1,7 @@
 package main.controller;
 
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import main.Main;
 import visualization.GanttChartFX;
 
 import java.net.URL;
@@ -24,22 +26,33 @@ public class ViewController implements Initializable {
     @FXML
     Button graphButton, chartButton;
     @FXML
-    Label timeElapsed;
+    Label timeElapsed, solutionsPruned, solutionsExplored, stackSize;
 
     private static HashMap<String, Double> textX;
     private static HashMap<String, Double> textY;
 
+    private static GraphViewController graphView = new GraphViewController();
+
+    private static AnimationTimer timer;
+
+    /**
+     * ViewController is the controller for the main.fxml and is initialized when the fxml is loaded
+     * in GUI.
+     * The
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("View controller initialized!");
 //        graphPane = new Pane();
         graphPane.toFront();
         graphPane.setMinSize(graphPane.getPrefWidth(),graphPane.getPrefWidth());
-        GraphViewController graphView = new GraphViewController();
+        graphView.setProcessorColours(Main.getController().getNumOfProcessors());
         SwingNode view = graphView.viewGraph();
         view.setStyle("-fx-background-color:rgba(0,0,0,0.5)");
         view.resize(750,600);
         graphPane.getChildren().add(view);
-
 
         GanttChartFX chart = GanttChartController.getGanttChart();
         chart.setMinSize(chartPane.getPrefWidth(),chartPane.getPrefHeight());
@@ -47,7 +60,7 @@ public class ViewController implements Initializable {
         double startTime = System.currentTimeMillis();
         DecimalFormat f = new DecimalFormat("##.00");
 
-        AnimationTimer timer = new AnimationTimer() {
+        timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 double elapsedMillis = System.currentTimeMillis() - startTime;
@@ -58,10 +71,18 @@ public class ViewController implements Initializable {
 
     }
 
+    /**
+     * Shows the graph visualisation when the graph button is pressed.
+     * @param mouseEvent mouse click
+     */
     public void graphButtonClick(MouseEvent mouseEvent) {
         graphPane.toFront();
     }
 
+    /**
+     * Loads and displays the Gantt chart when the chart button is pressed.
+     * @param mouseEvent mouse click
+     */
     public void chartButtonClick(MouseEvent mouseEvent) {
         chartPane.toFront();
         textX = GanttChartController.getTextX();
@@ -77,5 +98,21 @@ public class ViewController implements Initializable {
         }
     }
 
-}
+    public static GraphViewController getGraphViewController() {
+        return graphView;
+    }
 
+    public static void stopTimer() {
+        timer.stop();
+    }
+    public void setPruned(int pruned){
+        solutionsPruned.setText(Integer.toString(pruned));
+    }
+    public void setExplored(int explored){
+        solutionsExplored.setText(Integer.toString(explored));
+    }
+    public void setStackSize(int stack){
+        stackSize.setText(Integer.toString(stack));
+    }
+
+}

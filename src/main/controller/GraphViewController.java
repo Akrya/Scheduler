@@ -9,14 +9,20 @@ import org.graphstream.graph.implementations.DefaultGraph;
 import org.graphstream.ui.swingViewer.ViewPanel;
 import org.graphstream.ui.view.Viewer;
 import org.graphstream.ui.view.ViewerPipe;
-import solutiontreecreator.data.Processor;
+import solutionfinder.data.Processor;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 
 public class GraphViewController {
-    private Graph graph = new DefaultGraph(Main.getController().getGraphFilename());
+    public Graph graph = new DefaultGraph(Main.getController().getGraphFilename());
     private Viewer viewer;
+
+    private List<String> processorColours = new ArrayList<>();
 
     protected String styleSheet = "graph {" +
             "fill-color:white;" +
@@ -42,14 +48,17 @@ public class GraphViewController {
         graph.setAttribute("ui.antialias");
         graph.setAttribute("ui.quality");
         graph.setAttribute("ui.stylesheet",styleSheet);
-        setGraphColours(graph);
+        for (Node n: graph.getNodeSet()) {
+            graph.getNode(n.getId()).addAttribute("ui.label",n.getId());
+        }
+//        setGraphColours(graph);
     }
 
     public SwingNode viewGraph(){
         //GraphController.viewGraph(graph);
         viewer = new Viewer(graph,Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
         ViewPanel view = viewer.addDefaultView(false);
-        
+
         viewer.enableAutoLayout();
 
         ViewerPipe fromViewer = viewer.newViewerPipe();
@@ -61,19 +70,35 @@ public class GraphViewController {
         return swingNode;
     }
 
+    public void setProcessorColours(int numOfProcessors) {
+
+        List<String> processorColor = new ArrayList<>(Arrays.asList("red","blue","yellow","green","brown","indigo","cyan","hotpink"));
+        Random rand = new Random();
+        int randomNumber = rand.nextInt(processorColor.size() - 1);
+
+        for (int i = 0; i < numOfProcessors; i++) {
+            processorColours.add(processorColor.get(randomNumber));
+            processorColor.remove(randomNumber);
+            randomNumber = rand.nextInt(processorColor.size() - 1);
+        }
+
+    }
+
     public void setGraphColours(Graph graph){
 
-        String[] processorColor = {"red","blue","yellow","green","brown","indigo","cyan","hotpink"};
+        Processor[] processors = Main.getController().getPartialSolution().getProcessors();
 
-        Processor[] processors = Main.getController().getSolution().getProcessors();
-
-        for(int i = 0; i< processors.length;i++){
+        for(int i = 0; i < processors.length;i++){
             for (Node n: processors[i].mapOfTasksAndStartTimes.keySet()) {
-                graph.getNode(n.getId()).setAttribute("ui.style", "fill-color:"+processorColor[i]+";");
+                graph.getNode(n.getId()).setAttribute("ui.style", "fill-color:"+processorColours.get(i)+";");
                 graph.getNode(n.getId()).addAttribute("ui.label",n.getId());
             }
         }
+
     }
 
+    public Graph getGraph(){
+        return this.graph;
+    }
 
 }
