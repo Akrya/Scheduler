@@ -49,9 +49,7 @@ public class GraphViewController {
         //GraphController.viewGraph(graph);
         viewer = new Viewer(graph,Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
         ViewPanel view = viewer.addDefaultView(false);
-
-        System.out.println("The type is");
-        System.out.println((view).getClass().getSimpleName());
+        
         viewer.enableAutoLayout();
 
         ViewerPipe fromViewer = viewer.newViewerPipe();
