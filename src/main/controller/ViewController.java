@@ -49,15 +49,13 @@ public class ViewController implements Initializable {
         graphPane.setMinSize(graphPane.getPrefWidth(),graphPane.getPrefWidth());
         graphView.setProcessorColours(Main.getController().getNumOfProcessors());
         SwingNode view = graphView.viewGraph();
-        view.setStyle("-fx-background-color:rgba(0,0,0,0.5)");
-        view.resize(750,600);
         graphPane.getChildren().add(view);
 
         GanttChartFX chart = GanttChartController.getGanttChart();
         chart.setMinSize(chartPane.getPrefWidth(),chartPane.getPrefHeight());
         chartPane.getChildren().add(chart);
         double startTime = System.currentTimeMillis();
-        DecimalFormat f = new DecimalFormat("##.00");
+        DecimalFormat f = new DecimalFormat("#0.00");
 
         timer = new AnimationTimer() {
             @Override

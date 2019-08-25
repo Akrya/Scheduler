@@ -6,18 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a61c994-0359-409b-91a0-deca0326a57b" name="Default Changelist" comment="">
+    <list default="true" id="0fe06911-bbc5-4940-a1c1-c960dfb1b8a7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/controller/GanttChartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/GanttChartController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/controller/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/ViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/solutionfinder/AStarParallelSolutionFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/AStarParallelSolutionFinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/solutionfinder/AStarSolutionFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/AStarSolutionFinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/solutionfinder/data/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/data/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
