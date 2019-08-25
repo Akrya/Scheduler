@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import main.Main;
@@ -27,6 +28,8 @@ public class ViewController implements Initializable {
     Button graphButton, chartButton;
     @FXML
     Label timeElapsed, solutionsPruned, solutionsExplored, stackSize;
+    @FXML
+    ProgressIndicator progressSpin;
 
     private static HashMap<String, Double> textX;
     private static HashMap<String, Double> textY;
@@ -44,6 +47,8 @@ public class ViewController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("View controller initialized!");
+        // graphPane = new Pane();
 
         graphPane.toFront();
         graphPane.setMinSize(graphPane.getPrefWidth(),graphPane.getPrefWidth());
@@ -102,6 +107,10 @@ public class ViewController implements Initializable {
     public static void stopTimer() {
         timer.stop();
     }
+    public void finish() {
+        timer.stop();
+        progressSpin.setProgress(100);
+    }
     public void setPruned(int pruned){
         solutionsPruned.setText(Integer.toString(pruned));
     }
@@ -113,4 +122,3 @@ public class ViewController implements Initializable {
     }
 
 }
-

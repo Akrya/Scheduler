@@ -41,9 +41,7 @@ public class AStarParallelSolutionFinder extends AStarSolutionFinder {
                 s = open.take();
             }
             solutionsExplored++;
-            if(s.getHeuristic() != this.lastExaminedHeuristic){
-                // this.printDebugData(s, open, closed);
-            }
+            partialSolution = s;
             lastExaminedHeuristic = s.getHeuristic();
 
             // If complete solution is found, return it

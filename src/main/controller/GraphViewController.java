@@ -10,16 +10,14 @@ import org.graphstream.ui.swingViewer.ViewPanel;
 import org.graphstream.ui.view.Viewer;
 import org.graphstream.ui.view.ViewerPipe;
 import solutionfinder.data.Processor;
+import solutionfinder.data.Solution;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 import java.util.List;
-import java.util.Random;
 
 
 public class GraphViewController {
-
     public Graph graph = new DefaultGraph(Main.getController().getGraphFilename());
     private Viewer viewer;
     private List<String> processorColours = new ArrayList<>();
@@ -97,15 +95,21 @@ public class GraphViewController {
 
     }
 
-    public void setGraphColours(Graph graph){
+    public void setGraphColours(Graph graph, Solution solution){
 
-        Processor[] processors = Main.getController().getSolution().getProcessors();
+        Processor[] processors = solution.getProcessors();
 
-        for(int i = 0; i < processors.length;i++){
-            for (Node n: processors[i].mapOfTasksAndStartTimes.keySet()) {
-                graph.getNode(n.getId()).setAttribute("ui.style", "fill-color:"+processorColours.get(i)+";");
-                graph.getNode(n.getId()).addAttribute("ui.label",n.getId());
+        try{
+            for(int i = 0; i < processors.length;i++){
+                for (Node n: processors[i].mapOfTasksAndStartTimes.keySet()) {
+                    graph.getNode(n.getId()).setAttribute("ui.style", "fill-color:"+processorColours.get(i)+";");
+                    graph.getNode(n.getId()).addAttribute("ui.label",n.getId());
+                }
             }
+        } catch (Exception e){
+            System.out.println("EXCEPTION!!!");
+            System.out.println(solution.stringData());
+            e.printStackTrace();
         }
 
     }

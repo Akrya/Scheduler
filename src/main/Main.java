@@ -5,6 +5,7 @@ import main.controller.Controller;
 public class Main {
 
     private static Controller controller = new Controller();
+    private static GUI gui;
 
     public static void main(String args[]) {
 
@@ -14,14 +15,19 @@ public class Main {
         if (controller.isParseFine()) {
             controller.initialise();
             if (controller.getGraph() != null) {
+                controller.getGraph().setUpBottomLevels();
                 if (controller.isVisualizeSearch()) {
-                    GUI.launchApplication(args);
+                    gui = new GUI();
+                    gui.launchApplication(args);
                 } else {
                     controller.startSolutionFind();
                 }
             }
         }
+    }
 
+    public static GUI getGUI(){
+        return gui;
     }
 
     public static Controller getController() {
