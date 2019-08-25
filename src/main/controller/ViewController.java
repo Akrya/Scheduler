@@ -26,7 +26,7 @@ public class ViewController implements Initializable {
     @FXML
     Button graphButton, chartButton;
     @FXML
-    Label timeElapsed;
+    Label timeElapsed, solutionsPruned, solutionsExplored, stackSize;
 
     private static HashMap<String, Double> textX;
     private static HashMap<String, Double> textY;
@@ -98,12 +98,23 @@ public class ViewController implements Initializable {
         }
     }
 
+<<<<<<< HEAD
     public static GraphViewController getGraphViewController() {
         return graphView;
     }
 
     public static void stopTimer() {
         timer.stop();
+=======
+    public void setPruned(int pruned){
+        solutionsPruned.setText(Integer.toString(pruned));
+    }
+    public void setExplored(int explored){
+        solutionsPruned.setText(Integer.toString(explored));
+    }
+    public void setStackSize(int stack){
+        solutionsPruned.setText(Integer.toString(stack));
+>>>>>>> 4910b95bf42304bdb6ee89fca5c2b5150697587e
     }
 
 }
