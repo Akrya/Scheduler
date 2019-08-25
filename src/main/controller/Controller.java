@@ -40,12 +40,14 @@ public class Controller {
 
         inputGraph = GraphController.parseInputFile(inputGraph, dotFileName);
 
-        SolutionTreeCreator solutionTreeCreator = new SolutionTreeCreator(numOfProcessors, inputGraph);
-        solutionTreeCreator.buildSolutionTree();
+        if (inputGraph != null) {
+            SolutionTreeCreator solutionTreeCreator = new SolutionTreeCreator(numOfProcessors, inputGraph);
+            solutionTreeCreator.buildSolutionTree();
 
-        findSolution(solutionTreeCreator);
+            findSolution(solutionTreeCreator);
 
-        writeOutputFile();
+            writeOutputFile();
+        }
 
     }
 
