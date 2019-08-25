@@ -3,7 +3,6 @@ package main.controller;
 import graph.GraphController;
 import javafx.embed.swing.SwingNode;
 import main.Main;
-
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.DefaultGraph;
@@ -30,7 +29,7 @@ public class GraphViewController {
             "text-background-color:white;" +
             "text-style:bold;" +
             "text-alignment:under;" +
-            "text-size:16px;" +
+            "text-size:30px;" +
             "}" +
             "edge {" +
             "shape: cubic-curve;" +

@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import org.graphstream.ui.swingViewer.ViewPanel;
 import visualization.GanttChartFX;
 
 import java.net.URL;

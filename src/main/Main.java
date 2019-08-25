@@ -11,6 +11,7 @@ public class Main {
         controller.parseInputArguments(args);
         controller.initialise();
 
+        // Running the visualisation only if the parsing of the input dot file was successful
         if (controller.isVisualizeSearch()) {
             if (controller.getGraph() != null) {
                 GUI.launchApplication(args);
