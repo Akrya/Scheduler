@@ -6,9 +6,32 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="097e553d-3217-4489-8a05-da9ac0b59f31" name="Default Changelist" comment="">
+    <list default="true" id="3d8f6ada-435d-40b9-b38a-dd515125d7d8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Nodes_7_OutTree-output.dot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Nodes_7_OutTree.dot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/scheduler_jar/Nodes_7_OutTree-output.dot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/scheduler_jar/Nodes_7_OutTree.dot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/ganttchart.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/mainstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Main.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/GUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/controller/GanttChartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/controller/GraphViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/controller/ViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/Graph/TestGraphController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/visualization/GanttChartFX.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/controller/GraphViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/GraphViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/306Project1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/scheduler_jar/scheduler-basic-T8.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/scheduler_jar/scheduler-basic-T8.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/GraphController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/GraphController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/TaskGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/TaskGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/solutionfinder/AStarParallelSolutionFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/AStarParallelSolutionFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" afterDir="false" />
     </list>
@@ -21,41 +44,43 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Terence Qu &lt;terenco12345@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="ProjectId" id="1PGDkKvt555FUVWy6NCWdJsN1va" />
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1565502809047" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1566535688833" />
+    <property name="ignore.virus.scanning.warn.message" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="controller" />
-      <recent name="" />
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="test" />
+      <recent name="solutionfinder.data" />
+      <recent name="solutiontreecreator" />
     </key>
-  </component>
-  <component name="RunAnythingCache">
-    <option name="myCommands">
-      <command value="mvn dependency:analyse" />
-      <command value="mvn dependency:analyze" />
-    </option>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -69,37 +94,167 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.TestAStarSearchParallel2Processors">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="306Project1" />
-      <option name="PROGRAM_PARAMETERS" value="Nodes_7_OutTree.dot 2 -v" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestAStarSearchParallel2Processors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="306Project1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.TestAStarSearchParallel2Processors" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestAStarSearchParallel4Processors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="306Project1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.TestAStarSearchParallel4Processors" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestAStarSearchSequential2Processors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="306Project1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.TestAStarSearchSequential2Processors" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestAStarSearchSequential4Processors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="306Project1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.TestAStarSearchSequential4Processors" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestAStarSearchSequential4Processors.test07Nodes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="306Project1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.TestAStarSearchSequential4Processors" />
+      <option name="METHOD_NAME" value="test07Nodes" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.TestAStarSearchParallel4Processors" />
+      <item itemvalue="JUnit.TestAStarSearchSequential4Processors" />
+      <item itemvalue="JUnit.TestAStarSearchSequential4Processors.test07Nodes" />
+      <item itemvalue="JUnit.TestAStarSearchSequential2Processors" />
+      <item itemvalue="JUnit.TestAStarSearchParallel2Processors" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TestAStarSearchParallel2Processors" />
+        <item itemvalue="JUnit.TestAStarSearchSequential2Processors" />
+        <item itemvalue="JUnit.TestAStarSearchParallel4Processors" />
+        <item itemvalue="JUnit.TestAStarSearchSequential4Processors" />
+        <item itemvalue="JUnit.TestAStarSearchSequential4Processors.test07Nodes" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand />
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="097e553d-3217-4489-8a05-da9ac0b59f31" name="Default Changelist" comment="" />
+      <changelist id="3d8f6ada-435d-40b9-b38a-dd515125d7d8" name="Default Changelist" comment="" />
       <created>1565491682221</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1565491682221</updated>
       <workItem from="1565491686686" duration="133000" />
       <workItem from="1565517656165" duration="88000" />
-      <workItem from="1566254918802" duration="5921000" />
-      <workItem from="1566377753803" duration="240000" />
-      <workItem from="1566429186039" duration="203000" />
-      <workItem from="1566432755083" duration="1809000" />
-      <workItem from="1566456863944" duration="8536000" />
-      <workItem from="1566471144270" duration="634000" />
-      <workItem from="1566516956656" duration="3202000" />
-      <workItem from="1566688760542" duration="478000" />
     </task>
+    <task id="LOCAL-00001" summary="Sequential A* search algorithm completed.">
+      <created>1566207580946</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1566207580946</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Sequential A* search now works perfectly, addTask fixed">
+      <created>1566286342260</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1566286342260</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Parallel A* search algorithm completed.">
+      <created>1566291484035</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1566291484035</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Many changes &lt;See below&gt;&#10;&#10;- Added a proper heuristic, this is the one used in the 2003 paper by&#10;Oliver Sinnen.&#10;- Fixed some concurrency issues with multithreading.&#10;- Added more unit tests.">
+      <created>1566554774329</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1566554774329</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Switched to priority queue for easier sorting of heuristic values.">
+      <created>1566562001680</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1566562001680</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,40 +273,12 @@
       </map>
     </option>
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/visualization/GanttChartFX.java</url>
-          <line>81</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/Main.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/controller/GanttChartController.java</url>
-          <line>70</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/visualization/GanttChartFX.java</url>
-          <line>95</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/controller/GanttChartController.java</url>
-          <line>78</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/controller/GanttChartController.java</url>
-          <line>72</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Sequential A* search algorithm completed." />
+    <MESSAGE value="Sequential A* search now works perfectly, addTask fixed" />
+    <MESSAGE value="Parallel A* search algorithm completed." />
+    <MESSAGE value="Many changes &lt;See below&gt;&#10;&#10;- Added a proper heuristic, this is the one used in the 2003 paper by&#10;Oliver Sinnen.&#10;- Fixed some concurrency issues with multithreading.&#10;- Added more unit tests." />
+    <MESSAGE value="Switched to priority queue for easier sorting of heuristic values." />
+    <option name="LAST_COMMIT_MESSAGE" value="Switched to priority queue for easier sorting of heuristic values." />
   </component>
 </project>
