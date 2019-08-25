@@ -1,12 +1,11 @@
 package solutionfinder.data;
 
-import java.io.Serializable;
-import java.util.*;
-
+import main.graph.TaskGraph;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Node;
 
-import graph.TaskGraph;
+import java.io.Serializable;
+import java.util.*;
 
 /**
  * This class represents a solution, a series of tasks scheduled amongst multiple processors.
@@ -46,7 +45,7 @@ public class Solution implements Serializable {
 	 * one task must finish before the other starts.
 	 * If on different processors, for each dependency, 
 	 * start time >= start time of dependency + dependency's weight + edge weight 
-	 * @param n task represented as a node in the graph
+	 * @param n task represented as a node in the main.graph
 	 * @param targetProcessorIndex
 	 */
 	public boolean addTask(Node n, int targetProcessorIndex) {

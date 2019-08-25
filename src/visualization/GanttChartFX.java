@@ -7,7 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.chart.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
-import main.controller.GanttChartController;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -89,8 +88,8 @@ public class GanttChartFX<X,Y> extends XYChart<X,Y> {
                 }
                 Node block = item.getNode();
                 Rectangle ellipse;
-                GanttChartController.setTextX(getText(item.getExtraValue()), new Double(x));
-                GanttChartController.setTextY(getText(item.getExtraValue()), new Double(y));
+                GanttChartCreator.setTextX(getText(item.getExtraValue()), new Double(x));
+                GanttChartCreator.setTextY(getText(item.getExtraValue()), new Double(y));
                 if (block != null) {
                     if (block instanceof StackPane) {
                         StackPane region = (StackPane)item.getNode();

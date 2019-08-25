@@ -47,7 +47,7 @@ public class TestRandomStuff {
 //		System.out.println(path);
 ////		GraphParser graphParser = new GraphParser(path);
 //
-//		// Dump info of graph in the console
+//		// Dump info of main.graph in the console
 ////		graphParser.printGraphInConsole();
 //
 //		System.out.println("---------------------------------");
@@ -97,7 +97,7 @@ public class TestRandomStuff {
 //		System.out.println(path);
 ////		GraphParser graphParser = new GraphParser(path);
 //
-//		// Dump info of graph in the console
+//		// Dump info of main.graph in the console
 //		graphParser.printGraphInConsole();
 //
 //		System.out.println("---------------------------------");

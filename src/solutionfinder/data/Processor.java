@@ -1,8 +1,9 @@
 package solutionfinder.data;
 
+import org.graphstream.graph.Node;
+
 import java.io.Serializable;
 import java.util.HashMap;
-import org.graphstream.graph.Node;
 
 /**
  * Class that represents a processor. This contains a set of scheduled tasks in a specific order.

@@ -8,12 +8,25 @@
   <component name="ChangeListManager">
     <list default="true" id="0fe06911-bbc5-4940-a1c1-c960dfb1b8a7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nodes_11_OutTree.dot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nodes_7_OutTree-output.dot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nodes_7_OutTree.dot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nodes_9_SeriesParallel.dot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/scheduler_jar/Nodes_7_OutTree-output.dot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/scheduler_jar/Nodes_8_random-output.dot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/scheduler_jar/scheduler-final-T8.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/scheduler_jar/scheduler-final-T8.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/TaskGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/TaskGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/controller/GanttChartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/GanttChartController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/controller/GraphViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/GraphViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/controller/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/ViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/controller/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/MainViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/solutionfinder/AStarParallelSolutionFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/AStarParallelSolutionFinder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/solutionfinder/AStarSolutionFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/AStarSolutionFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/solutionfinder/data/Processor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/data/Processor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/solutionfinder/data/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/data/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/Graph/TestGraphController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestGraphController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestAStarSearchParallel2Processors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestAStarSearchParallel2Processors.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,6 +76,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="test" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="test" />
       <recent name="solutionfinder.data" />
@@ -85,7 +101,7 @@
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="306Project1" />
-      <option name="PROGRAM_PARAMETERS" value="Nodes_7_OutTree.dot 2 -v" />
+      <option name="PROGRAM_PARAMETERS" value="Nodes_7_OutTree.dot 2 -p 2" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -206,7 +222,7 @@
       <updated>1565491682221</updated>
       <workItem from="1565491686686" duration="133000" />
       <workItem from="1565517656165" duration="88000" />
-      <workItem from="1566732595408" duration="49000" />
+      <workItem from="1566732595408" duration="1383000" />
     </task>
     <task id="LOCAL-00001" summary="Sequential A* search algorithm completed.">
       <created>1566207580946</created>
@@ -275,7 +291,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/GUI.java</url>
-          <line>23</line>
+          <line>22</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -287,6 +303,11 @@
           <url>file://$PROJECT_DIR$/src/main/controller/GanttChartController.java</url>
           <line>69</line>
           <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/controller/Controller.java</url>
+          <line>102</line>
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

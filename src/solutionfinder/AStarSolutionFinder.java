@@ -1,23 +1,16 @@
 package solutionfinder;
 
-import com.sun.jmx.remote.internal.ArrayQueue;
-import graph.GraphController;
-import graph.TaskGraph;
+import main.graph.TaskGraph;
 import javafx.application.Platform;
-import jdk.nashorn.internal.ir.Block;
 import main.Main;
-import main.controller.Controller;
-import main.controller.GanttChartController;
-import main.controller.GraphViewController;
-import main.controller.ViewController;
-import org.graphstream.graph.Graph;
+import main.controller.MainViewController;
 import org.graphstream.graph.Node;
 import solutionfinder.data.Solution;
-import sun.security.provider.NativePRNG;
 
-import javax.swing.text.View;
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Stack;
+import java.util.concurrent.PriorityBlockingQueue;
 
 /**
  * Class that is used to find the optimal schedule using a parallel A*.
@@ -47,9 +40,9 @@ public class AStarSolutionFinder {
     }
 
     /**
-     * Method to generate a solution tree from a task graph.
+     * Method to generate a solution tree from a task main.graph.
      *
-     * @return solution tree generated from input task graph
+     * @return solution tree generated from input task main.graph
      */
     public Solution startOptimalSearch() {
         try {
@@ -89,13 +82,13 @@ public class AStarSolutionFinder {
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
-                        Main.getGUI().getViewController().getGraphViewController()
+                        Main.getGUI().getMainViewController().getGraphViewController()
                                 .setProcessorColours(numProcessors);
-                        Main.getGUI().getViewController().getGraphViewController()
-                                .setGraphColours(ViewController.getGraphViewController().getGraph(), partialSolution);
-                        Main.getController().getViewController().setExplored(solutionsExplored);
-                        Main.getController().getViewController().setPruned(solutionsPruned);
-                        Main.getController().getViewController().setStackSize(open.size());
+                        Main.getGUI().getMainViewController().getGraphViewController()
+                                .setGraphColours(MainViewController.getGraphViewController().getGraph(), partialSolution);
+                        Main.getController().getMainViewController().setExplored(solutionsExplored);
+                        Main.getController().getMainViewController().setPruned(solutionsPruned);
+                        Main.getController().getMainViewController().setStackSize(open.size());
                     }
                 });
             }
@@ -113,10 +106,10 @@ public class AStarSolutionFinder {
                 expandSolution(s, open, closed);
             }
         }
-        System.out.println("Search has finished!");
 
         Main.getController().setOptimalSolution(optimalSolution);
         Main.getController().finalize();
+
         return optimalSolution;
     }
 

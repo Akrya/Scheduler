@@ -5,8 +5,8 @@ This project is about using AI and parallel processing power to solve difficult 
 ## Command Line Interface
 ````+
 java −jar scheduler.jar INPUT.dot P [OPTION]
-INPUT.dot   A task graph with integer weights in dot format
-P           Number of processors to schedule the INPUT graph on
+INPUT.dot   A task main.graph with integer weights in dot format
+P           Number of processors to schedule the INPUT main.graph on
 
 Optional:
 −p N        Use N cores for execution in parallel (default is sequential)

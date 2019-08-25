@@ -1,12 +1,13 @@
 package solutionfinder;
 
-import graph.TaskGraph;
+import main.graph.TaskGraph;
 import javafx.application.Platform;
 import main.Main;
-import main.controller.ViewController;
+import main.controller.MainViewController;
 import solutionfinder.data.Solution;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.PriorityBlockingQueue;
 
 /**
  * Class that is used to find the optimal schedule using a parallel A*.
@@ -51,13 +52,13 @@ public class AStarParallelSolutionFinder extends AStarSolutionFinder {
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
-                        Main.getGUI().getViewController().getGraphViewController()
+                        Main.getGUI().getMainViewController().getGraphViewController()
                                 .setProcessorColours(numProcessors);
-                        Main.getGUI().getViewController().getGraphViewController()
-                                .setGraphColours(ViewController.getGraphViewController().getGraph(), partialSolution);
-                        Main.getController().getViewController().setExplored(solutionsExplored);
-                        Main.getController().getViewController().setPruned(solutionsPruned);
-                        Main.getController().getViewController().setStackSize(open.size());
+                        Main.getGUI().getMainViewController().getGraphViewController()
+                                .setGraphColours(MainViewController.getGraphViewController().getGraph(), partialSolution);
+                        Main.getController().getMainViewController().setExplored(solutionsExplored);
+                        Main.getController().getMainViewController().setPruned(solutionsPruned);
+                        Main.getController().getMainViewController().setStackSize(open.size());
                     }
                 });
             }

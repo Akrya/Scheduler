@@ -1,7 +1,7 @@
 package main.controller;
 
-import graph.GraphController;
-import graph.TaskGraph;
+import main.graph.GraphTools;
+import main.graph.TaskGraph;
 import javafx.application.Platform;
 import main.Main;
 import org.graphstream.graph.Edge;
@@ -10,6 +10,7 @@ import solutionfinder.AStarParallelSolutionFinder;
 import solutionfinder.AStarSolutionFinder;
 import solutionfinder.data.Processor;
 import solutionfinder.data.Solution;
+import visualization.GanttChartCreator;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -31,16 +32,16 @@ public class Controller {
     private Solution solution;
     private Solution optimalSolution;
 
-    private ViewController viewController;
+    private MainViewController mainViewController;
 
     /**
-     * Method that handles the parsing of the dot file and makes a graph object using the
+     * Method that handles the parsing of the dot file and makes a main.graph object using the
      * GraphStream library. Builds the solution tree and then calls the find solution method
      * on the tree.
      */
     public void initialise() {
         inputGraph = new TaskGraph("inputGraph");
-        inputGraph = GraphController.parseInputFile(inputGraph, dotFileName);
+        inputGraph = GraphTools.parseInputFile(inputGraph, dotFileName);
         solution = new Solution(inputGraph, numOfProcessors);
         optimalSolution = new Solution(inputGraph, numOfProcessors);
     }
@@ -85,9 +86,9 @@ public class Controller {
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
-                    Main.getController().getViewController().finish();
-                    ViewController.getGraphViewController().setGraphColours(ViewController.getGraphViewController().getGraph(), optimalSolution);
-                    GanttChartController.initialiseChart();
+                    Main.getController().getMainViewController().finish();
+                    MainViewController.getGraphViewController().setGraphColours(MainViewController.getGraphViewController().getGraph(), optimalSolution);
+                    GanttChartCreator.initialiseChart();
                 }
             });
         } else {
@@ -111,12 +112,12 @@ public class Controller {
 
         fileWriter(outputFile, initialLine);
 
-        Processor[] processors = solution.getProcessors();
+        Processor[] processors = optimalSolution.getProcessors();
 
         // Writing the nodes to the file
         for (int i = 0; i < processors.length; i++) {
             for (Node n : processors[i].mapOfTasksAndStartTimes.keySet()) {
-                String nextLine = "\t " + n.getId() + "\t " + "[Weight=" + GraphController.getNodeWeight(n.getId(),
+                String nextLine = "\t " + n.getId() + "\t " + "[Weight=" + GraphTools.getNodeWeight(n.getId(),
                         inputGraph) + ",Start=" + processors[i].mapOfTasksAndStartTimes.get(n) + ",Processor="
                         + i + "];\n";
                 fileWriter(outputFile, nextLine);
@@ -126,7 +127,7 @@ public class Controller {
         // Writing the edges onto the file
         for (Edge e : inputGraph.getEdgeSet()) {
             String nextLine = "\t " + e.getSourceNode().getId() + " -> " + e.getTargetNode().getId() + "\t" +
-                    "[Weight=" + GraphController.getEdgeWeight(e.getSourceNode().getId(), e.getTargetNode().getId(), inputGraph) + "];\n";
+                    "[Weight=" + GraphTools.getEdgeWeight(e.getSourceNode().getId(), e.getTargetNode().getId(), inputGraph) + "];\n";
             fileWriter(outputFile, nextLine);
         }
 
@@ -249,8 +250,8 @@ public class Controller {
         System.out.println("Invalid input");
         System.out.println("Please run the jar file using the following interface ->\n");
         System.out.println("java−jar scheduler . jar INPUT.dot P [OPTION]");
-        System.out.println("INPUT. dot   a task graph with integer weights in dot format");
-        System.out.println("P            number of  processors  to  schedule  the INPUT graph on");
+        System.out.println("INPUT. dot   a task main.graph with integer weights in dot format");
+        System.out.println("P            number of  processors  to  schedule  the INPUT main.graph on");
         System.out.println("Optional:");
         System.out.println("−p N use N cores for execution in parallel (default  is  sequential)");
         System.out.println("−v visualise the search");
@@ -324,11 +325,11 @@ public class Controller {
         return optimalSolution;
     }
 
-    public void setViewController(ViewController viewController){
-        this.viewController = viewController;
+    public void setMainViewController(MainViewController mainViewController){
+        this.mainViewController = mainViewController;
     }
 
-    public ViewController getViewController(){
-        return viewController;
+    public MainViewController getMainViewController(){
+        return mainViewController;
     }
 }

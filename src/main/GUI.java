@@ -6,14 +6,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import main.controller.GanttChartController;
-import main.controller.ViewController;
+import main.controller.MainViewController;
 
 public class GUI extends Application {
     private static final String MAIN_MENU_SCENE = "/views/Main.fxml";
     private static final String APPLICATION_TITLE = "Scheduler";
     private static Stage stage;
-    private ViewController viewController;
+    private MainViewController mainViewController;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -22,8 +21,8 @@ public class GUI extends Application {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource(MAIN_MENU_SCENE));
         Parent root = loader.load();
-        viewController = loader.getController();
-        Main.getController().setViewController(viewController);
+        mainViewController = loader.getController();
+        Main.getController().setMainViewController(mainViewController);
 
         // show application
         primaryStage.setTitle(APPLICATION_TITLE);
@@ -44,7 +43,7 @@ public class GUI extends Application {
         launch(args);
     }
 
-    public ViewController getViewController(){
-        return viewController;
+    public MainViewController getMainViewController(){
+        return mainViewController;
     }
 }
