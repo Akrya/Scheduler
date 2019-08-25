@@ -62,7 +62,7 @@ public class GanttChartController {
 
         for (int i = 0; i < processors.length; i++) {
             XYChart.Series newSeries = new XYChart.Series();
-            
+
             List<Node> nodes = new ArrayList<>(processors[i].mapOfTasksAndStartTimes.keySet());
             Node tempNode;
 

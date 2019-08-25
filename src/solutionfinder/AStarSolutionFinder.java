@@ -32,7 +32,7 @@ public class AStarSolutionFinder {
     protected Solution optimalSolution;
     protected double lastExaminedHeuristic;
     protected Solution partialSolution;
-    protected static int solutionsPruned;
+    protected int solutionsPruned;
     protected int cooldown;
 
 
@@ -85,18 +85,25 @@ public class AStarSolutionFinder {
             Main.getController().setOptimalSolution(s);
             Main.getController().setSolution(s);
 
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    Main.getGUI().getViewController().getGraphViewController()
-                            .setProcessorColours(numProcessors);
-                    Main.getGUI().getViewController().getGraphViewController()
-                            .setGraphColours(ViewController.getGraphViewController().getGraph(), partialSolution);
-                }
-            });
+            if(Main.getController().isVisualizeSearch()){
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        Main.getGUI().getViewController().getGraphViewController()
+                                .setProcessorColours(numProcessors);
+                        Main.getGUI().getViewController().getGraphViewController()
+                                .setGraphColours(ViewController.getGraphViewController().getGraph(), partialSolution);
+                        Main.getController().getViewController().setExplored(solutionsExplored);
+                        Main.getController().getViewController().setPruned(solutionsPruned);
+                        Main.getController().getViewController().setStackSize(open.size());
+                    }
+                });
+            }
 
             // If complete solution is found, return it
             if (s.getTasksLeft().isEmpty() && (optimalSolution == null || s.getTotalTime() < optimalSolution.getTotalTime())) {
+                System.out.println("Found complete solution with cost " + s.getTotalTime());
+                System.out.println("Stack size is " + open.size());
                 optimalSolution = s;
                 Main.getController().setOptimalSolution(s);
             }
@@ -106,14 +113,10 @@ public class AStarSolutionFinder {
                 expandSolution(s, open, closed);
             }
         }
+        System.out.println("Search has finished!");
 
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                Main.getController().setOptimalSolution(optimalSolution);
-                Main.getController().finalize();
-            }
-        });
+        Main.getController().setOptimalSolution(optimalSolution);
+        Main.getController().finalize();
         return optimalSolution;
     }
 
@@ -234,9 +237,4 @@ public class AStarSolutionFinder {
             }
         }
     }
-
-    public static int getSolutionsPruned() {
-        return solutionsPruned;
-    }
-
 }

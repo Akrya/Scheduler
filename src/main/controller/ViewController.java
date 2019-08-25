@@ -52,6 +52,8 @@ public class ViewController implements Initializable {
         graphPane.setMinSize(graphPane.getPrefWidth(),graphPane.getPrefWidth());
         graphView.setProcessorColours(Main.getController().getNumOfProcessors());
         SwingNode view = graphView.viewGraph();
+        view.setStyle("-fx-background-color:rgba(0,0,0,0.5)");
+        view.resize(750,600);
         graphPane.getChildren().add(view);
 
         GanttChartFX chart = GanttChartController.getGanttChart();
@@ -108,10 +110,6 @@ public class ViewController implements Initializable {
     public void finish() {
         timer.stop();
         progressSpin.setProgress(100);
-    }
-
-    public void setLabels() {
-
     }
 
     public void setPruned(int pruned){
