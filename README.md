@@ -20,3 +20,12 @@ Optional:
 - Terence Qu - tqu593 - 962508341 - (Terenco12345)
 - Shunji Takano - stak469 - 492810641 - (stak469)
 - Kungeng Wu - kwu849 - 948234882 - (kwu849)
+
+
+
+## Plan
+Plan for the Project includes a Gantt Chart, Network Depenency Graph and a Work Breakdown Structure
+The files can be found in the folder....
+
+## Other Information 
+Details on the meetings, decisions and background research can be found in the Wiki
