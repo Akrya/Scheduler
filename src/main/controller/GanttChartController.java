@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import main.Main;
@@ -87,9 +88,11 @@ public class GanttChartController {
                     currentColour = colours.get(randomColour);
                     colours.add(previousColour);
                 }
+
                 newSeries.getData().add(new XYChart.Data(processors[i].mapOfTasksAndStartTimes.get(n),
                         processorTitle.get(i), new GanttChartFX.ExtraData(GraphController.getNodeWeight(n.getId(),
                         Main.getController().getGraph()), currentColour, n.getId())));
+
                 newSeries.setName(n.getId());
 
                 previousColour = currentColour;
