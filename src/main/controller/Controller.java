@@ -40,12 +40,14 @@ public class Controller {
 
         inputGraph = GraphController.parseInputFile(inputGraph, dotFileName);
 
-        SolutionTreeCreator solutionTreeCreator = new SolutionTreeCreator(numOfProcessors, inputGraph);
-        solutionTreeCreator.buildSolutionTree();
+        if (inputGraph != null) {
+            SolutionTreeCreator solutionTreeCreator = new SolutionTreeCreator(numOfProcessors, inputGraph);
+            solutionTreeCreator.buildSolutionTree();
 
-        findSolution(solutionTreeCreator);
+            findSolution(solutionTreeCreator);
 
-        writeOutputFile();
+            writeOutputFile();
+        }
 
     }
 
@@ -120,11 +122,16 @@ public class Controller {
 
     }
 
+    /**
+     * Parses the input arguments that are passed in through the command line. Assigns the necessary
+     * fields in the controller class depending upon the input arguments.
+     * @param inputArgs - An array of string containing the input arguments
+     */
     public void parseInputArguments(String[] inputArgs) {
         // Parsing the input arguments and assigning necessary fields in the controller class
         int totalArgs = inputArgs.length;
 
-        // checks if input contains the correct number of arguments
+        // Checks if input contains the correct number of arguments
         if (totalArgs < 2) {
             printInputArgumentsError();
         } else {
@@ -195,6 +202,9 @@ public class Controller {
         }
     }
 
+    /**
+     * Initialises the Gantt Chart.
+     */
     public void startGanttVisualise() {
         GanttChartController.initialiseChart();
     }

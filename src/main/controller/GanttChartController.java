@@ -3,12 +3,10 @@ package main.controller;
 import graph.GraphController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import main.Main;
 import org.graphstream.graph.Node;
 import solutiontreecreator.data.Processor;
@@ -19,10 +17,6 @@ import java.util.*;
 public class GanttChartController {
 
     private static GanttChartController ourInstance = new GanttChartController();
-
-    private static Stage primaryStage;
-
-    private static Scene chart;
 
     private static List<String> colours = new ArrayList<>(
             Arrays.asList("status-red", "status-blue", "status-green", "status-orange", "status-darkGreen"));
@@ -40,17 +34,19 @@ public class GanttChartController {
     private GanttChartController() {
     }
 
-    public static GanttChartController getInstance() {
-        return ourInstance;
-    }
+//    /**
+//     * The singleton of this class is returned
+//     * @return
+//     */
+//    public static GanttChartController getInstance() {
+//        return ourInstance;
+//    }
 
-    public static void setPrimaryStage(Stage stage) {
-        primaryStage = stage;
-        primaryStage.setTitle("Gantt Chart");
-        primaryStage.setResizable(false);
-    }
-
-
+    /**
+     * Initialises the chart that needs to be displayed. The values for the blocks are taken
+     * from the final solution that is found by the solution finder. The colours for the boxes are also
+     * randomised.
+     */
     public static void initialiseChart() {
 
         Processor[] processors = Main.getController().getSolution().getProcessors();
@@ -87,9 +83,11 @@ public class GanttChartController {
                     currentColour = colours.get(randomColour);
                     colours.add(previousColour);
                 }
+
                 newSeries.getData().add(new XYChart.Data(processors[i].mapOfTasksAndStartTimes.get(n),
                         processorTitle.get(i), new GanttChartFX.ExtraData(GraphController.getNodeWeight(n.getId(),
                         Main.getController().getGraph()), currentColour, n.getId())));
+
                 newSeries.setName(n.getId());
 
                 previousColour = currentColour;
@@ -105,6 +103,7 @@ public class GanttChartController {
 
     }
 
+    // Getters and setters for the fields for this class
     public static void setTextX(String nodeId, Double xVal) {
         textX.put(nodeId, xVal);
     }

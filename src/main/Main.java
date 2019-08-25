@@ -12,7 +12,9 @@ public class Main {
         controller.initialise();
 
         if (controller.isVisualizeSearch()) {
-            GUI.launchApplication(args);
+            if (controller.getGraph() != null) {
+                GUI.launchApplication(args);
+            }
         }
 
     }
