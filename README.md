@@ -2,6 +2,11 @@
 Project 1 for SOFTENG 306. Team 8.
 This project is about using AI and parallel processing power to solve difficult scheduling problems.
 
+## Installation
+Using maven, build the project by the 'install' goal with the pom.xml file. The jar file will then be located in the target folder.
+The dot file you want to test on, must be in the same directory as the jar file.
+
+
 ## Command Line Interface
 ````+
 java −jar scheduler.jar INPUT.dot P [OPTION]
