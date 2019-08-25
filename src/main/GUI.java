@@ -13,7 +13,7 @@ public class GUI extends Application {
     private static Stage stage;
     @Override
     public void start(Stage primaryStage) throws Exception {
-//        Main.getController().startGanttVisualise();
+
         stage = primaryStage;
 
         FXMLLoader loader = new FXMLLoader();

@@ -9,7 +9,6 @@ import solutionfinder.AStarSolutionFinder;
 import solutionfinder.data.Processor;
 import solutionfinder.data.Solution;
 
-import javax.swing.text.View;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -32,8 +31,7 @@ public class Controller {
 
     /**
      *  Method that handles the parsing of the dot file and makes a graph object using the
-     *  GraphStream library. Builds the solution tree and then calls the find solution method
-     *  on the tree.
+     *  GraphStream library.
      */
     public void initialise() {
 
@@ -232,14 +230,6 @@ public class Controller {
 
         }
     }
-
-    /**
-     * Initialises the Gantt Chart.
-     */
-    public void startGanttVisualise() {
-        GanttChartController.initialiseChart();
-    }
-
 
     /**
      * Prints help message if incorrect number of arguments is detected.

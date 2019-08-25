@@ -16,8 +16,6 @@ import java.util.*;
 
 public class GanttChartController {
 
-    private static GanttChartController ourInstance = new GanttChartController();
-
     private static List<String> colours = new ArrayList<>(
             Arrays.asList("status-red", "status-blue", "status-green", "status-orange", "status-darkGreen"));
     private static String currentColour = null;
@@ -30,9 +28,6 @@ public class GanttChartController {
 
     private static HashMap<String, Double> textX = new HashMap<>();
     private static HashMap<String, Double> textY = new HashMap<>();
-
-    private GanttChartController() {
-    }
 
     /**
      * Initialises the chart that needs to be displayed. The values for the blocks are taken
@@ -104,13 +99,13 @@ public class GanttChartController {
         textY.put(nodeId, yVal);
     }
 
-    public static GanttChartFX getGanttChart() {
+    public static GanttChartFX<Number, String> getGanttChart() {
         return ganttChart;
     }
-    public static HashMap getTextX() {
+    public static HashMap<String, Double> getTextX() {
         return textX;
     }
-    public static HashMap getTextY() {
+    public static HashMap<String, Double> getTextY() {
         return textY;
     }
 

@@ -38,14 +38,13 @@ public class ViewController implements Initializable {
     /**
      * ViewController is the controller for the main.fxml and is initialized when the fxml is loaded
      * in GUI.
-     * The
+     * Handles all of the necessary setup to create the panes.
      * @param location
      * @param resources
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-//        graphPane = new Pane();
         graphPane.toFront();
         graphPane.setMinSize(graphPane.getPrefWidth(),graphPane.getPrefWidth());
         graphView.setProcessorColours(Main.getController().getNumOfProcessors());
@@ -98,23 +97,12 @@ public class ViewController implements Initializable {
         }
     }
 
-<<<<<<< HEAD
     public static GraphViewController getGraphViewController() {
         return graphView;
     }
 
     public static void stopTimer() {
         timer.stop();
-=======
-    public void setPruned(int pruned){
-        solutionsPruned.setText(Integer.toString(pruned));
-    }
-    public void setExplored(int explored){
-        solutionsPruned.setText(Integer.toString(explored));
-    }
-    public void setStackSize(int stack){
-        solutionsPruned.setText(Integer.toString(stack));
->>>>>>> 4910b95bf42304bdb6ee89fca5c2b5150697587e
     }
 
 }

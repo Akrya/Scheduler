@@ -341,7 +341,7 @@ public class Solution{
 	 */
 	@Override
 	public boolean equals(Object o){
-		Solution other = (Solution)o;
+		Solution other = (Solution) o;
 
 		PriorityQueue<Map.Entry<Node, Double>> tasksForThis = new PriorityQueue<>(100, new Comparator<Map.Entry<Node, Double>>() {
 			@Override
@@ -355,6 +355,7 @@ public class Solution{
 				}
 			}
 		});
+
 		PriorityQueue<Map.Entry<Node, Double>> tasksForOther = new PriorityQueue<>(100, new Comparator<Map.Entry<Node, Double>>() {
 			@Override
 			public int compare(Map.Entry<Node, Double> e1, Map.Entry<Node, Double> e2) {

@@ -92,13 +92,14 @@ public class AStarSolutionFinder {
     }
 
     /**
-     * Helper function for findSolution(). Intended to be run on a seperate thread
+     * Helper function for findSolution(). Intended to be run on a separate thread
      *
      * @param s
      * @param open
+     * @param closed
      */
     public void expandSolution(Solution s, PriorityBlockingQueue<Solution> open, PriorityBlockingQueue<Solution> closed) throws InterruptedException {
-        // System.out.println("Stack size is now "+open.size());
+
         // Expand s's children
         for (Node n : s.getTasksLeft()) {
             for (int i = 0; i < numProcessors; i++) {
@@ -110,18 +111,15 @@ public class AStarSolutionFinder {
                         // Check if there are any duplicates in open or closed
                         for (Solution openS : open) {
                             if (openS.equals(s)) {
-                                // System.out.println("Found duplicate in open.");
                                 return;
                             }
                         }
                         for (Solution closedS : closed) {
                             if (closedS.equals(s)) {
-                                // System.out.println("Found duplicate in closed.");
                                 return;
                             }
                         }
 
-                        // System.out.println("Adding element.");
                         // Add the child to open
                         open.add(child);
                     }
@@ -147,7 +145,6 @@ public class AStarSolutionFinder {
             stack.add(s);
         }
 
-        System.out.println("");
     }
 
     /**
@@ -187,6 +184,9 @@ public class AStarSolutionFinder {
         return solutionCopy;
     }
 
+    /**
+     * Compares the heuristics returns the associated number assigned to the lower heuristic
+     */
     public static class SolutionHeuristicComparator implements Comparator {
 
         @Override

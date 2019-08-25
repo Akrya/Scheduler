@@ -8,6 +8,8 @@ public class Main {
 
     public static void main(String args[]) {
 
+        // Calling the method to parse the input arguments. Starting the GUI application
+        // if needed.
         controller.parseInputArguments(args);
         if (controller.isParseFine()) {
             controller.initialise();
