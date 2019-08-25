@@ -1,19 +1,18 @@
 package solutionfinder.data;
 
-import java.lang.reflect.Array;
-import java.util.*;
-
+import main.graph.TaskGraph;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Node;
 
-import graph.TaskGraph;
+import java.io.Serializable;
+import java.util.*;
 
 /**
  * This class represents a solution, a series of tasks scheduled amongst multiple processors.
- * 
+ *
  * @author Terence Qu
  */
-public class Solution{
+public class Solution implements Serializable {
 
 	private int numProcessors;
 	private Processor[] processors;
@@ -44,9 +43,9 @@ public class Solution{
 	/**
 	 * Adds a task to a processor. If two tasks are on the same processor,
 	 * one task must finish before the other starts.
-	 * If on different processors, for each dependency, 
-	 * start time >= start time of dependency + dependency's weight + edge weight 
-	 * @param n task represented as a node in the graph
+	 * If on different processors, for each dependency,
+	 * start time >= start time of dependency + dependency's weight + edge weight
+	 * @param n task represented as a node in the main.graph
 	 * @param targetProcessorIndex
 	 */
 	public boolean addTask(Node n, int targetProcessorIndex) {
@@ -166,6 +165,10 @@ public class Solution{
 	public void setCurrentProcessor(int currentProcessor) {
 		this.currentProcessor = currentProcessor;
 	}
+
+	public Node getLatestTask(){
+		return latestTask;
+	}
 	/**
 	 * Print the data of this solution to the console.
 	 */
@@ -199,7 +202,7 @@ public class Solution{
 
 		return data+"";
 	}
-	
+
 	/**
 	 * Find the total time taken for this solution's schedules.
 	 * @return the longest time taken by any of the processors
@@ -212,7 +215,7 @@ public class Solution{
 				longestTime = p.getEndTime();
 			}
 		}
-		
+
 		return longestTime;
 	}
 
@@ -246,7 +249,7 @@ public class Solution{
 	/**
 	 * Calculates the heuristic value of the encased solution.
 	 * This needs to be an underestimate.
-	 * We are using a proposed f(s) function in a University of Auckland research paper.
+	 * We are using a proposed f(s) function in a University of Auckland research paper by Oliver Sinnen.
 	 */
 	public double getHeuristic(){
 		List<Double> heuristicCandidates = new ArrayList<>();
@@ -265,7 +268,7 @@ public class Solution{
 	 * @return
 	 */
 	public double calculateFIdleTime(){
-		 return (this.getProcessingTime()+this.getIdleTime())/this.getNumProcessors();
+		return (this.getProcessingTime()+this.getIdleTime())/this.getNumProcessors();
 	}
 
 	/**
@@ -341,7 +344,7 @@ public class Solution{
 	 */
 	@Override
 	public boolean equals(Object o){
-		Solution other = (Solution)o;
+		Solution other = (Solution) o;
 
 		PriorityQueue<Map.Entry<Node, Double>> tasksForThis = new PriorityQueue<>(100, new Comparator<Map.Entry<Node, Double>>() {
 			@Override
@@ -355,6 +358,7 @@ public class Solution{
 				}
 			}
 		});
+
 		PriorityQueue<Map.Entry<Node, Double>> tasksForOther = new PriorityQueue<>(100, new Comparator<Map.Entry<Node, Double>>() {
 			@Override
 			public int compare(Map.Entry<Node, Double> e1, Map.Entry<Node, Double> e2) {

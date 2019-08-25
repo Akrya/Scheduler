@@ -7,14 +7,14 @@ import javafx.scene.Node;
 import javafx.scene.chart.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
-import main.controller.GanttChartController;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 // Referred to https://stackoverflow.com/questions/27975898/gantt-chart-from-scratch to get the custom
-// implementation of the XY Chart
+// implementation of the XY Chart. Added fields and methods to the custom class to get the text that needs
+// to be displayed onto the rectangles
 public class GanttChartFX<X,Y> extends XYChart<X,Y> {
 
     public static class ExtraData {
@@ -22,7 +22,6 @@ public class GanttChartFX<X,Y> extends XYChart<X,Y> {
         public double length;
         public String styleClass;
         public String text;
-
 
         public ExtraData(double lengthMs, String styleClass, String text) {
             super();
@@ -89,8 +88,8 @@ public class GanttChartFX<X,Y> extends XYChart<X,Y> {
                 }
                 Node block = item.getNode();
                 Rectangle ellipse;
-                GanttChartController.setTextX(getText(item.getExtraValue()), new Double(x));
-                GanttChartController.setTextY(getText(item.getExtraValue()), new Double(y));
+                GanttChartCreator.setTextX(getText(item.getExtraValue()), new Double(x));
+                GanttChartCreator.setTextY(getText(item.getExtraValue()), new Double(y));
                 if (block != null) {
                     if (block instanceof StackPane) {
                         StackPane region = (StackPane)item.getNode();

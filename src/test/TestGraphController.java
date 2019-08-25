@@ -1,4 +1,4 @@
-package test.Controller;
+package test;
 
 public class TestGraphController {
 }

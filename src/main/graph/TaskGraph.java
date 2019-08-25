@@ -1,15 +1,18 @@
-package graph;
-
-import java.util.*;
+package main.graph;
 
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.SingleGraph;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+
 /**
- * 
- * A simple implementation of SingleGraph, which represents a Task graph.
- * 
+ *
+ * A simple implementation of SingleGraph, which represents a Task main.graph.
+ *
  * @author Terence
  */
 public class TaskGraph extends SingleGraph{
@@ -22,15 +25,15 @@ public class TaskGraph extends SingleGraph{
 	}
 
 	/**
-	 * Finds a list of all the roots in the graph. 
+	 * Finds a list of all the roots in the main.graph.
 	 * Returns empty list if there aren't any roots.
 	 * This algorithm does not have to be complex, since task graps are small in size.
-	 * 
+	 *
 	 * @return root nodes
 	 */
 	public List<Node> getRootNodes() {
 		List<Node> rootNodes = new ArrayList<Node>();
-		
+
 		// Testing for nodes with 0 inDegree. These will be the roots.
 		for(Node n : this.getEachNode()) {
 			System.out.println("Testing node "+n.getId()+" with in degree of "+n.getInDegree());
@@ -42,13 +45,11 @@ public class TaskGraph extends SingleGraph{
 	}
 
 	public void setUpBottomLevels(){
-		for(Node n: this.getNodeSet()){
+
+		for(Node n: this.getNodeSet()) {
 			nodesAndBottomLevels.put(n, getBottomLevelOfNode(n));
 		}
 
-		for(Map.Entry<Node, Double> entry: nodesAndBottomLevels.entrySet()){
-			System.out.println("Bottom level of node "+entry.getKey()+": "+entry.getValue());
-		}
 	}
 
 	/**
@@ -58,10 +59,20 @@ public class TaskGraph extends SingleGraph{
 	 * @return
 	 */
 	public static double getBottomLevelOfNode(Node n){
+		List<Node> independentNodes = new ArrayList<>(n.getGraph().getNodeSet());
+		independentNodes.remove(n);
+
 		List<Double> bottomLevelCandidates = new ArrayList<Double>();
 		bottomLevelCandidates.add(0.0);
 		for(Edge e: n.getLeavingEdgeSet()){
 			bottomLevelCandidates.add((double)n.getAttribute("Weight")+getBottomLevelOfNode(e.getTargetNode()));
+			independentNodes.remove(e.getTargetNode());
+		}
+
+		for(Double d: bottomLevelCandidates){
+			for(Node inode: independentNodes){
+				d = d+(double)inode.getAttribute("Weight");
+			}
 		}
 
 		return Collections.max(bottomLevelCandidates);

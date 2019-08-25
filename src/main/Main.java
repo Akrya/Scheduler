@@ -5,19 +5,29 @@ import main.controller.Controller;
 public class Main {
 
     private static Controller controller = new Controller();
+    private static GUI gui;
 
     public static void main(String args[]) {
 
+        // Calling the method to parse the input arguments. Starting the GUI application
+        // if needed.
         controller.parseInputArguments(args);
-        controller.initialise();
-
-        // Running the visualisation only if the parsing of the input dot file was successful
-        if (controller.isVisualizeSearch()) {
+        if (controller.isParseFine()) {
+            controller.initialise();
             if (controller.getGraph() != null) {
-                GUI.launchApplication(args);
+                controller.getGraph().setUpBottomLevels();
+                if (controller.isVisualizeSearch()) {
+                    gui = new GUI();
+                    gui.launchApplication(args);
+                } else {
+                    controller.startSolutionFind();
+                }
             }
         }
+    }
 
+    public static GUI getGUI(){
+        return gui;
     }
 
     public static Controller getController() {
@@ -25,4 +35,3 @@ public class Main {
     }
 
 }
-
