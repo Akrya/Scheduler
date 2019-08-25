@@ -8,13 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="956d16ee-403a-4995-bb82-a7e6d3efc29d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/scheduler_jar/scheduler-final-T8.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/scheduler_jar/scheduler-final-T8.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/controller/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/MainViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/solutionfinder/AStarSolutionFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/solutionfinder/AStarSolutionFinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/visualization/GraphViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualization/GraphViewCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/Controller.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,6 +38,10 @@
   </component>
   <component name="ProjectId" id="1PGDkKvt555FUVWy6NCWdJsN1va" />
   <component name="PropertiesComponent">
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="306project1" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />

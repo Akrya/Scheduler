@@ -42,8 +42,10 @@ public class Controller {
     public void initialise() {
         inputGraph = new TaskGraph("inputGraph");
         inputGraph = GraphTools.parseInputFile(inputGraph, dotFileName);
-        solution = new Solution(inputGraph, numOfProcessors);
-        optimalSolution = new Solution(inputGraph, numOfProcessors);
+        if (inputGraph != null) {
+            solution = new Solution(inputGraph, numOfProcessors);
+            optimalSolution = new Solution(inputGraph, numOfProcessors);
+        }
     }
 
     /**
