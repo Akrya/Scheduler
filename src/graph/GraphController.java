@@ -7,6 +7,7 @@ import org.graphstream.stream.file.FileSource;
 import org.graphstream.stream.file.FileSourceDOT;
 import org.graphstream.ui.view.Viewer;
 
+import java.io.File;
 import java.io.IOException;
 
 public class GraphController {
@@ -18,6 +19,13 @@ public class GraphController {
      * @return The TaskGraph which now contains the information from the DOT File.
      */
     public static TaskGraph parseInputFile(TaskGraph inputGraph, String dotFileName) {
+
+        File dotFile = new File(dotFileName);
+        if (!dotFile.exists()) {
+            System.out.println("File does not exist. Please check if the input filename is correct" +
+                    "and/or the file is in the same directory as the jar file.");
+            return null;
+        }
 
         FileSource fileSource = new FileSourceDOT();
         fileSource.addSink(inputGraph);

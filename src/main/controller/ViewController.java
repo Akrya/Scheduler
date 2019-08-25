@@ -61,8 +61,8 @@ public class ViewController implements Initializable {
             l.setText(s);
             l.setStyle("-fx-text-fill: white;" +
                     "-fx-font-size: 15px");
-            l.setLayoutX(textX.get(s)+115);
-            l.setLayoutY(textY.get(s)+29);
+            l.setLayoutX(textX.get(s)+125);
+            l.setLayoutY(textY.get(s)+30);
             chartPane.getChildren().add(l);
         }
     }
