@@ -9,7 +9,7 @@ import org.graphstream.graph.implementations.DefaultGraph;
 import org.graphstream.ui.swingViewer.ViewPanel;
 import org.graphstream.ui.view.Viewer;
 import org.graphstream.ui.view.ViewerPipe;
-import solutiontreecreator.data.Processor;
+import solutionfinder.data.Processor;
 
 import java.awt.*;
 

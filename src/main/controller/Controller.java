@@ -39,10 +39,10 @@ public class Controller {
         inputGraph = new TaskGraph("inputGraph");
 
         inputGraph = GraphController.parseInputFile(inputGraph, dotFileName);
-        inputGraph.setUpBottomLevels();
 
         if (inputGraph != null) {
 
+            inputGraph.setUpBottomLevels();
             if(numOfCores != 1){
                 AStarParallelSolutionFinder solutionFinder = new AStarParallelSolutionFinder(numOfProcessors, inputGraph, numOfCores);
 

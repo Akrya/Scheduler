@@ -20,7 +20,7 @@ public class GUI extends Application {
 
         // show application
         primaryStage.setTitle(APPLICATION_TITLE);
-        primaryStage.setScene(new Scene(root, 900, 600));
+        primaryStage.setScene(new Scene(root, 910, 600));
         primaryStage.show();
 
         // close the process when closing the window.

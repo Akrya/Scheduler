@@ -29,6 +29,13 @@ public class ViewController implements Initializable {
     private static HashMap<String, Double> textX;
     private static HashMap<String, Double> textY;
 
+    /**
+     * ViewController is the controller for the main.fxml and is initialized when the fxml is loaded
+     * in GUI.
+     * The
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 //        graphPane = new Pane();
@@ -36,7 +43,6 @@ public class ViewController implements Initializable {
         graphPane.setMinSize(graphPane.getPrefWidth(),graphPane.getPrefWidth());
         GraphViewController graphView = new GraphViewController();
         SwingNode view = graphView.viewGraph();
-        view.setStyle("-fx-background-color:rgba(0,0,0,0.5)");
         view.resize(750,600);
         graphPane.getChildren().add(view);
 
@@ -58,10 +64,18 @@ public class ViewController implements Initializable {
 
     }
 
+    /**
+     * Shows the graph visualisation when the graph button is pressed.
+     * @param mouseEvent mouse click
+     */
     public void graphButtonClick(MouseEvent mouseEvent) {
         graphPane.toFront();
     }
 
+    /**
+     * Loads and displays the Gantt chart when the chart button is pressed.
+     * @param mouseEvent mouse click
+     */
     public void chartButtonClick(MouseEvent mouseEvent) {
         chartPane.toFront();
         textX = GanttChartController.getTextX();

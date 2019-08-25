@@ -9,7 +9,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.paint.Color;
 import main.Main;
 import org.graphstream.graph.Node;
-import solutiontreecreator.data.Processor;
+import solutionfinder.data.Processor;
 import visualization.GanttChartFX;
 
 import java.util.*;
