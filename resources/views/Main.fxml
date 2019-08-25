@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" styleClass="back" stylesheets="@../mainstyle.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ViewController">
@@ -15,13 +16,27 @@
                <children>
                   <Button fx:id="graphButton" layoutX="37.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#graphButtonClick" text="Graph" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="50.0" />
                   <Button fx:id="chartButton" layoutX="37.0" layoutY="111.0" mnemonicParsing="false" onMouseClicked="#chartButtonClick" text="Chart" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="90.0" />
-                  <ProgressIndicator fx:id="progressSpin" layoutX="10.0" layoutY="150.0" minHeight="-Infinity" prefHeight="100.0" prefWidth="100.0" progress="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="280.0" text="Time Elapsed" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                  <ProgressIndicator fx:id="progressSpin" layoutX="10.0" layoutY="134.0" minHeight="-Infinity" prefHeight="100.0" prefWidth="100.0" progress="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="249.0" text="Time Elapsed" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="timeElapsed" alignment="CENTER" contentDisplay="CENTER" layoutX="46.0" layoutY="312.0" text="1s" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" />
+                  <Label fx:id="timeElapsed" alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="281.0" text="1s" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" />
+                  <AnchorPane layoutX="-25.0" layoutY="367.0" prefHeight="200.0" prefWidth="200.0" styleClass="statspane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="300.0">
+                     <children>
+                        <Label alignment="CENTER" layoutX="50.0" layoutY="18.0" prefHeight="25.0" prefWidth="58.0" styleClass="heading" text="Stats" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
+                        <Label layoutX="28.0" layoutY="74.0" styleClass="stats" text="Stat1:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="75.0" />
+                        <Label layoutX="29.0" layoutY="116.0" styleClass="stats" text="Stat1:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="125.0" />
+                        <Label layoutX="28.0" layoutY="155.0" styleClass="stats" text="Stat1:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="175.0" />
+                        <Label layoutX="110.0" layoutY="76.0" styleClass="values" text="1" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="75.0" />
+                        <Label layoutX="111.0" layoutY="118.0" styleClass="values" text="1" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="125.0" />
+                        <Label layoutX="111.0" layoutY="156.0" styleClass="values" text="1" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="175.0" />
+                        <Line layoutY="50.0" startX="140.0" styleClass="lines" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+                        <Line layoutX="2.0" layoutY="10.0" startX="140.0" styleClass="lines" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+                        <Line endX="-100.0" endY="200.0" layoutX="181.0" layoutY="50.0" startX="-100.0" styleClass="lines" />
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </right>

@@ -37,6 +37,7 @@ public class ViewController implements Initializable {
         graphPane.setMinSize(graphPane.getPrefWidth(),graphPane.getPrefWidth());
         GraphViewController graphView = new GraphViewController();
         SwingNode view = graphView.viewGraph();
+        view.setStyle("-fx-background-color:rgba(0,0,0,0.5)");
         view.resize(750,600);
         graphPane.getChildren().add(view);
 
