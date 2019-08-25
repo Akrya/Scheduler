@@ -1,0 +1,26 @@
+digraph "Nodes_8_Random-output" {
+	 3	 [Weight=159.0,Start=126.0,Processor=0];
+	 1	 [Weight=88.0,Start=38.0,Processor=0];
+	 5	 [Weight=141.0,Start=285.0,Processor=0];
+	 7	 [Weight=53.0,Start=528.0,Processor=1];
+	 2	 [Weight=176.0,Start=35.0,Processor=1];
+	 6	 [Weight=141.0,Start=387.0,Processor=1];
+	 0	 [Weight=35.0,Start=0.0,Processor=1];
+	 4	 [Weight=176.0,Start=211.0,Processor=1];
+	 0 -> 1	[Weight=3.0];
+	 0 -> 2	[Weight=9.0];
+	 0 -> 3	[Weight=7.0];
+	 0 -> 4	[Weight=5.0];
+	 0 -> 6	[Weight=4.0];
+	 0 -> 7	[Weight=9.0];
+	 1 -> 4	[Weight=10.0];
+	 1 -> 7	[Weight=6.0];
+	 2 -> 4	[Weight=8.0];
+	 2 -> 5	[Weight=6.0];
+	 2 -> 7	[Weight=3.0];
+	 3 -> 5	[Weight=5.0];
+	 3 -> 6	[Weight=8.0];
+	 4 -> 6	[Weight=2.0];
+	 5 -> 7	[Weight=4.0];
+	 6 -> 7	[Weight=8.0];
+}

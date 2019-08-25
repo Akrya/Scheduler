@@ -27,7 +27,7 @@ public class GraphViewCreator {
     /**
      * Styles the main.graph so that it is easy to read.
      */
-    protected String styleSheet = "main.graph {" +
+    protected String styleSheet = "graph {" +
             "fill-color:white;" +
             "}" +
             "node {" +
