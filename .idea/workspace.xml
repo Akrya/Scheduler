@@ -8,7 +8,11 @@
   <component name="ChangeListManager">
     <list default="true" id="0fe06911-bbc5-4940-a1c1-c960dfb1b8a7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/controller/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controller/ViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/controller/Controller.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +83,7 @@
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="306Project1" />
-      <option name="PROGRAM_PARAMETERS" value="2" />
+      <option name="PROGRAM_PARAMETERS" value="Nodes_7_OutTree.dot 2 -v" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -262,5 +266,21 @@
     <MESSAGE value="Many changes &lt;See below&gt;&#10;&#10;- Added a proper heuristic, this is the one used in the 2003 paper by&#10;Oliver Sinnen.&#10;- Fixed some concurrency issues with multithreading.&#10;- Added more unit tests." />
     <MESSAGE value="Switched to priority queue for easier sorting of heuristic values." />
     <option name="LAST_COMMIT_MESSAGE" value="Switched to priority queue for easier sorting of heuristic values." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/GUI.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/controller/Controller.java</url>
+          <line>89</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

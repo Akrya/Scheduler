@@ -111,6 +111,11 @@ public class ViewController implements Initializable {
         timer.stop();
         progressSpin.setProgress(100);
     }
+
+    public void setLabels() {
+
+    }
+
     public void setPruned(int pruned){
         solutionsPruned.setText(Integer.toString(pruned));
     }

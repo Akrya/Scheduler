@@ -30,6 +30,8 @@ public class Controller {
     private Solution solution;
     private Solution optimalSolution;
 
+    private ViewController viewController;
+
     /**
      * Method that handles the parsing of the dot file and makes a graph object using the
      * GraphStream library. Builds the solution tree and then calls the find solution method
@@ -85,11 +87,10 @@ public class Controller {
     public void finalize(){
         if (isVisualizeSearch()) {
             writeOutputFile();
-            if(Main.getGUI().getViewController()==null){
-                System.out.println("It's bloody null");
-            }
+            viewController.finish();
             ViewController.getGraphViewController().setGraphColours(ViewController.getGraphViewController().getGraph(), optimalSolution);
             GanttChartController.initialiseChart();
+
         } else {
             writeOutputFile();
         }
@@ -324,4 +325,11 @@ public class Controller {
         return optimalSolution;
     }
 
+    public ViewController getViewController() {
+        return viewController;
+    }
+
+    public void setViewController(ViewController viewController) {
+        this.viewController = viewController;
+    }
 }

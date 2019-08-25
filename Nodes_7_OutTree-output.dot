@@ -1,0 +1,12 @@
+digraph "Nodes_7_OutTree-output" {
+	 2	 [Weight=5.0,Start=16.0,Processor=0];
+	 1	 [Weight=6.0,Start=21.0,Processor=0];
+	 0	 [Weight=5.0,Start=0.0,Processor=1];
+	 6	 [Weight=7.0,Start=48.0,Processor=1];
+	 0 -> 1	[Weight=15.0];
+	 0 -> 2	[Weight=11.0];
+	 0 -> 3	[Weight=11.0];
+	 1 -> 4	[Weight=19.0];
+	 1 -> 5	[Weight=4.0];
+	 1 -> 6	[Weight=21.0];
+}
