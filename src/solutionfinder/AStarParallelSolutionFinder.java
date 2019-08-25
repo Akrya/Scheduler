@@ -12,14 +12,15 @@ import java.util.concurrent.*;
  */
 public class AStarParallelSolutionFinder extends AStarSolutionFinder {
 
-    public static final int MAX_THREADS = 16;
+    public final int MAX_THREADS;
     public ConcurrentHashMap<Integer, Thread> threads;
     private int threadId;
 
-    public AStarParallelSolutionFinder(int numProcessors, TaskGraph taskGraph) {
+    public AStarParallelSolutionFinder(int numProcessors, TaskGraph taskGraph, int maxThreads) {
         super(numProcessors, taskGraph);
         this.threadId = 0;
         this.threads = new ConcurrentHashMap<>();
+        this.MAX_THREADS = maxThreads;
     }
 
     /**
