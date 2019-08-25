@@ -35,6 +35,13 @@ public class ViewController implements Initializable {
 
     private static AnimationTimer timer;
 
+    /**
+     * ViewController is the controller for the main.fxml and is initialized when the fxml is loaded
+     * in GUI.
+     * The
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -64,10 +71,18 @@ public class ViewController implements Initializable {
 
     }
 
+    /**
+     * Shows the graph visualisation when the graph button is pressed.
+     * @param mouseEvent mouse click
+     */
     public void graphButtonClick(MouseEvent mouseEvent) {
         graphPane.toFront();
     }
 
+    /**
+     * Loads and displays the Gantt chart when the chart button is pressed.
+     * @param mouseEvent mouse click
+     */
     public void chartButtonClick(MouseEvent mouseEvent) {
         chartPane.toFront();
         textX = GanttChartController.getTextX();
