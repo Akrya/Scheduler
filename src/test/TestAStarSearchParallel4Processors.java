@@ -20,7 +20,7 @@ public class TestAStarSearchParallel4Processors {
 
         System.out.println("---------------------------------");
 
-        AStarParallelSolutionFinder solutionTreeCreator = new AStarParallelSolutionFinder(4, taskGraph,4);
+        AStarParallelSolutionFinder solutionTreeCreator = new AStarParallelSolutionFinder(4, taskGraph, 4);
         Solution optimalSolution = solutionTreeCreator.startOptimalSearch();
         optimalSolution.printData();
         assertEquals(optimalSolution.getTotalTime(), 22.0f, 0.0f);
@@ -36,7 +36,7 @@ public class TestAStarSearchParallel4Processors {
 
         System.out.println("---------------------------------");
 
-        AStarParallelSolutionFinder solutionTreeCreator = new AStarParallelSolutionFinder(4, taskGraph,4);
+        AStarParallelSolutionFinder solutionTreeCreator = new AStarParallelSolutionFinder(4, taskGraph, 4);
         Solution optimalSolution = solutionTreeCreator.startOptimalSearch();
         optimalSolution.printData();
         assertEquals(optimalSolution.getTotalTime(), 581.0f, 0.0f);
@@ -52,7 +52,7 @@ public class TestAStarSearchParallel4Processors {
 
         System.out.println("---------------------------------");
 
-        AStarParallelSolutionFinder solutionTreeCreator = new AStarParallelSolutionFinder(4, taskGraph,4);
+        AStarParallelSolutionFinder solutionTreeCreator = new AStarParallelSolutionFinder(4, taskGraph, 4);
         Solution optimalSolution = solutionTreeCreator.startOptimalSearch();
         optimalSolution.printData();
         assertEquals(optimalSolution.getTotalTime(), 55.0f, 0.0f);
@@ -68,7 +68,7 @@ public class TestAStarSearchParallel4Processors {
 
         System.out.println("---------------------------------");
 
-        AStarParallelSolutionFinder solutionTreeCreator = new AStarParallelSolutionFinder(4, taskGraph,4);
+        AStarParallelSolutionFinder solutionTreeCreator = new AStarParallelSolutionFinder(4, taskGraph, 4);
         Solution optimalSolution = solutionTreeCreator.startOptimalSearch();
         optimalSolution.printData();
         assertEquals(optimalSolution.getTotalTime(), 50.0f, 0.0f);
@@ -84,7 +84,7 @@ public class TestAStarSearchParallel4Processors {
 
         System.out.println("---------------------------------");
 
-        AStarParallelSolutionFinder solutionTreeCreator = new AStarParallelSolutionFinder(4, taskGraph,4);
+        AStarParallelSolutionFinder solutionTreeCreator = new AStarParallelSolutionFinder(4, taskGraph, 4);
         Solution optimalSolution = solutionTreeCreator.startOptimalSearch();
         optimalSolution.printData();
         assertEquals(optimalSolution.getTotalTime(), 227.0f, 0.0f);

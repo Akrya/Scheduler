@@ -44,7 +44,7 @@ public class TestAStarSearchSpeed {
 
         System.out.println("---------------------------------");
 
-        AStarParallelSolutionFinder solutionTreeCreator = new AStarParallelSolutionFinder(4, taskGraph,4);
+        AStarParallelSolutionFinder solutionTreeCreator = new AStarParallelSolutionFinder(4, taskGraph, 2);
         Solution optimalSolution = solutionTreeCreator.startOptimalSearch();
         optimalSolution.printData();
         assertEquals(optimalSolution.getTotalTime(), 227.0f, 0.0f);

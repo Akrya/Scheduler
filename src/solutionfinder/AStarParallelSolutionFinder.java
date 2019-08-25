@@ -48,8 +48,6 @@ public class AStarParallelSolutionFinder extends AStarSolutionFinder {
 
             // If complete solution is found, return it
             if (s.getTasksLeft().isEmpty() && (optimalSolution == null || s.getTotalTime() < optimalSolution.getTotalTime())) {
-                System.out.println("Found complete solution with cost " + s.getTotalTime());
-                System.out.println("Stack size is " + open.size());
                 optimalSolution = s;
             }
 

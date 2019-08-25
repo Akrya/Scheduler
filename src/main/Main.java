@@ -9,12 +9,14 @@ public class Main {
     public static void main(String args[]) {
 
         controller.parseInputArguments(args);
-        controller.initialise();
-
-        // Running the visualisation only if the parsing of the input dot file was successful
-        if (controller.isVisualizeSearch()) {
+        if (controller.isParseFine()) {
+            controller.initialise();
             if (controller.getGraph() != null) {
-                GUI.launchApplication(args);
+                if (controller.isVisualizeSearch()) {
+                    GUI.launchApplication(args);
+                } else {
+                    controller.startSolutionFind();
+                }
             }
         }
 
@@ -25,4 +27,3 @@ public class Main {
     }
 
 }
-
