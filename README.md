@@ -4,7 +4,9 @@ This project is about using AI and parallel processing power to solve difficult 
 
 ## Installation
 Using maven, build the project by the 'install' goal with the pom.xml file.
+
 To build the jar:
+
   -With intellij:Project structure -> Artifacts -> + -> JAR from modules with dependencies -> Choose main class 'Main' -> OK
 
 ## Command Line Interface
