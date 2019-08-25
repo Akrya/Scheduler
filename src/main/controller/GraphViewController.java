@@ -19,11 +19,14 @@ import java.util.Random;
 
 
 public class GraphViewController {
+
     public Graph graph = new DefaultGraph(Main.getController().getGraphFilename());
     private Viewer viewer;
-
     private List<String> processorColours = new ArrayList<>();
 
+    /**
+     * Styles the graph so that it is easy to read.
+     */
     protected String styleSheet = "graph {" +
             "fill-color:white;" +
             "}" +
@@ -41,9 +44,10 @@ public class GraphViewController {
             "shape: cubic-curve;" +
             "}";
 
+    /**
+     * Initialises the properties of the graph.
+     */
     public GraphViewController(){
-        //Initialise the propertiers of the graph.
-        //System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
         graph = GraphController.defaultGraph(graph,Main.getController().getGraphFilename());
         graph.setAttribute("ui.antialias");
         graph.setAttribute("ui.quality");
@@ -54,8 +58,11 @@ public class GraphViewController {
 //        setGraphColours(graph);
     }
 
+    /**
+     * Displays the graph.
+     * @return swingNode used to embed the graph visual into the JavaFX scene.
+     */
     public SwingNode viewGraph(){
-        //GraphController.viewGraph(graph);
         viewer = new Viewer(graph,Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
         ViewPanel view = viewer.addDefaultView(false);
         
@@ -63,6 +70,7 @@ public class GraphViewController {
 
         ViewerPipe fromViewer = viewer.newViewerPipe();
 
+        // SwingNode is used to convert the Swing component view into a JavaFX component.
         SwingNode swingNode = new SwingNode();
         view.setPreferredSize(new Dimension(750,600));
         swingNode.setContent(view);
@@ -70,12 +78,17 @@ public class GraphViewController {
         return swingNode;
     }
 
+    /**
+     * Assigns the colors to be used to represent the different processors used in the schedule.
+     * @param numOfProcessors
+     */
     public void setProcessorColours(int numOfProcessors) {
 
         List<String> processorColor = new ArrayList<>(Arrays.asList("red","blue","yellow","green","brown","indigo","cyan","hotpink"));
         Random rand = new Random();
         int randomNumber = rand.nextInt(processorColor.size() - 1);
 
+        // For each processor, randomly assign it a colour from the processorColor list.
         for (int i = 0; i < numOfProcessors; i++) {
             processorColours.add(processorColor.get(randomNumber));
             processorColor.remove(randomNumber);
