@@ -30,7 +30,7 @@
 
 .chartpane{
     -fx-background-color:
-        linear-gradient(to right, #D1FF66, #DCFFFD);
+        linear-gradient(to right, #bfe691, #DCFFFD);
 }
 
 .graphpane{
