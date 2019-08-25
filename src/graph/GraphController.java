@@ -39,6 +39,20 @@ public class GraphController {
 
     }
 
+    public static Graph defaultGraph(Graph inputGraph, String dotFileName) {
+
+        FileSource fileSource = new FileSourceDOT();
+        fileSource.addSink(inputGraph);
+        try {
+            fileSource.readAll(dotFileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return inputGraph;
+
+    }
+
     /**
      * A getter which returns the weight of a node.
      * @param nodeID Unique string identifying the node from which you want to find the node weight from.
