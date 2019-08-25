@@ -2,6 +2,7 @@ package main.controller;
 
 import graph.GraphController;
 import graph.TaskGraph;
+import javafx.application.Platform;
 import main.Main;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Node;
@@ -29,6 +30,7 @@ public class Controller {
 
     private Solution solution;
     private Solution optimalSolution;
+    private ViewController viewController;
 
     /**
      * Method that handles the parsing of the dot file and makes a graph object using the
@@ -56,7 +58,6 @@ public class Controller {
                 if (inputGraph != null) {
                     if (numOfCores != 1) {
                         AStarParallelSolutionFinder solutionFinder = new AStarParallelSolutionFinder(numOfProcessors, inputGraph, numOfCores);
-
                         try {
                             optimalSolution = solutionFinder.findOptimal();
                         } catch (InterruptedException e) {
@@ -76,18 +77,20 @@ public class Controller {
                 }
             }
         });
-
         thread.start();
     }
 
     public void finalize(){
         if (isVisualizeSearch()) {
             writeOutputFile();
-            if(Main.getGUI().getViewController()==null){
-                System.out.println("It's bloody null");
-            }
-            ViewController.getGraphViewController().setGraphColours(ViewController.getGraphViewController().getGraph(), optimalSolution);
-            GanttChartController.initialiseChart();
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    Main.getController().getViewController().finish();
+                    ViewController.getGraphViewController().setGraphColours(ViewController.getGraphViewController().getGraph(), optimalSolution);
+                    GanttChartController.initialiseChart();
+                }
+            });
         } else {
             writeOutputFile();
         }
@@ -97,7 +100,7 @@ public class Controller {
      * Constructs strings that need to be written onto the dot file.
      */
     private void writeOutputFile() {
-
+        System.out.println("Output file written.");
         File outputFile = new File(outputFileName);
 
         // Deletes an existing dot file with the same file name if there exists
@@ -324,4 +327,11 @@ public class Controller {
         return optimalSolution;
     }
 
+    public void setViewController(ViewController viewController){
+        this.viewController = viewController;
+    }
+
+    public ViewController getViewController(){
+        return viewController;
+    }
 }

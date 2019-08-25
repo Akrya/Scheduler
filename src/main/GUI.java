@@ -23,6 +23,7 @@ public class GUI extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(MAIN_MENU_SCENE));
         Parent root = loader.load();
         viewController = loader.getController();
+        Main.getController().setViewController(viewController);
 
         // show application
         primaryStage.setTitle(APPLICATION_TITLE);

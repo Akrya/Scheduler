@@ -53,7 +53,6 @@ public class GraphViewController {
         for (Node n: graph.getNodeSet()) {
             graph.getNode(n.getId()).addAttribute("ui.label",n.getId());
         }
-//        setGraphColours(graph);
     }
 
     /**

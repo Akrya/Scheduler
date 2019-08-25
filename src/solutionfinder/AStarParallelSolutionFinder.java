@@ -1,6 +1,9 @@
 package solutionfinder;
 
 import graph.TaskGraph;
+import javafx.application.Platform;
+import main.Main;
+import main.controller.ViewController;
 import solutionfinder.data.Solution;
 
 import java.util.concurrent.*;
@@ -44,13 +47,29 @@ public class AStarParallelSolutionFinder extends AStarSolutionFinder {
             partialSolution = s;
             lastExaminedHeuristic = s.getHeuristic();
 
+            if (Main.getController().isVisualizeSearch()) {
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        Main.getGUI().getViewController().getGraphViewController()
+                                .setProcessorColours(numProcessors);
+                        Main.getGUI().getViewController().getGraphViewController()
+                                .setGraphColours(ViewController.getGraphViewController().getGraph(), partialSolution);
+                        Main.getController().getViewController().setExplored(solutionsExplored);
+                        Main.getController().getViewController().setPruned(solutionsPruned);
+                        Main.getController().getViewController().setStackSize(open.size());
+                    }
+                });
+            }
+
+
             // If complete solution is found, return it
             if (s.getTasksLeft().isEmpty() && (optimalSolution == null || s.getTotalTime() < optimalSolution.getTotalTime())) {
                 optimalSolution = s;
             }
 
             // Check if should spawn a new thread for solution expansion
-            if(optimalSolution == null || s.getTotalTime() < optimalSolution.getTotalTime()){
+            if (optimalSolution == null || s.getTotalTime() < optimalSolution.getTotalTime()) {
                 if (threads.size() < MAX_THREADS && open.size() > MAX_THREADS) {
                     BranchThread thread = new BranchThread();
                     thread.passParameters(this, threadId++, s, open, closed);
@@ -63,6 +82,10 @@ public class AStarParallelSolutionFinder extends AStarSolutionFinder {
         for (Thread t : threads.values()) {
             t.join();
         }
+
+        Main.getController().setOptimalSolution(optimalSolution);
+        Main.getController().finalize();
+
         return optimalSolution;
     }
 
@@ -76,7 +99,7 @@ public class AStarParallelSolutionFinder extends AStarSolutionFinder {
         private PriorityBlockingQueue<Solution> open;
         private PriorityBlockingQueue<Solution> closed;
 
-        public void passParameters(AStarParallelSolutionFinder a, int id, Solution solution, PriorityBlockingQueue<Solution> open,  PriorityBlockingQueue<Solution> closed) {
+        public void passParameters(AStarParallelSolutionFinder a, int id, Solution solution, PriorityBlockingQueue<Solution> open, PriorityBlockingQueue<Solution> closed) {
             a.threads.put(id, this);
             this.a = a;
             this.id = id;
